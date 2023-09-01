@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_333333"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="14dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/im_bookmark"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/common_off_star_40" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/im_bookmark"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_ruote_tp"
+                                android:layout_width="42dp"
+                                android:layout_height="21dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/bg_round_area_6"
+                                android:backgroundTint="@color/black"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:gravity="center"
+                                android:letterSpacing="-0.03"
+                                android:lineSpacingExtra="8sp"
+                                android:text="없음"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:id="@+id/tv_routeNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                                android:letterSpacing="-0.05"
+                                android:singleLine="true"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:text="204"
+                                android:textColor="@color/white"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_nodename"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                            android:letterSpacing="-0.05"
+                            android:text="검단동↔방천리(공영차고지)"
+                            android:textColor="@color/color_999999"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_line_6"
+                        android:backgroundTint="@color/color_E6E6E6_50"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_start_vihicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                                android:letterSpacing="-0.05"
+                                android:paddingEnd="8dp"
+                                android:text="첫차 17시 22분"
+                                android:textColor="@color/white"
+                                android:textSize="16dp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="12dp"
+                                android:background="@color/color_999999" />
+
+                            <TextView
+                                android:id="@+id/tv_end_vihicle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                                android:letterSpacing="-0.05"
+                                android:paddingStart="8dp"
+                                android:text="막차 17시 22분"
+                                android:textColor="@color/white"
+                                android:textSize="16dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_interval"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingEnd="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.05"
+                                android:text="평일 15분 간격"
+                                android:textColor="@color/color_999999"
+                                android:textSize="12dp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="10dp"
+                                android:background="@color/color_999999" />
+
+                            <TextView
+                                android:id="@+id/tv_interval_saturday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.05"
+                                android:text="토요일 15분 간격"
+                                android:textColor="@color/color_999999"
+                                android:textSize="12dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_interval_sunday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:paddingEnd="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.05"
+                                android:lineSpacingExtra="8dp"
+                                android:text="일요일,공휴일 12분 간격"
+                                android:textColor="@color/color_999999"
+                                android:textSize="12dp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="10dp"
+                                android:background="@color/color_999999" />
+
+                            <TextView
+                                android:id="@+id/tv_interval_holiday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.05"
+                                android:text="감회운행 20분 간격"
+                                android:textColor="@color/color_999999"
+                                android:textSize="12dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_CCCCCC_5" />
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

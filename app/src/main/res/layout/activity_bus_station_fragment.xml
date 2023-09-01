@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="18dp">
+
+                    <RelativeLayout
+                        android:id="@+id/keyWord"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_round_line_6"
+                        android:backgroundTint="@color/color_E6E6E6"
+                        android:paddingStart="4dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="5dp">
+
+                        <RelativeLayout
+                            android:id="@+id/lo_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etKeyword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:background="@color/white"
+                                android:completionThreshold="1"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:hint="버스 검색"
+                                android:imeOptions="actionSearch"
+                                android:letterSpacing="-0.03"
+                                android:paddingStart="6dp"
+                                android:paddingTop="6dp"
+                                android:paddingEnd="6dp"
+                                android:paddingBottom="6dp"
+                                android:singleLine="true"
+                                android:textSize="16dp" />
+
+                            <ImageView
+                                android:id="@+id/iv_clear"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="2dp"
+                                android:layout_toLeftOf="@+id/iv_right1"
+                                android:padding="8dp"
+                                android:src="@drawable/common_close_circle_20_cccccc"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/iv_right1"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:padding="8dp"
+                                android:src="@drawable/common_search_20" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:id="@+id/v_bottom_search_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_66999999" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_below="@+id/v_bottom_search_line"
+                        android:background="@color/color_E6E6E6" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/at_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical" />
+
+                </FrameLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_E6E6E6"
+                    android:overScrollMode="never">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/search_result_recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible" />
+
+                        <include
+                            android:id="@+id/lo_search_empty"
+                            layout="@layout/common_search_eamty"
+                            android:visibility="visible" />
+
+                        <include
+                            android:id="@+id/lo_result_empty"
+                            layout="@layout/common_result_empty"
+                            android:visibility="gone" />
+
+
+                        <LinearLayout
+                            android:id="@+id/lo_recent_search_keyword"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_recent_search_keyword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:overScrollMode="never" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/color_E6E6E6" />
+
+                            <TextView
+                                android:id="@+id/tv_delete_all"
+                                android:layout_width="match_parent"
+                                android:layout_height="65dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:gravity="center"
+                                android:letterSpacing="-0.02"
+                                android:lineSpacingExtra="4dp"
+                                android:text="@string/bus_recent_delite"
+                                android:textColor="@color/color_999999"
+                                android:textSize="16dp" />
+
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/keyboard_top_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="#555555"
+                android:fitsSystemWindows="true"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingEnd="10dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_int_btn"
+                        android:layout_width="59dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_round_line_15"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="4dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="15dp"
+                        android:paddingBottom="3dp"
+                        android:text="숫자"
+                        android:textColor="#ffffff"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_standard_btn"
+                        android:layout_width="59dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_round_line_15"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="4dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="15dp"
+                        android:paddingBottom="3dp"
+                        android:text="기본"
+                        android:textColor="#ffffff"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_dash_btn"
+                        android:layout_width="59dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/bg_round_line_15"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:paddingStart="15dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="15dp"
+                        android:paddingBottom="3dp"
+                        android:text="-"
+                        android:textColor="#ffffff"
+                        android:textSize="16dp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp" />
+
+                <ImageView
+                    android:id="@+id/iv_keyboard_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/common_keyboard_drop_44" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

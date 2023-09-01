@@ -1,0 +1,26 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_area_25"
+            android:backgroundTint="@color/color_01CAFF"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+            android:letterSpacing="-0.02"
+            android:paddingLeft="12dp"
+            android:paddingTop="6dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="6dp"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            tools:text="#검색어" />
+    </RelativeLayout>
+
+</layout>

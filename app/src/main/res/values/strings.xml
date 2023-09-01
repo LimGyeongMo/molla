@@ -1,0 +1,1335 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 공용 -->
+    <string name="app_name">대구로</string>
+
+    <!-- 카카오 키 -->
+    <string name="kakao_app_key">7bd45e3826f58e6f23c485e3bb87ab1b</string>
+    <string name="kakao_sheme">kakao7bd45e3826f58e6f23c485e3bb87ab1b</string>
+    <string name="kakao_rest_key">KakaoAK 72609bc7d1cc22fcee39bb2cf87495dc</string>
+
+    <!--네이버 키 -->
+    <string name="naver_client_id">SJVCXPsMUQCPYeSTfIKi</string>
+    <string name="naver_client_secret">zgcLcBeIyv</string>
+    <string name="naver_client_name">daegudelivery</string>
+
+    <!--네이버 지도 키 -->
+    <string name="naver_platform_id">1rslh5418a</string>
+    <string name="naver_platform_secret_key">irPi5J2dE0XPX4IoS8NYRZ6WacTfm9mobSTcRmgn</string>
+
+    <!--메타 픽셀 키 -->
+    <string name="facebook_application_id">707582324070278</string>
+    <string name="facebook_client_token">65988d2c41fd84ffc442cc2e3c19d3bd</string>
+
+    <string name="developer_email" translatable="false">insungdata@isdata.kr</string>
+    <string name="customer_center_tel" translatable="false">1661-3773</string>
+    <string name="customer_operation_time" translatable="false">운영시간 10:00 ~ 18:00 (공휴일 휴무)</string>
+    <string name="app_copyright">Copyright ⓒ 2021 INSUNGDATA. All rights reserved.</string>
+    <string name="kakao_channel_link_customer_center">http://pf.kakao.com/_xbdUKs</string>
+    <string name="kakao_channel_link_event">http://pf.kakao.com/_bArRs</string>
+    <string name="insungdata">인성데이타(주)</string>
+    <string name="insungdata_business_info_detail" tools:ignore="TypographyDashes">대표자: 최현환&#160;&#160;&#160;&#160;사업자등록번호: 503–81–50051\n통신판매번호: 2005-대구서구-0304호\n주소: 대구광역시 서구 북비산로 369 2층, 4층\n고객센터:</string>
+    <string name="business_info_description">대구로 앱은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품거래정보 및 거래와 관련하여 대구로 앱에 등록된 판매자의 고의 또는 과실로 소비자에게 발생하는 손해에 대하여 대구로 앱은 책임을 지지 않습니다. 상품 및 거래에 관하여 정확한 정보는 해당 판매자에게 직접 확인하여 주시기 바랍니다.</string>
+
+    <string name="agree_service_use_link">https://terms.daeguro.co.kr:45028/agreement/agreement1.htm</string>
+    <string name="agree_privacy_other_people_share_link2">https://terms.daeguro.co.kr:45028/agreement/agreement16-1.htm</string>
+    <string name="agree_gps_use_link">https://terms.daeguro.co.kr:45028/agreement/agreement2.htm</string>
+    <string name="agree_privacy_link">https://terms.daeguro.co.kr:45028/agreement/agreement3.htm</string>
+    <!--    <string name="agree_push_sns_link">https://terms.daeguro.co.kr:45028/agreement/agreement4.htm</string>-->
+    <string name="agree_marketing_receive">https://terms.daeguro.co.kr:45028/agreement/agreement5.htm</string>
+    <string name="agree_digital_trans_link">https://terms.daeguro.co.kr:45028/agreement/agreement1.htm</string>
+    <string name="agree_privacy_and_use_choice_link">https://terms.daeguro.co.kr:45028/agreement/agreement6.htm</string>
+    <string name="agree_privacy_and_use_essential_link">https://terms.daeguro.co.kr:45028/agreement/agreement7.htm</string>
+    <string name="agree_privacy_other_people_share_link">https://terms.daeguro.co.kr:45028/agreement/agreement8.html</string>
+    <string name="agree_privacy_and_use_link">https://terms.daeguro.co.kr:45028/agreement/agreement9.htm</string>
+    <string name="agreement10_link" tools:ignore="TypographyDashes">https://terms.daeguro.co.kr:45028/agreement/agreement10.htm</string><!--14세 미만 개인정보 동의 (필수)-->
+    <string name="agree_children_privacy_link">https://www.naver.com</string>
+    <string name="agreement17_1_link" tools:ignore="TypographyDashes">https://terms.daeguro.co.kr:45028/agreement/agreement17-1.htm</string>
+    <string name="agreement17_2_link" tools:ignore="TypographyDashes">https://terms.daeguro.co.kr:45028/agreement/agreement17-2.htm</string>
+    <string name="agreement18_link">https://terms.daeguro.co.kr:45028/agreement/agreement18.htm</string>
+    <string name="agreement18_1_link" tools:ignore="TypographyDashes">https://terms.daeguro.co.kr:45028/agreement/agreement18-1.htm</string>
+    <string name="agreement18_3_link" tools:ignore="TypographyDashes">https://terms.daeguro.co.kr:45028/agreement/agreement18-3.htm</string>
+    <string name="naver_blog_url">https://m.blog.naver.com/PostList.naver?blogId=appisdata&amp;categoryNo=19&amp;listStyle=style1</string>
+
+
+    <string name="reserve">예약</string>
+    <string name="food_shop_reserve">음식점 예약</string>
+    <string name="taxi_call">택시호출</string>
+
+    <string name="alarm">알림</string>
+
+    <!-- 공통 -->
+    <string name="card_management">카드/계좌관리</string>
+    <string name="business_info">사업자정보</string>
+    <string name="agreement">이용약관</string>
+    <string name="privacy_policy">개인정보 처리방침</string>
+    <string name="privacy_policy_and_use">개인정보 수집 및 이용</string>
+
+    <string name="have_no_notice">공지사항이 없습니다.</string>
+    <string name="have_no_event">진행중인 이벤트가 없습니다.</string>
+    <!--    <string name="msg_notice_empty">공지사항이 존재하지 않습니다.</string>-->
+    <!--    <string name="msg_event_empty">이벤트가 존재하지 않습니다.</string>-->
+
+    <string name="reset">초기화</string>
+
+    <string name="message_init_exception">초기값 설정이 올바르지 않습니다.</string>
+
+    <!-- 정렬 -->
+    <string name="sort_by_recommend">찜 많은 순</string>
+    <string name="sort_by_distance">가까운 순</string>
+    <string name="sort_by_order">주문 많은 순</string>
+    <string name="sort_by_new_shop">신규 매장 순</string>
+    <string name="sort_by_many_review">리뷰 많은순</string>
+    <string name="sort_by_new">최신 순</string>
+    <string name="sort_by_star_high">별점 높은 순</string>
+    <string name="sort_by_star_low">별점 낮은 순</string>
+    <string name="sort_by_latest">최신순</string>
+    <string name="sort_by_price_high">금액 높은 순</string>
+    <string name="sort_by_price_low">금액 낮은 순</string>
+    <string name="sort_by_order_many">주문 많은 순</string>
+
+    <string name="copy_address">주소 복사</string>
+    <string name="re_use">다음에도 사용</string>
+    <string name="safety_number_use">안심번호 사용</string>
+
+    <string name="board_city_hall_title">대구시 알림이</string>
+
+    <string name="msg_notice_empty">공지사항이 존재하지 않습니다.</string>
+    <string name="msg_event_empty">이벤트가 존재하지 않습니다.</string>
+
+    <string name="plz_select_pay_card">결제하실 카드를 선택해주세요</string>
+    <string name="plz_select_position_for_delivery">지도를 움직여 배달 받을 위치를 설정해 주세요</string>
+    <string name="plz_select_coupon">쿠폰을 선택해주세요</string>
+    <string name="plz_input_coupon_code">쿠폰코드를 입력해주세요</string>
+    <string name="plz_input_search_word">검색할 단어를 입력해주세요</string>
+    <string name="plz_select_voucher">상품권을 선택해주세요</string>
+
+    <string name="exist_new_update">최신 업데이트가 있습니다.</string>
+    <string name="confirm_app_new_version_update">최신 업데이트가 있습니다. 업데이트 하시겠습니까?</string>
+    <string name="confirm_stop_join">회원가입을 중지하시겠습니까?</string>
+    <string name="confirm_app_finish">앱을 종료하시겠습니까?</string>
+
+    <string name="msg_not_service_area">서비스 불가 지역입니다.</string>
+    <string name="msg_question_exact_address">잠깐! 이 주소가 맞나요?</string>
+    <string name="msg_happy_pay_discount">행복페이 결제 시, 5% 추가할인!</string>
+
+    <string name="delivery_msg_order_delete_popup_title">해당 주문내역을 삭제하시겠습니까?</string>
+    <string name="delivery_msg_order_delete_popup_contents">삭제 후에는 복구할 수 없습니다.</string>
+
+    <string name="reserve_msg_order_delete_popup_title">해당 예약내역을 삭제하시겠습니까?</string>
+    <string name="reserve_msg_order_delete_popup_contents">삭제 후에는 복구할 수 없습니다.</string>
+
+    <string name="do_order_remove">주문내역 삭제</string>
+    <string name="do_coupon_regist">쿠폰 등록하기</string>
+    <string name="do_qrcode_read">QR코드 인식</string>
+    <string name="do_start">시작하기</string>
+    <string name="do_change">변경하기</string>
+    <string name="do_setting">설정하기</string>
+    <string name="do_tel">전화하기</string>
+    <string name="do_save">저장하기</string>
+    <string name="do_share">공유하기</string>
+    <string name="do_view_map">지도 보기</string>
+    <string name="do_pay">결제하기</string>
+    <string name="do_regist">등록하기</string>
+    <string name="do_get_auth_number">인증번호 받기</string>
+    <string name="do_withdrawal">탈퇴하기</string>
+    <string name="do_use">사용하기</string>
+    <string name="do_apply">적용하기</string>
+    <string name="do_join">가입하기</string>
+    <string name="do_move_order">주문하러 가기</string>
+    <string name="do_order_breakdown_confirm">주문내역 확인하기</string>
+    <string name="do_copy_url">URL 복사</string>
+    <string name="do_copy_info">공유내용 복사</string>
+    <string name="route_map">길찾기</string>
+    <string name="copy">복사</string>
+
+    <string name="share_by_kakaotalk">카카오톡으로 공유</string>
+    <string name="share_by_sms">문자로 공유</string>
+
+    <string name="mileage_use">마일리지 사용</string>
+    <string name="use_all">모두 사용</string>
+
+    <string name="safety_number_notice">안심번호는 개인정보 보호를 위해 연락처 정보가 유출되지 않도록 1회성 임시번호를 발급하는 서비스입니다. 발급된 안심번호는 일정시간 이후 자동으로 해지됩니다.</string>
+
+    <!-- Word-->
+    <string name="agree_service_use_title">서비스 이용약관</string>
+    <string name="agree_privacy_title">개인정보 처리방침</string>
+    <string name="agree_gps_use_title">위치정보 이용약관</string>
+    <string name="agree_privacy_other_people_share_title">개인정보 제3자 제공 동의</string>
+    <string name="agree_marketing_info_title">마케팅 정보 수신동의</string>
+
+    <string name="next_time">다음에</string>
+    <string name="update">업데이트</string>
+
+    <string name="home">홈</string>
+    <string name="bookmark">단골 찜</string>
+    <string name="benefit">혜택가득</string>
+    <string name="delivery_breakdown">주문내역</string>
+    <string name="reserve_breakdown">예약내역</string>
+    <string name="my_page">마이페이지</string>
+
+    <string name="order_breakdown">주문내역</string>
+
+    <string name="view_contents_underline"><u>내용보기</u></string>
+
+    <string name="id">아이디</string>
+    <string name="pw">비밀번호</string>
+    <string name="pw_reset">비밀번호 재설정</string>
+    <string name="find_id">아이디 찾기</string>
+    <string name="find_pw">비밀번호 찾기</string>
+    <string name="change_pw">비밀번호 변경</string>
+    <string name="join">회원가입</string>
+    <string name="withdrawal">회원탈퇴</string>
+    <string name="join_by_email">이메일로 회원가입</string>
+    <string name="change_by_social">간편 로그인 계정입니다.\n해당 소셜사이트에서 변경해주세요</string>
+    <string name="manage_my_info">내 계정관리</string>
+    <string name="withdrawal_description">잠깐! 회원 탈퇴에 앞서 유의사항을 반드시 확인하고 진행해주세요</string>
+    <string name="withdrawal_warning_title">탈퇴 유의사항</string>
+    <string name="withdrawal_warning1">계정 정보(ID/PW), 이용내역, 단골 찜 내역 등의 데이터가 소멸되며, 복구 불가합니다.</string>
+    <string name="withdrawal_warning2">개인정보는 최대 90일간 보관 후 즉시 파기됩니다.</string>
+    <string name="withdrawal_warning3">회원 탈퇴 시, 오전 8시 일괄처리 후 재가입 가능합니다.</string>
+    <string name="withdrawal_warning4">단, 기존에 보유 중인 쿠폰은 모두 소멸되며 재가입 후 사용 불가합니다.</string>
+    <string name="withdrawal_warning5">회원 탈퇴 후, 재가입 시에는 첫 혜택을 받을 수 없습니다.(첫 주문 쿠폰 등)</string>
+    <string name="withdrawal_warning6">앱에 등록된 리뷰는 회원정보 삭제로 인해 작성자 본인을 확인할 수 없으므로 리뷰 삭제 불가합니다.</string>
+
+    <string name="withdrawal_data_description1">탈퇴 완료 후 삭제되는 정보는 아래와 같습니다.</string>
+    <string name="withdrawal_data_description2">삭제된 데이터는 복구되지 않습니다.</string>
+    <string name="withdrawal_data_description3">① 계정정보 (아이디, 비밀번호)\n② 이용내역\n③ 단골 찜 내역\n④ 혜택가득(쿠폰, 마일리지, 스탬프)</string>
+    <string name="withdrawal_agree">위 내용 모두 확인하였으며, 회원탈퇴에 동의합니다.</string>
+    <string name="input_current_pw">현재 비밀번호 입력</string>
+    <string name="withdrawal_last_warning">회원 탈퇴 시, 모든 정보가 삭제되며 복구되지 않습니다. 정말 탈퇴하시겠습니까?</string>
+    <string name="self_auth">본인인증</string>
+    <string name="self_auth_agreement">본인인증 동의</string>
+
+    <string name="exist_id_google">구글 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="exist_id_naver">네이버 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="exist_id_kakaotalk">카카오톡 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="exist_id_email">이메일로 가입된 회원입니다.\n검색된 아이디로 로그인해 주세요</string>
+
+    <string name="id_check_not_exist">등록 가능한 이메일 주소 입니다.</string>
+
+    <string name="delivery">배달</string>
+    <string name="packaged">포장</string>
+    <string name="delivery_and_packaged">배달 · 포장</string>
+    <string name="delivery_slash_packaged">배달/포장</string>
+    <string name="package_order">포장주문</string>
+    <string name="delivery_order">배달주문</string>
+
+    <string name="daeguro_other_service">대구로의 다른 서비스들도 이용해 보세요</string>
+    <string name="operation_test">시범운영</string>
+    <string name="operation_ready">준비중</string>
+
+    <string name="pay_app">앱 바로 결제</string>
+    <string name="pay_app_happy">행복페이</string>
+    <string name="pay_app_card">신용/체크 카드</string>
+    <string name="pay_app_card_dot">신용 · 체크 카드</string>
+    <string name="pay_app_phone">휴대폰 결제</string>
+    <string name="pay_app_naver_pay">네이버페이</string>
+    <string name="pay_app_toss_pay">토스페이</string>
+    <string name="pay_app_kakao_pay">카카오페이</string>
+    <string name="pay_app_samsung_pay">삼성페이</string>
+    <string name="pay_app_pg_pay">간편계좌결제</string>
+    <string name="pay_app_child_card">아동급식카드</string>
+    <string name="pay_app_kb_pay">KB페이</string>
+    <string name="pay_app_meet">만나서 결제</string>
+    <string name="pay_app_meet_card">만나서 카드 결제</string>
+    <string name="pay_app_meet_cash">만나서 현금 결제</string>
+    <string name="pay_app_card_pay">카드 결제</string>
+    <string name="pay_app_cash_pay">현금 결제</string>
+
+    <string name="card_list_happy">대구행복페이</string>
+
+    <string name="pay_type_app_pay_ok">바로결제</string>
+    <string name="pay_type_app_meet_card">만나서결제(카드)</string>
+    <string name="pay_type_app_meet_cash">만나서결제(현금)</string>
+    <string name="pay_type_app_meet_card_and_cash">만나서결제(카드/현금)</string>
+    <string name="pay_impossible">결제불가</string>
+
+    <string name="good_shop">착한매장</string>
+
+    <string name="category_all">전체</string>
+    <string name="category_single">1인분</string>
+    <string name="category_chicken">치킨/찜닭</string>
+    <string name="category_chinese_food">중식</string>
+    <string name="category_school_food">분식</string>
+    <string name="category_korean_food">한식</string>
+    <string name="category_steamed_soup">찜/탕</string>
+    <string name="category_pizza">피자</string>
+    <string name="category_pig_hocks">족발/보쌈</string>
+    <string name="category_fast_food">패스트푸드</string>
+    <string name="category_japanese_food">돈까스/일식</string>
+    <string name="category_lunch_box">도시락/죽</string>
+    <string name="category_cafe">카페/디저트</string>
+    <string name="category_asian_and_american_food">아시안/양식</string>
+    <string name="category_asian_food">아시안</string>
+    <string name="category_american_food">양식</string>
+    <string name="category_midnight_meal">야식</string>
+    <string name="category_side_dish">반찬/신선</string>
+    <string name="category_local_food">로컬푸드</string>
+    <string name="category_event_hall">특별관</string>
+    <string name="category_traditional_market">전통시장</string>
+    <string name="category_flower">꽃배달</string>
+    <string name="category_meal_kit">밀키트</string>
+    <string name="category_new">NEW</string>
+    <string name="category_additional_services">부가서비스</string>
+    <string name="category_dressed_meat">정육</string>
+    <string name="category_pet">펫샵</string>
+
+    <string name="message_direct_input">직접입력</string>
+
+    <string name="message_request_rider1">조심히 안전운행해서 와주세요</string>
+    <string name="message_request_rider2">문 앞에 두고 벨 눌러 주세요</string>
+    <string name="message_request_rider3">벨 누르지 말고 전화 주세요</string>
+    <string name="message_request_rider4">문 앞에 두고 문자 주세요</string>
+
+    <string name="message_li_review1">음식이 정말 맛있네요~ 잘 먹었습니다!</string>
+    <string name="message_li_review2">맛있네요! 재주문의사★★★★★입니다~</string>
+    <string name="message_li_review3">배달 빠르고 맛도 좋습니다~ 잘 먹었습니다.</string>
+    <string name="message_li_review4">사장님 서비스 감사합니다.</string>
+    <string name="message_li_review5">맛있고 배달도 빠르네요~ 자주 주문할께요!</string>
+    <string name="message_li_review6">최고예요! 맛있는 음식 감사합니다.</string>
+    <string name="message_li_review7">맛있어요! 덕분에 든든한 식사 했습니다~</string>
+    <string name="message_li_review8">배부르게 잘 먹었습니다~</string>
+
+    <string name="flower_request_rider1">배송 전에 미리 연락 바랍니다.</string>
+    <string name="flower_request_rider2">부재 시 경비실에 맡겨 주세요.</string>
+    <string name="flower_request_rider3">부재 시 전화 주시거나 문자 남겨 주세요.</string>
+    <string name="flower_request_rider4">배송 완료 후 연락 바랍니다.</string>
+    <string name="flower_request_rider5">배송 후 사진 전송 해주세요.</string>
+
+    <string name="flower_message_review1">꽃이 정말 싱싱하네요~ 잘 받았습니다!</string>
+    <string name="flower_message_review2">재주문의사★★★★★입니다~</string>
+    <string name="flower_message_review3">택배도 빠르고 꽃도 예뻐요~ 감사합니다.</string>
+    <string name="flower_message_review4">최고예요! 예쁜 꽃 감사합니다!</string>
+    <string name="flower_message_review5">선물했더니 상대방이 기뻐했어요!</string>
+    <string name="flower_message_review6">생일, 기념일 선물로 좋아요~</string>
+    <string name="flower_message_review7">개업, 이전 시 선물로 좋습니다!</string>
+    <string name="flower_message_review8">선물로 가져갔더니 상대방이 기뻐했어요!</string>
+
+    <string name="minute">분</string>
+    <string name="won">원</string>
+    <string name="paper_count">장</string>
+
+    <!--테드퍼미션-->
+    <string name="ted_permission_go_to_setting_button_text">설정</string>
+    <string name="ted_permission_denied_message">권한이 승인되지 않아 서비스를 실행할 수 없습니다.\n권한설정은 [설정] > [권한]에서 변경하실 수 있습니다.</string>
+    <string name="permission_not_agree">권한이 허용되지 않아 서비스를 실행할 수 없습니다.</string>
+
+    <!-- PermissionLaunchDialog -->
+    <string name="permission_launch_title">접근 권한 허용 안내</string>
+    <string name="permission_launch_description">고객님의 편리한 서비스 이용을 위해 아래의 접근권한 허용이 필요합니다.</string>
+    <string name="permission_launch_description_sub">※ 선택 접근 권한은 해당 기능을 사용할 때 허용이 필요하며, 비 허용 시에도 해당 기능 외 서비스 이용이 가능합니다. 설정된 접근 권한은 휴대폰의 [설정]에서 언제든지 변경할 수 있습니다.</string>
+    <string name="permission_required_access">필수적 접근 권한</string>
+    <string name="permission_selected_access">선택적 접근 권한</string>
+    <string name="location_info">위치 정보</string>
+    <string name="location_info_description">위치정보를 확인하여 음식점 정보 제공</string>
+    <string name="camera">카메라</string>
+    <string name="camera_description">포토리뷰 작성 시 사진 촬영</string>
+    <string name="gallery">갤러리</string>
+    <string name="gallery_description">포토리뷰 작성 시 갤러리에 있는 사진 접근</string>
+    <string name="call">전화</string>
+    <string name="call_description">매장에 전화 시 접근</string>
+
+    <!-- AgreementCheckActivity -->
+    <string name="agreement_title">이용약관 동의</string>
+    <string name="agreement_description">아래의 약관에 동의하신 후 서비스를 이용해주세요</string>
+    <string name="agree_all">전체동의</string>
+    <string name="agree_gps_service_use">위치 기반 서비스 약관 동의(필수)</string>
+    <string name="agree_marketing_alarm_receive">마케팅 정보 수신 동의(선택)</string>
+    <string name="agree_service_use">서비스 이용약관 동의(필수)</string>
+    <string name="agree_privacy_policy_essential">개인정보 수집 및 이용동의(필수)</string>
+    <string name="agree_digital_trans">전자금융거래 이용약관 동의(필수)</string>
+    <string name="view_detail">자세히 보기</string>
+    <string name="error_not_necessary_agree_checked">필수 약관에 모두 동의하셔야 서비스를 이용하실 수 있습니다.</string>
+    <string name="marketing_receive_ok">마케팅 정보 수신동의 처리가 완료 되었습니다.</string>
+    <string name="marketing_receive_fail">마케팅 정보 수신거부 처리가 완료 되었습니다.</string>
+    <string name="live_event_receive_ok">야간 마케팅 정보 수신동의 처리가 완료 되었습니다.</string>
+    <string name="live_event_night_receive_fail">야간 마케팅 정보 수신거부 처리가 완료 되었습니다.</string>
+    <string name="delivery_state_receive_ok">배달 현황 수신동의 처리가 완료 되었습니다.</string>
+    <string name="delivery_state_receive_fail">배달 현황 수신거부 처리가 완료 되었습니다.</string>
+    <string name="reserve_state_receive_ok">예약 현황 수신동의 처리가 완료 되었습니다.</string>
+    <string name="reserve_state_receive_fail">예약 현황 수신거부 처리가 완료 되었습니다.</string>
+    <string name="marketing_receive_off_check">알람을 끌 경우, 대구로 자체 이벤트 및 프로모션 푸시 알림을 받을 수 없습니다. 정말 끄시겠습니까?</string>
+    <string name="delivery_state_receive_off_check">알람을 끌 경우, 실시간 배달 상태 앱 푸시 알림을 받을 수 없습니다. 정말 끄시겠습니까?</string>
+    <string name="reserve_state_receive_off_check">알람을 끌 경우, 실시간 예약 상태 앱 푸시 알림을 받을 수 없습니다. 정말 끄시겠습니까?</string>
+    <string name="agreement_agree_all">약관 전체동의</string>
+    <string name="view_full_text">전문보기</string>
+
+    <!-- AddressSearchActivity -->
+    <string name="address_search_activity_title">배달 주소 설정</string>
+    <string name="address_search_title">지번, 도로명, 건물명을 입력해주세요</string>
+    <string name="address_search_hint">예) 비산동31 또는 북비산로 369</string>
+    <string name="address_select_separator">(선택)</string>
+    <string name="address_search_by_current_gps">현 위치로 주소 검색</string>
+    <string name="address_not_setting">주소가 설정되어 있지 않으면 서비스를 이용하실 수 없습니다.</string>
+    <string name="msg_need_gps_setting">현위치 조회를 위해 위치서비스 설정이 필요합니다.</string>
+    <string name="select_this_address">이 주소로 설정하기</string>
+
+    <string name="address_home">집</string>
+    <string name="address_company">회사</string>
+    <string name="address_search_by_map">지도에서 위치 확인</string>
+    <string name="address_change_home">이미 설정된 \'집\' 주소가 있습니다. 현재 입력된 주소로 변경하시겠습니까?</string>
+    <string name="address_change_company">이미 설정된 \'회사\' 주소가 있습니다. 현재 입력된 주소로 변경하시겠습니까?</string>
+
+    <string name="accept">접수중</string>
+    <string name="order_status_cooking">준비중</string>
+    <string name="order_status_delivery">배달중</string>
+    <string name="order_status_complete">배달완료</string>
+    <string name="order_status_package_complete">포장완료</string>
+
+    <string name="order_no">주문번호</string>
+    <string name="order_date">주문일시</string>
+    <string name="order_pay_activity_title">주문결제</string>
+    <string name="customer_info">주문자 정보</string>
+    <string name="order_info">주문 정보</string>
+    <string name="input_detail_address">상세주소를 입력해주세요</string>
+    <string name="change">변경</string>
+    <string name="change_cancel">변경취소</string>
+    <string name="safety_tel_notice">※ 매장에는 안심번호로 노출됩니다.</string>
+    <string name="request_info">요청사항</string>
+    <string name="request_for_shop">매장에 요청해요!</string>
+    <string name="request_for_rider">라이더에게 요청해요!</string>
+    <string name="input_request">요청사항을 입력해주세요</string>
+    <string name="select_pay_gbn">결제수단 선택</string>
+    <string name="discount_select">할인혜택</string>
+    <string name="message_select_pay_gbn_plz">결제수단을 선택해주세요</string>
+
+    <!-- OrderCompleteActivity -->
+    <string name="pay_complete">결제완료</string>
+    <string name="request_delivery_success">배달 주문 완료!</string>
+    <string name="request_package_success">포장 주문 완료!</string>
+    <string name="order_process_message">매장에서 주문을 접수 중입니다.\n접수가 완료되면 주문 취소가 불가합니다.</string>
+
+    <string name="coupon_activity_title">할인혜택</string>
+    <string name="have_coupon">보유 중인 쿠폰</string>
+    <string name="pay_meet_required_login">※ 만나서 결제는 로그인 후 사용 가능합니다.</string>
+    <string name="benefit_required_login">※ 할인혜택은 로그인 후 사용 가능합니다.</string>
+    <string name="benefit_required_pay_app">※ 할인혜택은 앱 바로 결제 시에만 사용 가능합니다.</string>
+
+    <string name="pay_method">결제방식</string>
+    <string name="order_type">주문유형</string>
+    <string name="save">저장</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
+    <string name="input_auth_number">인증번호 입력</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="app_finish">앱 종료</string>
+    <string name="login">로그인</string>
+    <string name="logout">로그아웃</string>
+    <string name="notice">공지사항</string>
+    <string name="event">이벤트</string>
+    <string name="customer_center">고객센터</string>
+    <string name="setting">설정</string>
+    <string name="current_version">현재 버전</string>
+    <string name="opensource_license">오픈소스 라이센스</string>
+    <string name="terms_and_policies">약관 및 정책</string>
+    <string name="frequently_asked_questions">자주 묻는 질문</string>
+    <string name="go_kakao_channel">카카오채널 바로가기</string>
+    <string name="inquiry_email">이메일 문의</string>
+    <string name="customer_counseling_center">고객상담센터</string>
+    <string name="customer_inquiry">고객문의</string>
+    <string name="question_all">전체</string>
+    <string name="question_order_and_pay">주문/결제</string>
+    <string name="question_user_info">회원정보</string>
+    <string name="question_use">이용문의</string>
+    <string name="delivery_state">배달 현황</string>
+    <string name="reserve_state">예약 현황</string>
+    <string name="alarm_event_sub">이벤트 쿠폰 및 마케팅 정보 알림</string>
+    <string name="alarm_delivery_state_sub">실시간 배달 상태 앱 푸쉬 알림</string>
+    <string name="alarm_reserve_state_sub">실시간 예약 상태 앱 푸쉬 알림</string>
+    <string name="wrap_possible">포장가능</string>
+    <string name="delivery_possible">배달가능</string>
+    <string name="shop_sort">매장 정렬</string>
+    <string name="review_sort">리뷰 정렬</string>
+    <string name="search">검색</string>
+    <string name="search_hint_shopname_or_menuname">매장 또는 메뉴명 검색</string>
+    <string name="search_hint_shopname_or_productname">매장 또는 상품명 검색</string>
+    <string name="recommend_search_keyword">추천 검색어</string>
+    <string name="recent_search_keyword">최근 검색어</string>
+    <string name="delete_all">전체 삭제</string>
+    <string name="delivery_tip">배달팁</string>
+    <string name="delivery_tip_free">배달팁 무료</string>
+    <string name="delivery_tip_notice">배달팁 안내</string>
+    <string name="detail">자세히</string>
+    <string name="order_min_cost">최소주문금액</string>
+    <string name="delivery_minute">배달소요시간</string>
+    <string name="delivery_tip_time">시간할증</string>
+    <string name="wrap_delivery_cost_description">(포장 시 최소주문금액 없음)</string>
+    <string name="wrap_cook_time_description">(포장 시 조리시간 10~20분 소요)</string>
+    <string name="pay_type">결제방법</string>
+    <string name="shop_location">매장위치</string>
+    <string name="menu">메뉴</string>
+    <string name="info">정보</string>
+    <string name="review">리뷰</string>
+    <string name="photo">사진</string>
+    <string name="shop_tab_notice">소식</string>
+    <string name="block_management">차단관리</string>
+    <string name="review_management">리뷰관리</string>
+    <string name="shopping_cart">장바구니</string>
+    <string name="put_shopping_cart">장바구니 담기</string>
+    <string name="purchase">구매하기</string>
+    <string name="total_order_price">총 주문금액</string>
+    <string name="delivery_address">배달주소</string>
+    <string name="shop_address">매장주소</string>
+    <string name="menu_add">메뉴 추가</string>
+    <string name="service_location_notice_title">서비스 지역 안내</string>
+    <string name="service_location_notice_description">대구로 앱은 대구 내 지역만 서비스 중 입니다.</string>
+    <string name="service_location_fail_message">설정된 주소의 주문 가능한\n매장이 없습니다.</string>
+    <string name="owner_notice">사장님 알림</string>
+    <string name="shop_notice">매장 알림</string>
+    <string name="review_notice">리뷰 알림</string>
+    <string name="shop_info">매장정보</string>
+    <string name="shop_name">상호</string>
+    <string name="business_number">사업자등록번호</string>
+    <string name="address">주소</string>
+    <string name="tel">전화번호</string>
+    <string name="operating_time">영업시간</string>
+    <string name="rest_date">휴무일</string>
+    <string name="delivery_region">배달지역</string>
+    <string name="country_origin">원산지 정보</string>
+    <string name="tv_delivery_tip_dong">지역 추가 할증</string>
+    <string name="none">알수없음</string>
+    <string name="write_review">리뷰 등록하기</string>
+    <string name="photo_review">포토 리뷰</string>
+    <string name="total_review">전체 리뷰</string>
+    <string name="coupon_discount">쿠폰할인</string>
+    <string name="total_pay_price">총 결제금액</string>
+    <string name="pay_price">총 결제금액</string>
+    <string name="order_pay_agreement">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공, 전자금융거래 이용약관 내용 확인하였으며 결제에 동의합니다.</string>
+    <string name="jibun_square_bracket">[지번]</string>
+    <string name="no_plastic_message">일회용 수저, 포크는 안 주셔도 돼요!</string>
+    <string name="auth">인증</string>
+    <string name="plz_input_search_keyword">검색어를 입력해주세요.</string>
+    <string name="join_question">혹시, 대구로 사용이 처음이신가요?</string>
+    <string name="result_empty">결과가 존재하지 않습니다.(ToT)</string>
+    <string name="fail_result_empty">결과가 없습니다.</string>
+    <string name="fail_order_breakdown_empty">주문내역이 없습니다.</string>
+    <string name="fail_order_breakdown_empty_sub">주문내역은 최근 1년까지 조회하실 수 있습니다.</string>
+    <string name="fail_delivery_shop_empty">앱 내 설정한 주소에서 주문 가능한 매장만 검색됩니다.</string>
+    <string name="fail_bookmark_empty">등록된 단골 찜 매장이 없습니다.</string>
+    <string name="fail_bookmark_empty_sub">자주 이용하는 매장은 ♥를 눌러\n간편하게 주문해보세요!</string>
+    <string name="empty_tel">전화번호가 존재하지 않습니다.</string>
+    <string name="delivery_tip_description">매장운영방침(주문금액, 배달지역, 주문시간 등)에 따라 변동될 수 있습니다.</string>
+    <string name="tel_number">휴대전화번호</string>
+    <string name="tel_number_change">휴대전화번호 변경</string>
+    <string name="already_regist_number">이미 등록된 휴대전화번호 입니다.</string>
+    <string name="tel_number_regist_success">인증이 완료되었습니다.</string>
+
+    <string name="have_no_coupon">보유중인 쿠폰이 아직 없습니다.</string>
+    <string name="coupon_used_empty">사용한 쿠폰이 없습니다.</string>
+    <string name="coupon_used_empty_sub">최근 1년간 사용 완료했거나\n기간 만료된 쿠폰이 없습니다.</string>
+    <string name="have_no_cart">장바구니가 비어있습니다.\n음식을 담아주세요</string>
+    <string name="menu_empty">품&#160;&#160;절</string>
+    <string name="delete_cart_all">모두 삭제하시겠습니까?</string>
+    <string name="tip_free">무료</string>
+    <string name="cart_shop_not_equal_title">동일 매장의 메뉴만 담을 수 있습니다.</string>
+    <string name="cart_shop_not_equal_message">선택한 메뉴를 장바구니에 담을 경우, 담았던 다른 매장 메뉴는 삭제됩니다.</string>
+    <string name="max">최대</string>
+    <string name="max_select_possible">개 선택 가능합니다.</string>
+    <string name="total">총</string>
+    <string name="store">매장</string>
+    <string name="search_menu_by_this_shop">해당 매장의 메뉴만 검색 가능합니다</string>
+    <string name="result_empty_menu">검색한 메뉴가 없습니다.</string>
+
+    <string name="coupon_use_breakdown_my">내 쿠폰 사용내역</string>
+    <string name="coupon_use_breakdown_partner">제휴 쿠폰 사용내역</string>
+    <string name="this_menu_is_out_of_stock">품절된 메뉴입니다.</string>
+    <string name="out_of_stock">품절</string>
+    <string name="search_result">검색 결과</string>
+    <string name="recent_address_search">최근 검색</string>
+    <string name="recent_address">최근 주소</string>
+    <string name="max_select_count_2">최대 2개 선택 가능합니다.</string>
+    <string name="come_here">여기로 방문해주세요</string>
+    <string name="input_account_info">계정 정보를 입력해주세요</string>
+    <string name="email_address">이메일 주소</string>
+    <string name="exist_check">중복 확인</string>
+    <string name="pw_hint">비밀번호(영문, 숫자, 특수문자 조합 8~15자)</string>
+    <string name="pw_confirm">비밀번호 확인</string>
+    <string name="next">다음</string>
+    <string name="validate_fail_email">이메일 형식이 올바르지 않습니다</string>
+    <string name="validate_fail_phone_number">휴대전화번호 형식이 올바르지 않습니다</string>
+    <string name="validate_fail_pw">비밀번호 유효성이 올바르지 않습니다</string>
+    <string name="plz_input_email">이메일 주소를 입력해 주세요</string>
+    <string name="plz_check_email_check">이메일 주소 중복 확인을 해주세요</string>
+    <string name="plz_input_pw">비밀번호를 입력해 주세요</string>
+    <string name="plz_input_exact_pw">비밀번호 생성 규칙에 맞게 다시 입력해 주세요</string>
+    <string name="plz_check_pw_confirm">비밀번호 확인을 입력해 주세요</string>
+    <string name="pw_not_equal_plz_re_input">비밀번호가 일치하지 않습니다. 다시 입력해 주세요</string>
+    <string name="pw_not_equal">비밀번호가 일치하지 않습니다.</string>
+    <string name="pw_changed">비밀번호가 변경되었습니다.</string>
+    <string name="plz_tel_auth">휴대전화번호 인증을 해주세요</string>
+    <string name="doing_update_tel">전화번호 수정중입니다.</string>
+    <string name="doing_auth_request">인증번호 요청중입니다.</string>
+    <string name="doing_auth_check">인증번호 확인중입니다.</string>
+    <string name="auth_limit_over">요청시간이 만료되었습니다</string>
+    <string name="join_success">회원가입이 완료되었습니다!</string>
+    <string name="auth_number_resend">인증번호 재전송</string>
+    <string name="order_detail">주문상세</string>
+    <string name="order_cancel">주문취소</string>
+    <string name="auth_tel">① 휴대전화 인증</string>
+    <string name="auth_find_id">② 아이디 찾기</string>
+    <string name="input_join_tel">가입 시 등록한 휴대전화 번호를 입력해 주세요</string>
+    <string name="doing_find_id">아이디를 찾는중입니다.</string>
+    <string name="doing_find_pw">비밀번호를 찾는중입니다.</string>
+    <string name="find_pw_title1">①\n이메일\n인증</string>
+    <string name="find_pw_title2">②\n휴대전화\n인증</string>
+    <string name="find_pw_title3">③\n비밀번호\n재설정</string>
+    <string name="input_join_email">가입 시 등록한 이메일을 입력해 주세요</string>
+    <string name="email_description">※ 간편 로그인 회원은 해당 소셜 사이트에서 변경 바랍니다.</string>
+    <string name="input_new_pw">새로운 비밀번호로 재설정 합니다.</string>
+    <string name="new_pw_hint">새 비밀번호(영문, 숫자, 특수문자 조합 8~15자)</string>
+    <string name="new_pw_confirm">새 비밀번호 확인</string>
+    <string name="cash">현금</string>
+    <string name="card">카드</string>
+    <string name="login_success">로그인 되었습니다.</string>
+    <string name="auto_login">자동 로그인</string>
+    <string name="easy_login">간편 로그인</string>
+
+    <string name="default_text">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이보전하세</string>
+    <string name="fail_search_current_gps">현재위치 확인에 실패하였습니다.</string>
+    <string name="cash_receipt">현금영수증</string>
+
+    <string name="login_by_google">구글로 로그인</string>
+    <string name="login_by_naver">네이버로 로그인</string>
+    <string name="login_by_kakaotalk">카카오톡으로 로그인</string>
+
+    <string name="daegu_sido_name">대구광역시</string>
+    <string name="daegu_city_hall_longitude">128.601754</string>
+    <string name="daegu_city_hall_latitude">35.871402</string>
+
+    <string name="issuance">발급</string>
+    <string name="unissued">미발급</string>
+    <string name="cash_receipt_tel">개인소득공제</string>
+    <string name="cash_receipt_reg_no">사업자증빙용</string>
+    <string name="input_tel_number">휴대전화번호 입력</string>
+    <string name="input_reg_no">사업자등록번호 입력</string>
+    <string name="close">닫기</string>
+    <string name="delivery_tip_description2">아래 할증 금액이 배달팁에 포함되어 있습니다.</string>
+    <string name="more_view">더보기</string>
+    <string name="welcome">님, 환영합니다!</string>
+    <string name="order_is_daeguro">주문은 대구로,</string>
+    <string name="delivery_is_daeguro">배달은 댁으로!</string>
+    <string name="total_space">총 </string>
+    <string name="delete">삭제</string>
+    <string name="block_date">차단일자 : </string>
+    <string name="unblock">차단해제</string>
+    <string name="owner">사장님</string>
+    <string name="space_slash_spade">사장님</string>
+    <string name="review_regist">리뷰등록</string>
+    <string name="re_order">재주문</string>
+    <string name="review_top_message">음식은 맛있게 드셨나요?\n사장님에게 별점과 리뷰를 남겨주세요</string>
+    <string name="add_picture">사진 추가</string>
+    <string name="review_hint">소중한 리뷰를 남겨주세요 (500자 이내)</string>
+    <string name="withdrawal_success">탈퇴되었습니다.</string>
+    <string name="pw_reset_success">새로운 비밀번호로 재설정 되었습니다.\n로그인을 해주세요!</string>
+    <string name="success_copy">복사되었습니다.</string>
+    <string name="join_recommended_message">현재 비회원 주문 진행중입니다. 지금 가입하시면, 첫주문 5,000원 할인쿠폰 등 다양한 할인혜택을 받을 수 있어요</string>
+    <string name="join_now">지금 가입하기</string>
+    <string name="join_next_time">비회원으로 할게요</string>
+    <string name="birth_year">생년</string>
+    <string name="birth_month">월</string>
+    <string name="birth_day">일</string>
+    <string name="plz_select_year">생년월일의 연도를 선택해주세요</string>
+    <string name="plz_select_month">생년월일의 월를 선택해주세요</string>
+    <string name="plz_select_day">생년월일의 날짜를 선택해주세요</string>
+    <string name="fail_validate_birth">생년월일이 올바르지 않습니다.</string>
+    <string name="fail_agreement">이용약관에 동의하여 주세요.</string>
+    <string name="gender_male">남자</string>
+    <string name="gender_female">여자</string>
+    <string name="birth">생년월일</string>
+    <string name="gender">성별</string>
+    <string name="name">이름</string>
+    <string name="nickname_description">닉네임(설정 시, 앱 내에 닉네임으로 노출됩니다)</string>
+    <string name="hint_nick_name">최소 2~10자 이내로 설정해주세요</string>
+    <string name="nickname_validate_fail">닉네임이 올바르지 않습니다.</string>
+
+    <string name="unregister_review">미등록 리뷰</string>
+    <string name="unregistered_review">미등록된 리뷰</string>
+    <string name="my_write_review">내가 쓴 리뷰</string>
+    <string name="alter">수정</string>
+    <string name="unregister_review_empty">리뷰 내역이 없습니다.</string>
+    <string name="my_review_empty">아직 작성한 리뷰가 없습니다.</string>
+    <string name="review_menu_blind">메뉴 비공개</string>
+    <string name="review_owner_blind">사장님만 보이게</string>
+
+    <string name="block_management_review">차단 리뷰</string>
+    <string name="block_management_user">차단 유저</string>
+    <string name="block_my_review">차단한 리뷰</string>
+    <string name="block_my_user">차단한 유저</string>
+    <string name="block_my_review_empty">차단한 리뷰가 없어요.</string>
+    <string name="block_my_user_empty">차단한 유저가 없어요.</string>
+
+    <string name="review_blind">업주 요청으로 블라인드 처리된 리뷰입니다.</string>
+    <string name="review_manager_blind">관리자에 의해 노출 제한된 리뷰입니다.</string>
+    <string name="review_owner">사장님에게만 보이는 리뷰입니다.</string>
+    <string name="review_blind_description">리뷰 삭제에 대해 동의여부를 선택해주세요. \n동의 시, 블라인드 30일 후 삭제 처리됩니다. \n자세한 점은 고객센터로 문의바랍니다.</string>
+    <string name="review_blind_agree">리뷰 삭제를 동의하시겠습니까?\n동의시, 블라인드 30일 후 해당 리뷰는 영구 삭제됩니다.</string>
+    <string name="review_blind_disagree">리뷰 삭제에 대해 미동의 하시겠습니까?\n미동의시, 블라인드 30일 후 해당 리뷰가 다시 노출됩니다.</string>
+    <string name="review_agree">동의</string>
+    <string name="review_disagree">미동의</string>
+    <string name="review_view">리뷰 보기</string>
+
+    <string name="report_review">리뷰 신고하기</string>
+    <string name="report_reason">신고 사유</string>
+    <string name="report_reason1">주문과 관련 없는 사진 및 내용</string>
+    <string name="report_reason2">욕설, 음란 등 부적절한 내용</string>
+    <string name="report_reason3">광고, 홍보와 관련된 내용</string>
+    <string name="report_reason4">개인정보 유출 위험</string>
+    <string name="report_reason5">저작권 불법 도용(사진 등)</string>
+    <string name="report_read_me">신고된 리뷰는 관리자 확인 후 리뷰 노출이 제한될 수 있습니다. 허위 신고 시에는 운영정책에 따라 활동이 제한될 수 있으니 신고전 충분히 고려해 주시기 바랍니다.</string>
+    <string name="report_hint">기타 사유를 입력해 주세요 (10자 이상)</string>
+    <string name="do_report">신고하기</string>
+    <string name="finish_report">신고 접수가 완료 되었습니다.</string>
+    <string name="exit_review_report">리뷰 신고를 취소하시겠습니까?</string>
+
+    <string name="block_review">리뷰 차단 시, 해당 리뷰가 영구 숨김  처리됩니다. 차단하시겠습니까?</string>
+    <string name="block_user">유저 차단 시, 해당 유저가 작성한 모든 리뷰가 영구 숨김 처리됩니다. 차단 하시겠습니까?</string>
+    <string name="unblock_review">해당 리뷰를 차단 해제하시겠습니까?</string>
+    <string name="unblock_user">해당 유저를 차단 해제하시겠습니까?</string>
+    <string name="finish_block">차단 접수가 완료 되었습니다.</string>
+    <string name="finish_unblock">차단 해제가 완료 되었습니다.</string>
+
+    <string name="plz_input_auth_number">인증번호를 입력해주세요</string>
+    <string name="call_to_latter">잠시후에 다시 요청해주시기 바랍니다.</string>
+    <string name="input_limit_minute">분 내로 입력해 주세요</string>
+    <string name="processing_search_gps">위치탐색중입니다</string>
+    <string name="save_successed">저장이 완료되었습니다.</string>
+    <string name="input_name">이름을 입력해주세요</string>
+    <string name="input_tel">전화번호를 입력해주세요</string>
+
+    <string name="input_receiver_name">받으시는 분 성함을 입력해주세요.</string>
+    <string name="input_receiver_tel">받으시는 분 연락처를 입력해주세요.</string>
+    <string name="input_receiver_address">받으시는 주소를 검색해주세요.</string>
+    <string name="input_receiver_address_detail">받으시는 상세주소를 입력해주세요.</string>
+    <string name="input_delivery_reserve_date">배송 날짜를 선택해주세요.</string>
+
+    <string name="service_use_info">서비스 이용 안내</string>
+    <string name="service_use_info_content">서비스 정산을 위해 해당 시간에는 주문이 불가합니다.</string>
+    <string name="order_impossible_time">주문 불가 시간: 매일 오전 08:00~09:00</string>
+
+    <string name="mileage_read_me1">① 마일리지는 결제 방법에 상관없이 모두 적립됩니다. 단, 사용은 앱 바로결제시에만 가능합니다.</string>
+    <string name="mileage_read_me2">② 마일리지는 주문이 정상적으로 완료 후, 할인혜택(쿠폰, 이벤트)이 모두 적용된 총 결제금액의 0.5%가 적립됩니다.(단, 총 결제금액이 1,000원 이상 시 적립)</string>
+    <string name="mileage_read_me3">③ 보유중인 마일리지 적용은 결제화면에서 가능합니다.</string>
+    <string name="mileage_read_me4">④ 마일리지는 1,000원 이상부터 사용하실 수 있으며, 100원 단위로 사용하실 수 있습니다.</string>
+    <string name="mileage_read_me5">⑤ 마일리지는 최종 구매일로부터 1년간 이용내역이 없을 시 회원의 해지와 동시에 마일리지도 전액 소멸됩니다.</string>
+    <string name="mileage_read_me6">⑥ 주문 취소 시, 발급된 마일리지는 자동 회수됩니다.</string>
+    <string name="mileage_read_me7">⑦ 단, 보유마일리지가 사용한 마일리지보다 적을 경우, 주문이 취소되지 않으니 주의해주세요.</string>
+    <string name="mileage_read_me8">⑧ 관련문의는 대구로 고객센터(1661–3773)로 문의해주세요.</string>
+
+    <string name="my_coupon">내 쿠폰</string>
+    <string name="sort_by_affiliate_coupon">제휴 쿠폰</string>
+
+    <string name="delivery_voucher_send">보낸 상품권</string>
+    <string name="delivery_voucher_receive">받은 상품권</string>
+
+    <string name="delivery_discount">할인 금액</string>
+    <string name="delivery_tip_amt_discount">배달팁 할인</string>
+    <string name="delivery_tip_amt_support">배달팁 지원</string>
+    <string name="total_price">합계금액</string>
+    <string name="copy_shop_address">매장주소 복사하기</string>
+
+    <string name="gps_searching">위치탐색중입니다.</string>
+    <string name="auth_expired_message">인증이 만료되어서 앱을 재실행 합니다.</string>
+    <string name="card_pay">카드결제</string>
+    <string name="card_regist">카드등록</string>
+    <string name="do_stop_card_pay">카드결제를 중지하시겠습니까?</string>
+    <string name="do_stop_card_regist">카드등록을 중지하시겠습니까?</string>
+    <string name="customer_cancel">고객취소</string>
+    <string name="input_coupon_no">쿠폰번호를 입력해주세요</string>
+    <string name="id_not_exist">존재하지 않는 아이디입니다.</string>
+    <string name="join_before_pass_auth">본인인증 후, 회원가입을 진행할 수 있습니다.</string>
+    <string name="phone_change_before_pass_auth">본인인증 후, 휴대전화번호를 변경할 수 있습니다.</string>
+
+    <string name="input_id">아이디를 입력하여 주세요.</string>
+    <string name="invalidate_id">아이디 형식이 올바르지 않습니다.</string>
+
+    <string name="not_find_email_address">이메일 주소를 확인할 수 없습니다.</string>
+    <string name="service_need_login">로그인이 필요한 서비스입니다.</string>
+    <string name="put_in">담기</string>
+
+    <string name="mileage_save_use_breakdown">마일리지 적립/사용 내역</string>
+    <string name="date_not_validate">날짜설정이 올바르지 않습니다.</string>
+    <string name="mileage_breakdown_not_exist">적립된 마일리지가 없습니다.</string>
+    <string name="changed_data_nothing">변경된 내용이 없습니다.</string>
+    <string name="editing_data_exist_message">등록 중인 항목이 있습니다\n그래도 종료 하시겠습니까?</string>
+    <string name="customer_info_save_complete">회원정보 저장이 완료되었습니다.</string>
+
+    <string name="copy_complete">복사되었습니다.</string>
+    <string name="shop_position">매장 위치</string>
+
+    <string name="order_cancel_by_customer">고객요청에 의한 주문취소</string>
+    <string name="order_cancel_by_shop">매장사정에 의한 주문취소</string>
+
+    <string name="total_refund_cost">총 환불금액</string>
+    <string name="request_not_exist">요청사항이 없습니다.</string>
+    <string name="fail_card_regist">카드등록실패</string>
+    <string name="fail_card_pay">카드결제실패</string>
+    <string name="fail_pay">결제실패</string>
+
+    <string name="not_satisfied_order_min_cost">최소 주문금액 조건이 충족되지 않았습니다</string>
+    <string name="not_used_coupon_by_order_min_cost">최소 결제금액 정책으로 인해 쿠폰 적용 불가</string>
+    <string name="agree_privacy_other_people_share">개인정보 제3자 제공</string>
+    <string name="agreement_digital_trans">전자금융거래 이용약관</string>
+    <string name="do_delete_card">이 카드를 삭제하시겠습니까?</string>
+    <string name="not_exist_card_info">카드정보가 없습니다.</string>
+    <string name="auth_complete">인증되었습니다.</string>
+
+    <string name="mileage_min_use_cost">마일리지는 1,000원 이상 사용 가능합니다.</string>
+    <string name="no_use_plastic">(수저포크 X)</string>
+    <string name="fail_validate_card_no">카드번호가 올바르지 않습니다.</string>
+    <string name="stop_auth_message">본인인증을 중지하시겠습니까?</string>
+    <string name="review_delete_message">리뷰 삭제 시, 재등록이 불가합니다. 삭제하시겠습니까?</string>
+
+    <string name="review_write">리뷰 등록</string>
+    <string name="price">가격</string>
+    <string name="count">수량</string>
+    <string name="search_period">조회기간</string>
+    <string name="month_1">1개월</string>
+    <string name="month_3">3개월</string>
+    <string name="month_6">6개월</string>
+    <string name="year_1">1년</string>
+    <string name="direct_settings">직접설정</string>
+    <string name="all">전체</string>
+
+    <string name="use_coupon">쿠폰 사용</string>
+    <string name="use_mileage">마일리지 사용</string>
+    <string name="msg_mileage_use_description">※ 앱 바로 결제 시 마일리지는 1,000원 이상부터 사용하실 수 있으며, 100원 단위로 사용 가능합니다.</string>
+
+    <string name="auth_category">항목</string>
+    <string name="auth_category_info">이름, 성별, 생년월일, 휴대폰번호, CI/DI(개인식별정보), 내/외국인정보, 휴대폰인증결과</string>
+    <string name="goal">목적</string>
+    <string name="self_certification">회원 본인인증</string>
+    <string name="auth_agreement">위 내용 모두 확인하였으며, 본인인증에 동의합니다.</string>
+    <string name="auth_agreement_sub">본인확인기관 ‘NICE평가정보 주식회사’로 부터 정보를 제공받아 인증된 회원정보를 업데이트하고 수집하는데 동의합니다.</string>
+    <string name="do_self_certification">본인인증하기</string>
+    <string name="latest_update">최신 업데이트</string>
+    <string name="have_mileages">보유중인 마일리지</string>
+    <string name="save_use_breakdown">적립/사용내역</string>
+    <string name="kind_mileage_warning">착한소비 마일리지 유의사항</string>
+    <string name="mileage">마일리지</string>
+    <string name="kind_mileage_use">착한소비 마일리지 사용</string>
+
+    <string name="msg_address_not_usable">사용할 수 없는 주소정보입니다.</string>
+
+    <string name="dalseo_message">현재 대구광역시 달서구 시범 운영 중입니다. 다른 지역의 경우, 가맹점 입점이 진행 중이므로 노출되는 음식점이 적을 수 있습니다!</string>
+    <string name="msg_failure_network">네트워크 연결이 원할하지 않습니다. 네트워크 연결 상태를 확인하시고 다시 접속을 시도해주세요.</string>
+    <string name="msg_failure_exception">요청 처리 중 요류가 발생하였습니다. 잠시 후에 다시 시도해주세요.</string>
+    <string name="msg_failure_network_sub">네트워크 연결 상태를 확인하시고 다시 접속을 시도해주세요.</string>
+
+    <string name="daeguro_blog">대구로 블로그</string>
+    <string name="live_event">라이브 이벤트</string>
+
+    <string name="coupon_back_title"><![CDATA[<쿠폰 사용 유의사항>]]></string>
+
+    <string name="gift_card">상품권</string>
+
+    <string name="password_setup">비밀번호 설정</string>
+    <string name="password_re_setup">비밀번호 재설정</string>
+    <string name="password_confirm">비밀번호 확인</string>
+    <string name="password_no_input">다음부터는 비밀번호 입력 안할게요!</string>
+    <string name="password_delete_all">전체삭제</string>
+    <string name="password_change_before_pass_auth">본인인증 후, 비밀번호를 재설정할 수 있습니다.</string>
+    <string name="check_password_change">본인여부 확인 후 비밀번호를 재설정 하시겠습니까?</string>
+    <string name="do_stop_order_pay">주문을 취소하시겠습니까?</string>
+    <string name="password_shape">●</string>
+
+    <string name="create_qr_code">http://api.qrserver.com/v1/create-qr-code/?</string>
+
+    <string name="brand_coupon">브랜드 쿠폰</string>
+    <string name="get_brand_coupon">쿠폰 받기</string>
+
+    <string name="filter">필터</string>
+
+    <string name="card_child_name_hint">이름 (실명)</string>
+    <string name="card_child_birthday">생년월일</string>
+    <string name="card_child_birthday_hint">생년월일(YYYYMMDD)</string>
+    <string name="card_child_number">카드번호</string>
+    <string name="card_child_number_hint">****</string>
+    <string name="card_child_date">유효기간</string>
+    <string name="card_child_date_hint_month">MM(월)</string>
+
+    <!-- 예약 -->
+    <string name="daegu_road_trip_link">https://tour.daegu.go.kr</string>
+
+    <string name="reserve_gungu_name_all">전체</string>
+    <string name="reserve_gungu_name_dalseogu">달서구</string>
+    <string name="reserve_gungu_name_dalseonggun">달성군</string>
+    <string name="reserve_gungu_name_suseonggu">수성구</string>
+    <string name="reserve_gungu_name_junggu">중구</string>
+    <string name="reserve_gungu_name_seogu">서구</string>
+    <string name="reserve_gungu_name_namgu">남구</string>
+    <string name="reserve_gungu_name_donggu">동구</string>
+    <string name="reserve_gungu_name_bukgu">북구</string>
+
+    <string name="reserve_category_all">전체</string>
+    <string name="reserve_category_korean_food">한식</string>
+    <string name="reserve_category_chinese_food">중식</string>
+    <string name="reserve_category_japanese_food">일식</string>
+    <string name="reserve_category_american_food">양식</string>
+    <string name="reserve_category_school_food">분식</string>
+    <string name="reserve_category_asian_food">아시아</string>
+    <string name="reserve_category_meat">고깃집</string>
+    <string name="reserve_category_cafe">카페</string>
+    <string name="reserve_category_buffet">뷔페</string>
+    <string name="reserve_category_etc">기타</string>
+
+    <string name="reserve_facility_parking">주차가능</string>
+    <string name="reserve_facility_valet">발렛가능</string>
+    <string name="reserve_facility_group_seat">단체석</string>
+    <string name="reserve_facility_private_room">프라이빗룸</string>
+    <string name="reserve_facility_terrace">테라스</string>
+    <string name="reserve_facility_corkage">콜키지</string>
+    <string name="reserve_facility_baby_seat">아기의자</string>
+    <string name="reserve_facility_play_room">놀이방</string>
+    <string name="reserve_facility_no_kids_zone">노키즈존</string>
+    <string name="reserve_facility_pet">반려동물</string>
+
+    <string name="do_go_reserve">예약하러 가기</string>
+    <string name="do_reserve">예약하기</string>
+    <string name="shop_reserve">매장예약</string>
+
+    <string name="reserve_status_all">전체</string>
+    <string name="reserve_status_wait">예약신청</string>
+    <string name="reserve_status_will_visit">방문예정</string>
+    <string name="reserve_status_complete">방문완료</string>
+    <string name="reserve_status_not_visit">미방문</string>
+    <string name="reserve_status_cancel">예약취소</string>
+
+    <string name="fail_reserve_shop_empty">예약 가능한 매장만 검색됩니다.</string>
+    <string name="reserve_cancel">예약취소</string>
+    <string name="re_reserve">재예약</string>
+
+    <string name="reserve_n">예약이 마감되었습니다.\n다른 날짜로 선택해주세요 :)</string>
+
+    <string name="reserve_cancel_notice_message">앱 내 예약취소는 예약 시간 1시간 전까지 가능합니다.\n취소를 원하시면 매장으로 직접 연락 부탁드립니다.</string>
+
+    <string name="reserve_search_hint_shopname_or_menuname">소중한 분들과 함께할 매장, 메뉴 검색</string>
+
+    <string name="filter_name0">테마그룹</string>
+    <string name="filter_name1">테마</string>
+    <string name="filter_name2">지역</string>
+    <string name="filter_name3">음식</string>
+    <string name="filter_name4">정렬</string>
+    <string name="filter_name5">편의시설</string>
+
+    <string name="flower_detail">상세정보</string>
+    <string name="flower_origin">원산지</string>
+    <string name="flower_delivery">배송 안내</string>
+    <string name="flower_as">교환/반품 안내</string>
+
+
+    <string name="taxi">택시</string>
+
+    <!-- 택시 -->
+
+    <string name="taxi_business_info_description">대구로 TAXI 앱은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품거래정보 및 거래와 관련하여 대구로 TAXI 앱에 등록된 판매자의 고의 또는 과실로 소비자에게 발생하는 손해에 대하여 대구로 TAXI 앱은 책임을 지지 않습니다. 상품 및 거래에 관하여 정확한 정보는 해당 판매자에게 직접 확인하여 주시기 바랍니다.</string>
+    <!--    <string name="taxi_insungdata_business_info_detail" tools:ignore="TypographyDashes">대표자: 최현환&#160;&#160;&#160;&#160;사업자등록번호: 577–86–02725\n통신판매번호: 2005-대구서구-0304호\n주소: 대구광역시 서구 북비산로 369 2층, 4층\n고객센터: 1661-9043\n\n정산사업자 : DGB유페이\n대표자:김윤국&#160;&#160;&#160;&#160;사업자 등록번호: 502-86-01931\n주소: 대구광역시 수성구 달구벌대로 2503, 9층</string>-->
+    <string name="taxi_insungdata_business_info_detail" tools:ignore="TypographyDashes">대표자: 최현환&#160;&#160;&#160;&#160;사업자등록번호: 577-86-02725\n통신판매번호: 2005-대구서구-0304호\n주소: 대구광역시 서구 북비산로 369 2층, 4층\n고객센터: 1661-9043\n\n정산 사업자 : DGB유페이\n대표자:김윤국&#160;&#160;&#160;&#160;사업자 등록번호: 502-86-01931\n주소: 대구광역시 수성구 달구벌대로 2503, 9층</string>
+
+    <string name="insungdata_taxi_business_info_detail">대표자 : 최현환, 사업자등록번호 : 577-86-02725\n통신판매번호 : 제2005-대구서구-0304호\n주소 : 대구광역시 서구 북비산로 369, 2층\n고객센터 : 1661-9043, 팩스번호 : 070-8220-5229</string>
+    <string name="taxi_event_and_notice">이벤트 및 공지사항</string>
+    <string name="taxi_event">이벤트</string>
+    <string name="taxi_notice">공지사항</string>
+    <string name="taxi_msg_notice_empty">공지사항이 존재하지 않습니다.</string>
+    <string name="taxi_msg_event_empty">이벤트가 존재하지 않습니다.</string>
+
+    <string name="taxi_mileage">마일리지</string>
+    <string name="taxi_kind_mileage">착한 소비 마일리지</string>
+    <string name="taxi_mileage_breakdown_not_exist">적립된 마일리지가 없어요!</string>
+    <string name="taxi_date_not_validate">날짜설정이 올바르지 않습니다.</string>
+
+    <string name="taxi_search_period">조회기간</string>
+    <string name="taxi_yes">예</string>
+    <string name="taxi_no">아니오</string>
+
+    <string name="taxi_have_no_event">진행중인 이벤트가 없어요.\n곧 다양한 이벤트로 만나보아요!</string>
+    <string name="taxi_have_no_notice">공지사항이 없습니다.</string>
+
+    <string name="taxi_mileage_read_me1">· 마일리지는 결제 방법에 상관없이 모두 적립됩니다. 단, 사용은 앱 바로 결제 시에만 가능합니다.</string>
+    <string name="taxi_mileage_read_me2">· 마일리지는 운행이 정상적으로 완료 후, 할인혜택(쿠폰, 이벤트)이 모두 제외된 결제금액의 0.5%가 적립됩니다.</string>
+    <string name="taxi_mileage_read_me3">· 마일리지 총 결제금액이 1,000원 이상 시 적립됩니다.</string>
+    <string name="taxi_mileage_read_me4">· 보유 중인 마일리지 적용은 결제화면에서 가능합니다.</string>
+    <string name="taxi_mileage_read_me5">· 마일리지는 1,000원 이상부터 사용하실 수 있으며, 100원 단위로 사용하실 수 있습니다.</string>
+    <string name="taxi_mileage_read_me7">· 마일리지 유효기간은 적립일로부터 1년이며, 회원 탈퇴 시에 적립된 마일리지는 모두 소멸됩니다.</string>
+    <string name="taxi_mileage_read_me8">· 결제 완료 건을 취소할 경우, 발급된 마일리지는 자동 회수됩니다. 만약, 회수할 마일리지가 없다면, 결제 완료 건은 취소되지 않으니 주의해주세요.</string>
+    <string name="taxi_mileage_read_me9">· 관련한 문의는 대구로 고객센터(1661-9043)로 문의해주세요.</string>
+
+    <string name="taxi_coupon">쿠폰함</string>
+
+    <string name="taxi_select_all">전체 선택</string>
+
+    <string name="taxi_join_before_pass_auth">본인인증 후, 회원가입을 진행할 수 있습니다.</string>
+    <string name="taxi_phone_change_before_pass_auth">본인인증 후, 휴대전화번호를 변경할 수 있습니다.</string>
+    <string name="taxi_auth_category_info">이름, 성별, 생년월일, 휴대폰번호, CI/DI(개인식별정보), 내/외국인정보, 휴대폰인증결과</string>
+    <string name="taxi_auth_category">항목</string>
+    <string name="taxi_goal">목적</string>
+    <string name="taxi_self_certification">회원 본인인증</string>
+    <string name="taxi_auth_agreement">위 내용 모두 확인하였으며, 본인인증에 동의합니다.</string>
+    <string name="taxi_auth_agreement_sub">본인확인기관 ‘NICE평가정보 주식회사’로 부터 정보를 제공받아 인증된 회원정보를 업데이트하고 수집하는데 동의합니다.</string>
+    <string name="taxi_do_self_certification">본인인증하기</string>
+    <string name="taxi_fail_agreement">이용약관에 동의하여 주세요.</string>
+    <string name="taxi_self_auth_agreement">본인인증 동의</string>
+    <string name="taxi_password_change_before_pass_auth">본인인증 후, 비밀번호를 재설정할 수 있습니다.</string>
+    <string name="taxi_ok">확인</string>
+    <string name="taxi_cancel">취소</string>
+    <string name="taxi_join_question">혹시, 대구로 사용이 처음이신가요?</string>
+
+    <string name="taxi_id">아이디</string>
+    <string name="taxi_pw">비밀번호</string>
+    <string name="taxi_pw_reset">비밀번호 재설정</string>
+    <string name="taxi_find_id">아이디 찾기</string>
+    <string name="taxi_find_pw">비밀번호 찾기</string>
+    <string name="taxi_change_pw">비밀번호 변경</string>
+    <string name="taxi_join">회원가입</string>
+    <string name="taxi_withdrawal">회원탈퇴</string>
+    <string name="taxi_join_by_email">이메일로 회원가입</string>
+    <string name="taxi_change_by_social">간편 로그인 계정입니다.\n해당 소셜사이트에서 변경해주세요</string>
+    <string name="taxi_manage_my_info">내 계정 관리</string>
+    <string name="taxi_withdrawal_description">잠깐! 회원 탈퇴에 앞서 유의사항을 반드시 확인하고 진행해주세요</string>
+    <string name="taxi_withdrawal_warning_title">탈퇴 유의사항</string>
+    <string name="taxi_withdrawal_warning1">탈퇴대기 상태로 전환되어, 다음날 오전 8시 탈퇴처리가 완료됩니다.</string>
+    <string name="taxi_withdrawal_warning2">탈퇴대기 상태에서 회원가입시 기존 회원정보가 복원됩니다.</string>
+    <string name="taxi_withdrawal_warning3">탈퇴완료시 개인정보를 제외한 모든 데이터는 삭제 됩니다.(개인정보는 최대 90일간 보관 후 즉시 파기됩니다.)</string>
+    <string name="taxi_withdrawal_warning4">탈퇴완료 후, 재가입 시에는 첫 혜택을 받을 수 없습니다.(첫 가입 쿠폰 등)</string>
+    <string name="taxi_withdrawal_data_description1">탈퇴 완료 후 삭제 및 개인정보 비식별화되는 정보는 아래와 같습니다.</string>
+    <string name="taxi_withdrawal_data_description2">삭제된 데이터는 복구되지 않습니다.</string>
+
+    <string name="taxi_withdrawal_data_description_contents1">① 계정정보 (아이디, 비밀번호)</string>
+    <string name="taxi_withdrawal_data_description_contents2">② 이용정보 및 기록</string>
+    <string name="taxi_withdrawal_data_description_contents3">③ 즐겨 찾는 장소 목록</string>
+    <string name="taxi_withdrawal_data_description_contents4">④ 쿠폰, 마일리지 관련 기록</string>
+
+    <string name="taxi_withdrawal_agree">위 내용 모두 확인하였으며, 회원탈퇴에 동의합니다.</string>
+    <string name="taxi_input_current_pw">현재 비밀번호 입력</string>
+    <string name="taxi_withdrawal_last_warning">회원 탈퇴 시, 모든 정보가 삭제되며 복구되지 않습니다. 정말 탈퇴하시겠습니까?</string>
+    <string name="taxi_self_auth">본인인증</string>
+
+    <string name="taxi_exist_id_google">구글 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="taxi_exist_id_naver">네이버 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="taxi_exist_id_kakaotalk">카카오톡 간편로그인으로 가입된 회원입니다.\n간편 로그인 해주세요</string>
+    <string name="taxi_exist_id_email">이메일로 가입된 회원입니다.\n검색된 아이디로 로그인해 주세요</string>
+
+    <string name="taxi_id_check_exist">이미 등록된 이메일 주소 입니다.</string>
+    <string name="taxi_id_check_not_exist">등록 가능한 이메일 주소 입니다.</string>
+
+    <string name="taxi_email_address">이메일 주소</string>
+    <string name="taxi_exist_check">중복 확인</string>
+    <string name="taxi_pw_hint">비밀번호(영문, 숫자, 특수문자 조합 8~15자)</string>
+    <string name="taxi_pw_confirm">비밀번호 확인</string>
+    <string name="taxi_next">다음</string>
+    <string name="taxi_validate_fail_email">이메일 형식이 아닙니다. 다시 입력해주세요.</string>
+    <string name="taxi_validate_fail_phone_number">휴대전화번호 형식이 올바르지 않습니다</string>
+    <string name="taxi_validate_fail_pw">비밀번호 유효성이 올바르지 않습니다</string>
+    <string name="taxi_plz_input_email">이메일 주소를 입력해 주세요</string>
+    <string name="taxi_plz_check_email_check">이메일 중복 확인해주세요</string>
+    <string name="taxi_plz_input_id">아이디를 입력하여 주세요.</string>
+    <string name="taxi_plz_input_pw">비밀번호를 입력해 주세요</string>
+    <string name="taxi_plz_input_exact_pw">비밀번호 생성 규칙에 맞게 다시 입력해 주세요.</string>
+    <string name="taxi_plz_check_pw_confirm">비밀번호 확인을 입력해 주세요</string>
+    <string name="taxi_pw_not_equal_plz_re_input">비밀번호가 일치하지 않습니다.</string>
+    <string name="taxi_pw_not_equal">비밀번호가 일치하지 않습니다.</string>
+    <string name="taxi_pw_changed">비밀번호가 변경되었습니다.</string>
+    <string name="taxi_plz_tel_auth">휴대전화번호 인증을 해주세요</string>
+    <string name="taxi_doing_update_tel">전화번호 수정중입니다.</string>
+    <string name="taxi_doing_auth_request">인증번호 요청중입니다.</string>
+    <string name="taxi_doing_auth_check">인증번호 확인중입니다.</string>
+    <string name="taxi_auth_limit_over">요청시간이 만료되었습니다</string>
+    <string name="taxi_join_success">회원가입이 완료되었습니다!</string>
+    <string name="taxi_auth_number_resend">인증번호 재전송</string>
+    <string name="taxi_order_detail">주문상세</string>
+    <string name="taxi_order_cancel">주문취소</string>
+    <string name="taxi_auth_tel">① 휴대전화 인증</string>
+    <string name="taxi_auth_find_id">② 아이디 찾기</string>
+    <string name="taxi_input_join_tel">가입 시 등록한 휴대전화 번호를 입력해 주세요</string>
+    <string name="taxi_doing_find_id">아이디를 찾는중입니다.</string>
+    <string name="taxi_doing_find_pw">비밀번호를 찾는중입니다.</string>
+    <string name="taxi_find_pw_title1">①\n이메일\n인증</string>
+    <string name="taxi_find_pw_title2">②\n휴대전화\n인증</string>
+    <string name="taxi_find_pw_title3">③\n비밀번호\n재설정</string>
+    <string name="taxi_input_join_email">가입 시 등록한 이메일을 입력해 주세요</string>
+    <string name="taxi_email_description">※ 간편 로그인 회원은 해당 소셜 사이트에서 변경 바랍니다.</string>
+    <string name="taxi_input_new_pw">새로운 비밀번호로 재설정 합니다.</string>
+    <string name="taxi_new_pw_hint">새 비밀번호(영문, 숫자, 특수문자 조합 8~15자)</string>
+    <string name="taxi_new_pw_confirm">새 비밀번호 확인</string>
+    <string name="taxi_cash">현금</string>
+    <string name="taxi_card">카드</string>
+    <string name="taxi_login_success">로그인 되었습니다.</string>
+    <string name="taxi_auto_login">자동 로그인</string>
+    <string name="taxi_easy_login">간편 로그인</string>
+
+    <string name="taxi_tel_number">휴대전화번호</string>
+    <string name="taxi_tel_number_change">휴대전화번호 변경</string>
+    <string name="taxi_already_regist_number">이미 등록된 휴대전화번호 입니다.</string>
+    <string name="taxi_do_get_auth_number">인증번호 받기</string>
+    <string name="taxi_input_auth_number">인증번호 입력</string>
+    <string name="taxi_auth">인증</string>
+
+    <string name="taxi_login">로그인</string>
+    <string name="taxi_logout">로그아웃</string>
+
+    <string name="taxi_call_to_latter">잠시후에 다시 요청해주시기 바랍니다.</string>
+    <string name="taxi_plz_input_auth_number">인증번호를 입력해주세요</string>
+    <string name="taxi_input_limit_minute">분 내로 입력해 주세요</string>
+
+    <string name="taxi_login_by_google">구글로 로그인</string>
+    <string name="taxi_login_by_naver">네이버로 로그인</string>
+    <string name="taxi_login_by_kakaotalk">카카오톡으로 로그인</string>
+    <string name="taxi_pw_reset_success">새로운 비밀번호로 재설정 되었습니다.\n로그인을 해주세요!</string>
+    <string name="taxi_id_not_exist">존재하지 않는 아이디입니다.</string>
+    <string name="taxi_social_login_pw_change_message">간편 로그인 회원입니다. 해당 소셜 사이트에서 변경 바랍니다.</string>
+
+    <string name="taxi_setting">설정</string>
+    <string name="taxi_current_version">현재 버전</string>
+
+    <string name="taxi_inquiry_email">이메일 문의</string>
+    <string name="taxi_inquiry_one_to_one">1:1 문의</string>
+    <string name="taxi_customer_counseling_center">고객상담센터</string>
+    <string name="taxi_card_management">카드 관리</string>
+
+    <string name="taxi_is_daeguro">택시도 대구로!</string>
+    <string name="taxi_customer_center">고객센터</string>
+    <string name="taxi_use_breakdown">이용내역</string>
+    <string name="taxi_insert_safe_message_number">안심 메시지 번호 등록</string>
+    <string name="taxi_set_favorite_site">즐겨 찾는 장소 설정</string>
+    <string name="taxi_set_alarm">알림 수신 설정</string>
+    <string name="taxi_terms_and_policies">이용약관 및 정책</string>
+    <string name="taxi_privacy_policy">개인정보처리방침</string>
+    <string name="taxi_opensource_license">오픈소스 라이센스</string>
+
+    <string name="taxi_service_need_login">로그인이 필요한 서비스입니다.</string>
+
+    <string name="taxi_customer_counseling_center_tel" translatable="false">고객상담센터 1661-9043</string>
+    <string name="taxi_customer_operation_time" translatable="false">운영시간 평일, 토요일 10:00 ~ 20:00 (공휴일 휴무)</string>
+    <string name="taxi_frequently_asked_questions_answer">자주 묻는 질문/답변</string>
+    <string name="taxi_go_kakao_channel">카카오채널 바로가기</string>
+    <string name="taxi_frequently_asked_questions">자주 묻는 질문</string>
+    <string name="taxi_plz_input_search_word">검색할 단어를 입력해주세요</string>
+
+    <string name="taxi_question_all">전체</string>
+    <string name="taxi_question_auto_pay">자동결제</string>
+    <string name="taxi_question_user_info">회원정보</string>
+    <string name="taxi_question_use">이용문의</string>
+
+    <string name="taxi_agree_service_use_link">https://terms.daeguro.co.kr:45028/agreement/agreement1.htm</string>
+    <string name="taxi_agree_privacy_link">https://terms.daeguro.co.kr:45028/agreement/agreement3.htm</string>
+    <string name="taxi_agree_digital_trans_link">https://terms.daeguro.co.kr:45028/agreement/agreement2.htm</string>
+    <string name="taxi_agree_gps_use_link">https://terms.daeguro.co.kr:45028/agreement/agreement3.htm</string>
+    <string name="taxi_agree_marketing_link">https://terms.daeguro.co.kr:45028/agreement/agreement5.htm</string>
+
+    <string name="taxi_agree_gps_data_agree">위치정보 이용동의</string>
+    <string name="taxi_agree_service_use_title">서비스 이용약관</string>
+    <string name="taxi_agree_location_service_use_title">위치기반서비스 이용약관</string>
+    <string name="taxi_agree_electronic_financial_transaction_title">전자금융거래 이용약관</string>
+    <string name="taxi_agree_operating_policy_title">마케팅 정보 수신동의</string>
+    <string name="taxi_latest_update">최신 업데이트</string>
+    <string name="taxi_change">변경</string>
+    <string name="taxi_birth">생년월일</string>
+    <string name="taxi_name">이름</string>
+    <string name="taxi_gender">성명</string>
+
+    <string name="taxi_nickname_description">닉네임(설정 시, 앱 내에 닉네임으로 노출됩니다)</string>
+    <string name="taxi_hint_nick_name">최소 2~10자 이내로 설정해주세요</string>
+    <string name="taxi_nickname_validate_fail">닉네임이 올바르지 않습니다.</string>
+
+    <string name="taxi_do_save">저장하기</string>
+
+    <string name="taxi_editing_data_exist_message">등록 중인 항목이 있습니다\n그래도 종료 하시겠습니까?</string>
+    <string name="taxi_changed_data_nothing">변경된 내용이 없습니다.</string>
+    <string name="taxi_customer_info_save_complete">회원정보 저장이 완료되었습니다.</string>
+
+    <string name="taxi_delete">삭제</string>
+    <string name="taxi_privacy_non_identification">개인정보 비식별화</string>
+    <string name="taxi_do_withdrawal">탈퇴하기</string>
+    <string name="taxi_withdrawal_success">정상적으로 탈퇴되었습니다.</string>
+
+    <string name="taxi_notification_setting">알림 수신 설정</string>
+    <string name="taxi_notification_setting_event_push">대구로 TAXI에서 새로운 이벤트가 있는 경우 이벤트 알림으로 알려드립니다. 원하지 않으시면 OFF로 변경하세요.</string>
+    <string name="taxi_notification_setting_taxi_call_push">택시 호출 관련 알림 설정합니다.\n원하지 않으시면 OFF로 변경하세요.</string>
+    <string name="taxi_notification_setting_safe_message_receive_push">내 번호를 등록한 사용자가 안심 메시지를 받게 됩니다.\n원하지 않으시면 OFF로 변경하세요.</string>
+    <string name="taxi_notification_event_marketing_use_push">택시 호출 관련 알림 설정합니다.\n(이동, PUSH 알림, 픽업 전 PUSH 알림, 픽업 PUSH 알림, 평가 PUSH 알림)</string>
+
+    <string name="taxi_notification_goal">목적 : 대구로 TAXI 서비스 및 제휴사 이벤트, 광고 등 마케팅 활용 안내</string>
+    <string name="taxi_notification_category">항목 : 대구로 TAXI 계정, 휴대폰 번호</string>
+    <string name="taxi_notification_holding_period">보유기간 : 동의 철회 또는 회원 탈퇴 시 즉시 삭제</string>
+    <string name="taxi_notification_etc">위 사항에 대하여 거부하실 수 있으며, 거부하시더라도 대구로 TAXI 서비스 이용은 가능하나 이벤트 및 마케팅 관련 안내는 받으실 수 없습니다.</string>
+
+    <string name="taxi_boarding_complete">탑승 완료</string>
+
+    <string name="taxi_share_by_sms">SMS 문자로 공유</string>
+    <string name="taxi_share_by_kakaotalk">카카오톡으로 공유</string>
+    <string name="taxi_favorite_place">즐겨 찾는 장소</string>
+    <string name="taxi_favorite_place_introduce">※ 즐겨 찾는 장소는 2곳까지 지정할 수 있어요!</string>
+    <string name="taxi_save_setting">설정 값 저장</string>
+
+    <string name="taxi_agree_service_use">서비스 이용약관 동의(필수)</string>
+    <string name="taxi_agree_info_other_transfer">개인정보 제3자 제공 동의(필수)</string>
+    <string name="taxi_agree_privacy_policy">개인정보 수집 및 이용동의(필수)</string>
+    <string name="taxi_agree_digital_trans">전자금융거래 이용약관 동의(필수)</string>
+    <string name="taxi_agree_age_hint">대구로 TAXI는 만 14세 미만 아동의 회원가입을 제한하고 있습니다.\n만 14세 이상 고객만 가입 가능합니다." </string>
+    <string name="taxi_agreement_agree_all">약관 전체동의</string>
+    <string name="taxi_view_full_text">전문보기</string>
+
+    <string name="taxi_do_setting">설정하기</string>
+    <string name="taxi_fail_search_current_gps">현재위치 확인에 실패하였습니다.</string>
+    <string name="taxi_processing_search_gps">위치탐색중입니다</string>
+    <string name="taxi_gps_searching">위치탐색중입니다.</string>
+    <string name="taxi_msg_address_not_usable">사용할 수 없는 주소정보입니다.</string>
+    <string name="taxi_msg_need_gps_setting">현위치 조회를 위해 위치서비스 설정이 필요합니다.</string>
+
+    <string name="taxi_ted_permission_go_to_setting_button_text">설정</string>
+    <string name="taxi_ted_permission_denied_message">권한이 승인되지 않아 서비스를 실행할 수 없습니다.\n권한설정은 [설정] > [권한]에서 변경하실 수 있습니다.</string>
+    <string name="taxi_permission_not_agree">권한이 허용되지 않아 서비스를 실행할 수 없습니다.</string>
+
+    <string name="taxi_pay_meet">현장에서 직접 결제</string>
+    <string name="taxi_pay_meet_description">직접 결제는 쿠폰 및 마일리지 사용 불가</string>
+    <string name="taxi_pay_app">앱 바로 결제</string>
+    <string name="taxi_pay_app_description">앱 바로 결제는 쿠폰 및 마일리지 사용 가능</string>
+
+    <string name="taxi_recall_notice">현재 이용중인 택시가 있어요.\n추가로 호출할까요?</string>
+    <string name="taxi_call_cancel_message_cannot_calcel_ride">탑승 이후에는 취소할 수 없어요!</string>
+    <string name="taxi_call_cancel_message_cannot_calcel_complete">완료된 호출은 취소할 수 없어요!</string>
+    <string name="taxi_call_cancel_message_cannot_calcel_cancle">이미 취도된 호출은 취소할 수 없어요!</string>
+    <string name="taxi_pay_app_happy">행복페이</string>
+    <string name="taxi_pay_app_card_dot">신용 · 체크 카드</string>
+    <string name="taxi_pay_app_phone">휴대폰 결제</string>
+    <string name="taxi_pay_app_naver_pay">네이버페이</string>
+    <string name="taxi_pay_app_toss">토스</string>
+    <string name="taxi_pay_app_kakao_pay">카카오페이</string>
+    <string name="taxi_pay_app_meet">만나서 결제</string>
+    <string name="taxi_pay_app_meet_card">만나서 카드 결제</string>
+    <string name="taxi_pay_app_meet_cash">만나서 현금 결제</string>
+
+    <string name="taxi_msg_mileage_use_description">※ 앱 바로 결제 시 보유 중인 마일리지가 1,000원 이상일 경우, 100원 단위로 사용 가능합니다.</string>
+
+    <string name="taxi_expected_cost">예상 택시비</string>
+    <string name="taxi_coupon_discount">쿠폰할인</string>
+    <string name="taxi_use_mileage">마일리지 사용</string>
+    <string name="taxi_total_pay_price">결제 예정</string>
+    <string name="taxi_do_call">호출하기</string>
+    <string name="taxi_re_call">재호출</string>
+    <string name="taxi_home">집</string>
+    <string name="taxi_company">회사</string>
+
+    <string name="taxi_order_complete_activity_title">결제완료</string>
+
+    <string name="taxi_call_history_not_exist">최근에 이용한 내역이 없어요!</string>
+
+    <string name="taxi_plz_tell_address">위치를 말해주세요.</string>
+    <string name="taxi_plz_tell_address_again">죄송합니다. 다시 한번 말씀해 주세요.</string>
+
+    <string name="taxi_not_exist_card_info">카드정보가 없습니다.</string>
+    <string name="taxi_plz_select_pay_card">결제하실 카드를 선택해주세요</string>
+    <string name="taxi_plz_select_coupon">쿠폰을 선택해주세요</string>
+    <string name="taxi_plz_input_coupon_code">쿠폰코드를 입력해주세요</string>
+
+    <string name="taxi_pay_meet_required_login">※ 만나서 결제는 로그인 후 사용 가능합니다.</string>
+    <string name="taxi_benefit_required_login">※ 할인혜택은 로그인 후 사용 가능합니다.</string>
+    <string name="taxi_benefit_required_pay_app">※ 할인혜택은 앱 바로 결제 시에만 사용 가능합니다.</string>
+
+    <string name="taxi_do_delete_card">이 카드를 삭제하시겠습니까?</string>
+
+    <string name="taxi_not_satisfied_call_min_cost_for_coupon">쿠폰 사용을 위한 최소 금액 조건이 충족되지 않았습니다</string>
+    <string name="taxi_not_satisfied_call_min_cost">최소 결제금액 조건이 충족되지 않았습니다</string>
+    <string name="taxi_not_used_coupon_by_order_min_cost">최소 결제금액 정책으로 인해 쿠폰 적용 불가</string>
+    <string name="taxi_not_used_coupon_by_over_amount_pay">쿠폰금액이 결제금액보다 큰 경우 적용 불가</string>
+    <string name="taxi_call_cancel">호출취소</string>
+    <string name="taxi_call_cancel_description">근처 택시를 찾고 있어요!\n정말로 취소할까요?</string>
+    <string name="taxi_call_retry_message">죄송합니다. 호출이 지연되고 있어요.\n계속해서 호출 할까요?</string>
+
+    <string name="taxi_call_continue">계속 호출</string>
+
+    <string name="taxi_card_regist">카드등록</string>
+
+    <string name="taxi_direct_pay_title_init">결제수단 선택</string>
+    <string name="taxi_direct_pay_title">현장결제</string>
+    <string name="taxi_direct_pay_worrying_message">*현장결제시, 할인혜택을 받을 수 없어요!</string>
+
+    <string name="taxi_send_safe_message_description">도착 예정 메시지가 전송되며, 목적지 도착 시에도 자동으로 안심 메시지가 전송됩니다. 안심 메시지를 보내시겠습니까?</string>
+    <string name="taxi_register_safe_message_description">안심 메시지 번호를 등록 해주셔야 메시지가 전송됩니다. 등록하시겠습니까?</string>
+    <string name="taxi_safe_message_confirm_dialog_title">대구로 TAXI 안심 메시지 미리보기</string>
+    <string name="taxi_safe_message_confirm_dialog_hint">(선택)추가메모 ex. 정문으로 데리러와</string>
+    <string name="taxi_safe_message_confirm_dialog_url_description">미리보기 메시지는 현재 위치 보기를 지원하지 않습니다</string>
+    <string name="taxi_safe_message_confirm_dialog_description">설정한 수신자에게 도착 예정 메시지가 전송되며, 목적지 도착 시에도 자동으로 도착 메시지가 전송됩니다. 안심 메시지를 보내시겠습니까?</string>
+
+    <string name="taxi_register_review_complete">평가에 참여해주셔서 감사합니다.\n고객님의 소리에 귀 기울이는 대구로 TAXI가 되겠습니다</string>
+
+    <string name="taxi_back_press_description">"\'뒤로\' 버튼을 한 번 더 누르시면 이동합니다."</string>
+
+    <string name="taxi_network_error_msg">"일시적 오류입니다. 다시 시도해 주세요."</string>
+    <string name="taxi_error_msg_equal_start_end_address">출발지와 도착지가 동일합니다. 다른 주소를 선택해 주세요</string>
+    <string name="taxi_my_page">마이페이지</string>
+    <string name="taxi_cancel_description">택시 호출이 취소되었습니다.</string>
+    <string name="taxi_need_login_for_service_use">대구로 TAXI 서비스 이용을 위해 \n로그인 혹은 회원가입을 진행해주세요</string>
+
+    <string name="taxi_no_search_result">일치하는 검색 결과가 없어요!</string>
+    <string name="taxi_delete_recent_addresses">최근 위치 기록 삭제</string>
+
+    <string name="taxi_cancel_dialog_sub_title"><![CDATA[<font color="#333333">※ 승인 요청한 금액은 </font><font color="#e30613">자동으로 취소</font><font color="#333333">됩니다.</font>]]></string>
+
+    <string name="taxi_my_phone">내 전화번호</string>
+    <string name="taxi_my_phone_input">전화번호 직접 입력</string>
+    <string name="privacy_policy_and_use_agree">개인정보 수집 및 이용 동의</string>
+    <string name="view_policy">약관보기</string>
+    <string name="taxi_wrong_number">전화번호가 올바르지 않습니다. 다시 확인해주세요</string>
+    <string name="taxi_policy_agree">개인정보 수집 및 이용 동의가 필요합니다.</string>
+
+    <string name="taxi_address_detail_hint">(선택) 상세위치 ex. 정문앞</string>
+    <string name="taxi_recall">택시 추가로 이용하기</string>
+    <string name="taxi_kakao_channel_link_customer_center">http://pf.kakao.com/_jxbrnxj</string>
+
+    <string name="pay_able_card_info_title_sub">9 </string>
+    <string name="pay_able_card_info">*이용 가능 카드사 안내</string>
+    <string name="pay_able_card">-KB국민카드\n-삼성카드\n-농협카드\n-롯데카드\n-BC카드\n-하나(외환)카드\n-현대카드\n-신한카드\n-씨티카드</string>
+
+    <!--권한 확인 다이얼로그 추가-->
+    <!--    <string name="alarm">알림</string>-->
+    <string name="taxi_location_info_description">위치정보를 확인하여 택시 호출을 하기 위한 권한</string>
+    <string name="taxi_camera_description">QR코드 스캔으로 쿠폰 등록을 하기 위한 권한</string>
+    <string name="taxi_call_description">택시 기사님과 전화통화를 위한 권한</string>
+    <string name="taxi_alarm_description">푸시 화면 전환을 위한 알림 권한</string>
+    <string name="taxi_tel_auth_msg">*전화번호 등록(변경)시 1회만 인증하면 계속해서 해당 번호로 택시 호출이 가능합니다.</string>
+    <string name="taxi_kindness_review">대구로 택시 3대 친절 평가</string>
+    <string name="taxi_kindness_review_noti">본 평가는 대구시 친절택시 선정시 활용될 예정이오니 많은 참여 부탁 드립니다.</string>
+    <string name="taxi_plz_select_position_for_taxi">지도를 움직여 출발할 위치를 설정해주세요</string>
+
+    <string name="taxi_favorite_place_detail">장소 상세</string>
+    <string name="taxi_do_review">평가하기</string>
+    <string name="taxi_review_yet">대구시 \'친절 택시\' 선정 시 활용될 예정이니\n소중한 평가 부탁드립니다 :)</string>
+    <string name="taxi_review_yet_title">"아직 평가하지 않은 이용 건이 있어요!"</string>
+
+    <!-- 버스 -->
+    <string name="bus">버스</string>
+    <string name="details">상세보기</string>
+    <string name="home_edit">홈 편집</string>
+    <string name="bus_alarm">알람</string>
+    <string name="findBus">버스 찾기</string>
+    <string name="findStation">정류장 찾기</string>
+    <string name="findRoute">경로 찾기</string>
+    <string name="station_by_route">노선번호 순</string>
+    <string name="station_by_time">도착시간 순</string>
+    <string name="station_by_kind">버스유형 순</string>
+    <string name="search_start">출발지 검색</string>
+    <string name="search_arrive">도착지 검색</string>
+    <string name="view_details">상세보기</string>
+    <string name="bus_station">버스정류장</string>
+    <string name="subway">지하철</string>
+    <string name="convenience_store">편의점</string>
+    <string name="train_station">기차역</string>
+    <string name="bus_terminal">버스터미널</string>
+    <string name="airport">공항</string>
+    <string name="more">더보기</string>
+    <string name="bus_recent_delite">검색기록 일괄 삭제</string>
+    <string name="bus_recent_search_all_delete">김색기록을 모두 삭제하시겠습니다까?</string>
+    <string name="bus_bookmark_empty">다음버스 도착시간까지 알고 싶다면\n즐겨찾기를 추가해보세요.</string>
+    <string name="bus_notification_etc">버스 도착정보는 교통 및 운행상황에 따라 다를 수 있으며,\n 버스 이용 시 참고용으로만 활용 바랍니다.</string>
+    <string name="bus_result_empty">검색결과가 없습니다.</string>
+    <string name="bus_map_select">지도에서 선택</string>
+    <string name="plz_select_position_for_bus">지도를 움직여 주소를 설정해 주세요</string>
+    <string name="bus_start_select">출발지로 선택</string>
+    <string name="bus_end_select">도착지로 선택</string>
+    <string name="announcement">공지사항</string>
+    <string name="inquiry">문의</string>
+
+
+
+</resources>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/lo_titlebar"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_left1"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="2dp"
+                    android:padding="8dp"
+                    android:src="@drawable/common_arrow_left_20" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/iv_right1"
+                    android:layout_toEndOf="@id/iv_left1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/font_nexon_lv1_gothic_bold"
+                        android:letterSpacing="-0.02"
+                        android:text="주변정보"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/iv_right1"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="2dp"
+                    android:padding="8dp"
+                    android:src="@drawable/common_home_black_20" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/title_underbar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lo_titlebar"
+                android:background="@color/color_E6E6E6" />
+
+            <RelativeLayout
+                android:id="@+id/lo_view_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_underbar"
+                android:orientation="vertical"
+                tools:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/v_address_under">
+
+                    <com.naver.maps.map.MapView
+                        android:id="@+id/map_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_floating"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="18dp"
+                        android:background="@drawable/bg_floating"
+                        android:padding="12dp"
+                        android:src="@drawable/common_location_on_24" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/viewpager2"
+                    android:layout_above="@+id/v_address_under"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:id="@+id/v_address_under"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_above="@id/lo_station_info"
+                    android:background="@color/color_E6E6E6" />
+
+
+                <LinearLayout
+                    android:id="@+id/lo_station_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical"
+                    android:paddingStart="18dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="30dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_station_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="-0.02"
+                            android:text="남문시장앞 "
+                            android:textColor="@color/color_333333"
+                            android:textSize="18dp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_subwayNum1"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="4dp"
+                            android:background="@drawable/bg_circle_line"
+                            android:backgroundTint="@color/color_C40025"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                            android:gravity="center"
+                            android:letterSpacing="-0.03"
+                            android:lineSpacingExtra="8sp"
+                            android:text="1"
+                            android:textColor="@color/color_C40025"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_subwayNum2"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="4dp"
+                            android:background="@drawable/bg_circle_line"
+                            android:backgroundTint="@color/color_00A87D"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                            android:gravity="center"
+                            android:letterSpacing="-0.03"
+                            android:lineSpacingExtra="8sp"
+                            android:text="2"
+                            android:textColor="@color/color_00A87D"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_subwayNum3"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="4dp"
+                            android:background="@drawable/bg_circle_line"
+                            android:backgroundTint="@color/color_FFD300"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                            android:gravity="center"
+                            android:letterSpacing="-0.03"
+                            android:lineSpacingExtra="8sp"
+                            android:text="3"
+                            android:textColor="#ffb300"
+                            android:textSize="12dp"
+                            android:textStyle="normal" />
+
+                        <ImageView
+                            android:id="@+id/ig_wifi"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/common_wifi_24" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_station_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="2dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.05"
+                                android:lineSpacingExtra="6sp"
+                                android:lines="1"
+                                android:text="20071"
+                                android:textColor="@color/color_999999"
+                                android:textSize="14sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="10dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@color/color_999999" />
+
+                            <TextView
+                                android:id="@+id/tv_station_next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="2dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:letterSpacing="-0.02"
+                                android:lineSpacingExtra="6sp"
+                                android:lines="1"
+                                android:text="명덕역(7번출구)방면"
+                                android:textColor="@color/color_555555"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lo_detail_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal">
+
+<!--                            <TextView-->
+
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"-->
+<!--                                android:textSize="14dp"-->
+<!--                                android:textColor="@color/color_999999"-->
+<!--                                android:letterSpacing="-0.02"-->
+<!--                                android:lineSpacingExtra="6sp"-->
+<!--                                android:text="@string/view_details"/>-->
+<!--                            -->
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/common_cursor_right_2_16"/>-->
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/lo_loading"
+                layout="@layout/common_loading" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

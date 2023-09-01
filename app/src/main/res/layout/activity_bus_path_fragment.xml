@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:id="@+id/lo_search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/lo_edit_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/start_keyWord"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_round_line_6"
+                            android:backgroundTint="@color/color_E6E6E6"
+                            android:paddingStart="4dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="4dp"
+                            android:paddingBottom="5dp">
+
+                            <RelativeLayout
+                                android:id="@+id/lo_start_search"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="6dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingEnd="6dp"
+                                    android:paddingBottom="6dp">
+
+                                    <EditText
+                                        android:id="@+id/etKeyword"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:background="@color/white"
+                                        android:completionThreshold="1"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                        android:imeOptions="actionSearch"
+                                        android:hint="출발지 검색"
+                                        android:letterSpacing="-0.03"
+                                        android:singleLine="true"
+                                        android:textSize="16dp" />
+                                </RelativeLayout>
+
+                                <ImageView
+                                    android:id="@+id/iv_clear"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="2dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/common_close_circle_20_cccccc"
+                                    android:visibility="gone" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/end_keyWord"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/bg_round_line_6"
+                            android:backgroundTint="@color/color_E6E6E6"
+                            android:paddingStart="4dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="4dp"
+                            android:paddingBottom="5dp">
+
+                            <RelativeLayout
+                                android:id="@+id/lo_end_search"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:paddingStart="6dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingEnd="6dp"
+                                    android:paddingBottom="6dp">
+
+                                    <EditText
+                                        android:id="@+id/et_keyword_end"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:background="@color/white"
+                                        android:completionThreshold="1"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                        android:hint="도착지 검색"
+                                        android:imeOptions="actionSearch"
+                                        android:letterSpacing="-0.03"
+                                        android:singleLine="true"
+                                        android:textSize="16dp" />
+
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/iv_clear_end"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="2dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/common_close_circle_20_cccccc"
+                                    android:visibility="gone" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ig_change_btn_big"
+                        android:layout_width="36dp"
+                        android:layout_height="104dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/common_transform_36_touch_long" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lo_scroll_search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/lo_scroll_search_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_line_6"
+                        android:backgroundTint="@color/color_E6E6E6"
+                        android:paddingStart="4dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="5dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:orientation="horizontal">
+
+                           <TextView
+                               android:id="@+id/tv_start_location"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                               android:textStyle="normal"
+                               android:textSize="16dp"
+                               android:textColor="@color/color_333333"
+                               android:letterSpacing="-0.02"
+                               android:lineSpacingExtra="4dp"
+                               android:maxLines="1"
+                               android:ellipsize="end"
+                               tools:text="대구 달성군 다..."/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:textStyle="normal"
+                                android:textSize="16dp"
+                                android:textColor="@color/color_999999"
+                                android:letterSpacing="-0.05"
+                                android:lineSpacingExtra="4dp"
+                                android:text="→"/>
+
+                            <TextView
+                                android:id="@+id/tv_end_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                                android:textStyle="normal"
+                                android:textSize="16dp"
+                                android:textColor="@color/color_333333"
+                                android:letterSpacing="-0.02"
+                                android:lineSpacingExtra="4dp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                tools:text="금호워터폴리스"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ig_change_btn_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/common_transform_36_touch" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lo_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+
+                    <RelativeLayout
+                        android:id="@+id/lo_recent_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_round_line_1000"
+                        android:paddingStart="31dp"
+                        android:paddingTop="14dp"
+                        android:paddingEnd="30dp"
+                        android:paddingBottom="14dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/common_location_20" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:lineSpacingExtra="6dp"
+                                android:text="현 위치 선택"
+                                android:textColor="#333333"
+                                android:textSize="14dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/lo_map_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_round_line_1000"
+                        android:paddingStart="31dp"
+                        android:paddingTop="14dp"
+                        android:paddingEnd="30dp"
+                        android:paddingBottom="14dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/common_map_black_20" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:lineSpacingExtra="6dp"
+                                android:text="지도에서 선택"
+                                android:textColor="#333333"
+                                android:textSize="14dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_66999999" />
+
+                <!--            <View-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="10dp"-->
+                <!--                android:background="@color/color_E6E6E6" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_autoSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_E6E6E6">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_adressSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_searchPath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+
+                <include
+                    android:id="@+id/lo_result_empty"
+                    layout="@layout/common_result_empty"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/lo_loading"
+            layout="@layout/common_loading" />
+    </FrameLayout>
+</layout>

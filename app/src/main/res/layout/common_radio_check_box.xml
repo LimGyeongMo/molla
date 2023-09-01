@@ -1,0 +1,54 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp">
+
+            <ImageView
+                android:id="@+id/circle_line"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_circle"
+                android:foreground="@drawable/bg_circle_line"
+                android:foregroundTint="@color/color_01CAFF"
+                android:backgroundTint="@color/white" />
+
+            <ImageView
+                android:id="@+id/circle_dot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:src="@drawable/bg_circle"
+                app:tint="@color/color_01CAFF" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/color_333333"
+            android:textSize="16dp"
+            tools:text="이름" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

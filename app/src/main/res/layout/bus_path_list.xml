@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:id="@+id/tv_current_interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                android:letterSpacing="-0.05"
+                android:textColor="#333333"
+                android:textSize="20dp"
+                tools:text="1시간 26분" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_round_line_10"
+                android:backgroundTint="@color/color_E6E6E6"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/lo_traffic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:id="@+id/v_traffic_line"
+                            android:layout_width="2dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@color/card_color3" />
+
+                        <ImageView
+                            android:id="@+id/ig_bus"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            tools:src="@drawable/common_bus_20_green" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom"
+                            android:src="@drawable/ic_busstop_22_pt_on" />
+                    </FrameLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="88dp"
+                        android:orientation="vertical"
+                        android:paddingStart="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:id="@+id/tv_tp"
+                                    android:layout_width="42dp"
+                                    android:layout_height="21dp"
+                                    android:background="@drawable/bg_round_area_6"
+                                    android:backgroundTint="@color/black"
+                                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                    android:gravity="center"
+                                    android:letterSpacing="-0.03"
+                                    android:lineSpacingExtra="8dp"
+                                    android:maxLines="1"
+                                    android:textColor="#ffffff"
+                                    android:textSize="12dp"
+                                    android:textStyle="normal"
+                                    tools:text="없음" />
+
+                                <LinearLayout
+                                    android:id="@+id/lo_bus_info"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tv_route_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                                        android:letterSpacing="-0.02"
+                                        android:maxWidth="100dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textColor="#333333"
+                                        android:textSize="16dp"
+                                        android:textStyle="bold"
+                                        tools:text="없음" />
+
+                                    <View
+                                        android:id="@+id/view_ho"
+                                        android:layout_width="1dp"
+                                        android:layout_height="10dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_marginEnd="4dp"
+                                        android:background="@color/color_CCCCCC" />
+
+                                    <TextView
+                                        android:id="@+id/tv_time_taken"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                        android:letterSpacing="-0.02"
+                                        android:maxWidth="60dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:singleLine="true"
+                                        android:text="0분 0초"
+                                        android:textColor="#ff923b"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_station_before"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                        android:letterSpacing="-0.02"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="#999999"
+                                        android:textSize="14dp"
+                                        tools:text="[0번째 전]" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tv_lowYn"
+                                        android:layout_width="34dp"
+                                        android:layout_height="21dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginEnd="4dp"
+                                        android:layout_toLeftOf="@+id/tv_late"
+                                        android:background="@drawable/bg_round_area_25"
+                                        android:backgroundTint="@color/color_F2F2F2"
+                                        android:gravity="center"
+                                        android:text="저상"
+                                        android:textColor="@color/color_333333"
+                                        android:textSize="12dp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_lateYn"
+                                        android:layout_width="34dp"
+                                        android:layout_height="21dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/bg_round_line_10"
+                                        android:backgroundTint="@color/card_color2"
+                                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                        android:gravity="center"
+                                        android:letterSpacing="-0.02"
+                                        android:lineSpacingExtra="8dp"
+                                        android:text="지연"
+                                        android:textColor="#ff923b"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/tv_start_station"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:maxLines="1"
+                                android:text="다사읍사무소서재출장소앞"
+                                android:textColor="@color/color_333333"
+                                android:textSize="16dp" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_end_station"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                            android:letterSpacing="-0.02"
+                            android:text="베어산업앞"
+                            android:textColor="@color/color_333333"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_F2F2F2" />
+    </LinearLayout>
+</layout>

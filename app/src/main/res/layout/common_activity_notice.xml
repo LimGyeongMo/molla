@@ -1,0 +1,90 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:id="@+id/sv_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title_view"
+            android:background="@color/white"
+            android:overScrollMode="never"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="14dp"
+                    android:paddingRight="18dp"
+                    android:paddingBottom="14dp">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="-0.02"
+                        android:textColor="@color/color_333333"
+                        android:textSize="16dp"
+                        tools:text="[공지] 개인정보처리방침 일부 변경 안내" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="-0.01"
+                        android:singleLine="true"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12dp"
+                        tools:text="2021.03.31" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_F2F2F2" />
+
+                <TextView
+                    android:id="@+id/tv_contents"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autoLink="web"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:padding="18dp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14dp"
+                    tools:text="공지사항 내용" />
+            </LinearLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/lo_result_empty"
+            layout="@layout/common_result_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/title_view"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/lo_loading"
+            layout="@layout/common_loading" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 공통 -->
+    <attr name="is_use_clear" format="boolean"/>
+    <attr name="enabled" format="boolean"/>
+    <attr name="text" format="reference|string"/>
+    <attr name="text_sub" format="reference|string"/>
+    <attr name="textSizeDp" format="integer"/>
+    <attr name="text_icon" format="integer"/>
+    <attr name="icon_right1" format="reference|integer" />
+    <attr name="icon_right2" format="reference|integer" />
+    <attr name="icon_unselect" format="integer"/>
+    <attr name="icon_select" format="integer"/>
+    <attr name="icon_disable" format="integer"/>
+    <attr name="fontFamily" format="reference|string"/>
+    <attr name="icon_res" format="integer"/>
+    <attr name="backgroundTintUnCheck" format="color"/>
+    <attr name="foregroundTint" format="color"/>
+    <attr name="checkState" format="integer">
+        <flag name="disable" value="-1" />
+        <flag name="unCheck" value="0" />
+        <flag name="check" value="1" />
+    </attr>
+    <attr name="selectState" format="integer">
+        <flag name="select" value="1" />
+        <flag name="unselect" value="2" />
+        <flag name="disable" value="3" />
+    </attr>
+    <attr name="bottom_line_visibility" format="integer">
+        <flag name="visible" value="0" />
+        <flag name="gone" value="8" />
+    </attr>
+    <attr name="state" format="integer">
+        <flag name="enable" value="1" />
+        <flag name="disable" value="2" />
+    </attr>
+
+    <declare-styleable name="CommonBottomButton">
+        <attr name="text"/>
+        <attr name="text_background" format="integer"/>
+        <attr name="state"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonCodeNameTextView">
+        <attr name="text"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonCheckBox">
+        <attr name="text"/>
+        <attr name="textSizeDp"/>
+        <attr name="fontFamily"/>
+        <attr name="backgroundTintUnCheck"/>
+        <attr name="foregroundTint"/>
+        <attr name="checkState" />
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonCheckBox2">
+        <attr name="text"/>
+        <attr name="textSizeDp"/>
+        <attr name="fontFamily"/>
+        <attr name="backgroundTintUnCheck"/>
+        <attr name="foregroundTint"/>
+        <attr name="enabled"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonIcon">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonRadioCheckBox">
+        <attr name="text"/>
+        <attr name="text_icon"/>
+        <attr name="checkState"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonPayType">
+        <attr name="text"/>
+        <attr name="icon_unselect"/>
+        <attr name="icon_select"/>
+        <attr name="icon_disable"/>
+        <attr name="selectState" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonCardType">
+        <attr name="text"/>
+        <attr name="icon_unselect"/>
+        <attr name="icon_select"/>
+        <attr name="icon_disable"/>
+        <attr name="selectState" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonShopImageView">
+        <attr name="text"/>
+    </declare-styleable>
+
+    <!-- 배달/픽업 -->
+    <declare-styleable name="CommonEditText">
+        <attr name="enabled"/>
+        <attr name="text"/>
+        <attr name="hint" format="reference|string"/>
+        <attr name="imeOptions" format="reference|flags">
+            <flag name="normal" value="0x00000000" />
+            <flag name="actionUnspecified" value="0x00000000" />
+            <flag name="actionNone" value="0x00000001" />
+            <flag name="actionGo" value="0x00000002" />
+            <flag name="actionSearch" value="0x00000003" />
+            <flag name="actionSend" value="0x00000004" />
+            <flag name="actionNext" value="0x00000005" />
+            <flag name="actionDone" value="0x00000006" />
+            <flag name="actionPrevious" value="0x00000007" />
+            <flag name="flagNoPersonalizedLearning" value="0x1000000" />
+            <flag name="flagNoFullscreen" value="0x2000000" />
+            <flag name="flagNavigatePrevious" value="0x4000000" />
+            <flag name="flagNavigateNext" value="0x8000000" />
+            <flag name="flagNoExtractUi" value="0x10000000" />
+            <flag name="flagNoAccessoryAction" value="0x20000000" />
+            <flag name="flagNoEnterAction" value="0x40000000" />
+            <flag name="flagForceAscii" value="0x80000000" />
+        </attr>
+        <attr name="maxLength" format="reference|integer"/>
+        <attr name="lines" format="reference|integer"/>
+        <attr name="inputType" format="reference|flags">
+            <flag name="none" value="0x00000000" />
+            <flag name="text" value="0x00000001" />
+            <flag name="textCapCharacters" value="0x00001001" />
+            <flag name="textCapWords" value="0x00002001" />
+            <flag name="textCapSentences" value="0x00004001" />
+            <flag name="textAutoCorrect" value="0x00008001" />
+            <flag name="textAutoComplete" value="0x00010001" />
+            <flag name="textMultiLine" value="0x00020001" />
+            <flag name="textImeMultiLine" value="0x00040001" />
+            <flag name="textNoSuggestions" value="0x00080001" />
+            <flag name="textUri" value="0x00000011" />
+            <flag name="textEmailAddress" value="0x00000021" />
+            <flag name="textEmailSubject" value="0x00000031" />
+            <flag name="textShortMessage" value="0x00000041" />
+            <flag name="textLongMessage" value="0x00000051" />
+            <flag name="textPersonName" value="0x00000061" />
+            <flag name="textPostalAddress" value="0x00000071" />
+            <flag name="textPassword" value="0x00000081" />
+            <flag name="textVisiblePassword" value="0x00000091" />
+            <flag name="textWebEditText" value="0x000000a1" />
+            <flag name="textFilter" value="0x000000b1" />
+            <flag name="textPhonetic" value="0x000000c1" />
+            <flag name="textWebEmailAddress" value="0x000000d1" />
+            <flag name="textWebPassword" value="0x000000e1" />
+            <flag name="number" value="0x00000002" />
+            <flag name="numberSigned" value="0x00001002" />
+            <flag name="numberDecimal" value="0x00002002" />
+            <flag name="numberPassword" value="0x00000012" />
+            <flag name="phone" value="0x00000003" />
+            <flag name="datetime" value="0x00000004" />
+            <flag name="date" value="0x00000014" />
+            <flag name="time" value="0x00000024" />
+        </attr>
+        <attr name="gravity" format="reference|flags" >
+            <!-- Push object to the top of its container, not changing its size. -->
+            <flag name="top" value="0x30" />
+            <!-- Push object to the bottom of its container, not changing its size. -->
+            <flag name="bottom" value="0x50" />
+            <!-- Push object to the left of its container, not changing its size. -->
+            <flag name="left" value="0x03" />
+            <!-- Push object to the right of its container, not changing its size. -->
+            <flag name="right" value="0x05" />
+            <!-- Place object in the vertical center of its container, not changing its size. -->
+            <flag name="center_vertical" value="0x10" />
+            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill_vertical" value="0x70" />
+            <!-- Place object in the horizontal center of its container, not changing its size. -->
+            <flag name="center_horizontal" value="0x01" />
+            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+            <flag name="fill_horizontal" value="0x07" />
+            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+            <flag name="center" value="0x11" />
+            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill" value="0x77" />
+            <!-- Additional option that can be set to have the top and/or bottom edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the vertical gravity: a top gravity will clip the bottom
+                 edge, a bottom gravity will clip the top edge, and neither will clip both edges. -->
+            <flag name="clip_vertical" value="0x80" />
+            <!-- Additional option that can be set to have the left and/or right edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the horizontal gravity: a left gravity will clip the right
+                 edge, a right gravity will clip the left edge, and neither will clip both edges. -->
+            <flag name="clip_horizontal" value="0x08" />
+            <!-- Push object to the beginning of its container, not changing its size. -->
+            <flag name="start" value="0x00800003" />
+            <!-- Push object to the end of its container, not changing its size. -->
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="digits" format="string" />
+        <attr name="privateImeOptions" format="string" />
+        <attr name="state"/>
+        <attr name="icon_right1"/>
+        <attr name="is_use_clear"/>
+        <attr name="is_use_text_limit" format="boolean"/>
+        <attr name="is_input_block" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonFloatingButton">
+        <attr name="icon_res"/>
+        <attr name="backgroundTint"/>
+        <attr name="badge_count_visibility" format="integer">
+            <flag name="visible" value="0" />
+            <flag name="gone" value="8" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CommonRowText">
+        <attr name="text"/>
+        <attr name="text_sub"/>
+        <attr name="icon_res"/>
+        <attr name="bottom_line_visibility"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonRowSwitch">
+        <attr name="text"/>
+        <attr name="text_sub"/>
+        <attr name="bottom_line_visibility"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonViewMyPageIcon">
+        <attr name="text"/>
+        <attr name="text_sub"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonMainTab">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonTitleView">
+        <attr name="text"/>
+        <attr name="icon_left1" format="integer"/>
+        <attr name="icon_right1"/>
+        <attr name="icon_right2"/>
+        <attr name="bottom_line_visibility"/>
+    </declare-styleable>
+
+    <declare-styleable name="BusTitleView">
+        <attr name="text"/>
+        <attr name="icon_bus_left1" format="integer"/>
+        <attr name="icon_right1"  />
+        <attr name="icon_right2" />
+        <attr name="backgroundTint"/>
+        <attr name="bottom_line_visibility"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonRoundArea">
+        <attr name="strokeWidth"/>
+        <attr name="strokeColor"/>
+        <attr name="solidColor" format="color"/>
+        <attr name="radius" format="dimension" />
+        <attr name="backgroundTint"/>
+        <attr name="padding" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonPayPasswordSwitch"/>
+
+    <!-- 예약 -->
+    <declare-styleable name="ReserveMainIcon">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="ReserveViewRegion">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonReserveFacility">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonCallEditText">
+        <attr name="left_icon" format="reference|integer" />
+        <attr name="right_icon1" format="reference|integer" />
+        <attr name="right_icon2" format="reference|integer" />
+        <attr name="text" />
+        <attr name="hint" />
+    </declare-styleable>
+
+    <!-- 택시 -->
+    <declare-styleable name="TaxiMyCheckBox">
+        <attr name="text" />
+        <attr name="icon_res"/>
+        <attr name="text_description" format="reference|string"/>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="TaxiFavoritePlace">
+        <attr name="text"/>
+        <attr name="icon_res"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_tp"
+                        android:layout_width="42dp"
+                        android:layout_height="21dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_round_area_6"
+                        android:backgroundTint="@color/black"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:gravity="center"
+                        android:letterSpacing="-0.03"
+                        android:lineSpacingExtra="8dp"
+                        android:text="없음"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/tv_routeNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                        android:letterSpacing="-0.02"
+                        android:paddingTop="3dp"
+                        android:singleLine="true"
+                        android:text="검단유성아파트 앞"
+                        android:textColor="@color/color_333333"
+                        android:textSize="18dp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_node_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="6dp"
+                    android:text="한양산호아파트앞 ↔ 대구대 종점"
+                    android:textColor="@color/color_999999"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lo_bus_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:letterSpacing="-0.02"
+                    android:text="@string/details"
+                    android:textColor="@color/color_01CAFF"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/common_cursor_right_20_blue" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lo_bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_E6E6E6" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/color_F2F2F2" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

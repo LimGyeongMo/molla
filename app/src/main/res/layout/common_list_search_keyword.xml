@@ -1,0 +1,56 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="18dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="3dp">
+
+        <ImageView
+            android:id="@+id/iv_recent_search_time"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/common_clock_14" />
+
+        <TextView
+            android:id="@+id/tv_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tv_date"
+            android:layout_toEndOf="@id/iv_recent_search_time"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="-5px"
+            android:textColor="@color/color_333333"
+            android:textSize="16dp"
+            tools:text="검색키워드" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toStartOf="@id/iv_remove"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/color_333333"
+            android:textSize="12dp"
+            tools:text="03.02" />
+
+        <ImageView
+            android:id="@+id/iv_remove"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="7dp"
+            android:padding="8dp"
+            android:src="@drawable/common_close_circle_20_cccccc" />
+    </RelativeLayout>
+</layout>

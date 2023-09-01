@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_01CAFF</item>
+        <item name="colorPrimaryDark">@color/color_01CAFF</item>
+        <item name="colorAccent">@color/color_00AFFF</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="actionMenuTextColor">#FFFFFF</item>
+        <item name="autoCompleteTextViewStyle">@style/MyAutoCompleteTextViewStyle</item>
+    </style>
+
+    <style name="AppTheme.CustomNoActionBar" >
+        <item name="colorPrimary">@color/color_01CAFF</item>
+        <item name="colorAccent">@color/color_00AFFF</item>
+        <item name="colorPrimaryDark">@color/color_CCCCCC</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Transparent" parent="@style/Theme.AppCompat">
+        <!--Titlebar 없애는 옵션
+            true : Titlebar x
+            false : Titlebar o
+        -->
+        <item name="windowNoTitle">true</item>
+        <!-- 투명정도를 나타내는 색-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="gravity">center_vertical</item>
+        <!--
+        android:backgroundDimEnabled
+        true - 반투명 검정 /  false - 완전 투명
+        -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="MyListViewStyle" parent="@android:style/Widget.ListView">
+        <item name="android:divider">#f2f2f2</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <!-- BottomSheet 배경 투명하게 처리하기 위해 -->
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog" >
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal" >
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="CardReceiptCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">18dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="CardReceiptContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:gravity">end</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="DeliveryVoucherReceiveSendTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">88dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="DeliveryVoucherReceiveContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="DeliveryVoucherSendContents">
+        <item name="android:gravity">end</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="GiftCardBuyAmtBold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TermsCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="TermsContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>
+        <item name="android:gravity">end</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="ReviewReport" >
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>
+        <item name="android:popupBackground">@drawable/bg_popup_menu_6</item>
+        <item name="android:dropDownVerticalOffset">-24dp</item>
+        <item name="android:dropDownHorizontalOffset">22dp</item>
+    </style>
+
+    <style name="CalendarDayTitleText" >
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/font_nexon_lv1_gothic_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="FlowerHorizontal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">18dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="FlowerHorizontalContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:gravity">start</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="FlowerVertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="FlowerVerticalContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:gravity">start</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <!-- 택시 -->
+    <style name="TaxiCallHistoryCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">19dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TaxiCallHistoryContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TaxiUseCompleteCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">19dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TaxiUseCompleteContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TaxiCallCancelCategory">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">23dp</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="TaxiCallCancelContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="TaxiPaymentTitleContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="TaxiPaymentInfoContents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="MyAutoCompleteTextViewStyle" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:popupBackground">@null</item>
+    </style>
+</resources>

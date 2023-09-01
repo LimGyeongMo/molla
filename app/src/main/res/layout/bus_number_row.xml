@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/rowMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="523(동산네거리방면)"
+        android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+        android:letterSpacing="-0.02"
+        android:singleLine="true"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/rowSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bus_list_name"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+        android:letterSpacing="-0.02"
+        android:lines="1"
+        android:paddingTop="3dp"
+        android:textColor="@color/color_999999"
+        android:textSize="14dp"
+        android:text="검단동↔방천리(공영차고지)"/>
+
+
+
+</LinearLayout>

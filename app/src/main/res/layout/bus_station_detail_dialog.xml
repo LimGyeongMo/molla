@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/bus_detail_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_top_8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lo_sort_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="3dp"
+                    android:text="버스번호 노출 기준"
+                    android:textColor="#333333"
+                    android:textSize="16dp" />
+
+
+                <com.example.daegurobus.widget.CommonRadioCheckBox
+                    android:id="@+id/sort_by_route"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="18dp"
+                    app:text="@string/station_by_route" />
+
+                <com.example.daegurobus.widget.CommonRadioCheckBox
+                    android:id="@+id/sort_by_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="18dp"
+                    app:text="@string/station_by_time" />
+
+                <com.example.daegurobus.widget.CommonRadioCheckBox
+                    android:id="@+id/sort_by_kind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="18dp"
+                    app:text="@string/station_by_kind" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:background="@drawable/bg_round_area_6"
+                android:backgroundTint="@color/color_01CAFF"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:gravity="center"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/close"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
+

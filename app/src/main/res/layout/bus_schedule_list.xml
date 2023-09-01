@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/schedule_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="18dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="20dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp">
+
+            <TextView
+                android:id="@+id/tv_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                android:textSize="18dp"
+                android:textColor="#333333"
+                android:letterSpacing="-0.02"
+                android:text="스케줄알람📆"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_schedule"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:layout_marginEnd="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/more"
+                    android:textColor="@color/color_01CAFF"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/common_cursor_right_20_blue" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="21dp"
+            android:paddingTop="19dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:background="@drawable/bg_round_line_10"
+            android:backgroundTint="@color/color_E6E6E6"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:textSize="16sp"
+                    android:textColor="@color/color_999999"
+                    android:letterSpacing="-0.02"
+                    android:text="@string/bus_station"/>
+
+                <TextView
+                    android:layout_width="44dp"
+                    android:layout_height="22dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_round_area_6"
+                    android:backgroundTint="@color/card_color4"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:gravity="center"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="8sp"
+                    android:text="간선"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                    android:textSize="36sp"
+                    android:textColor="#333333"
+                    android:letterSpacing="-0.02"
+                    android:text="08:00"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/tv_bus_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:letterSpacing="-0.02"
+                        android:text="7분 42초"
+                        android:textColor="#333333"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bus_before"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:letterSpacing="-0.02"
+                        android:text="[11번째 전]"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_999999"
+                    android:letterSpacing="-0.02"
+                    android:text="월 화 수 목 금"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:letterSpacing="-0.02"
+                        android:text="7분 42초"
+                        android:textColor="#333333"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                        android:letterSpacing="-0.02"
+                        android:text="[11번째 전]"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/color_E6E6E6"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_round_area_6"
+                    android:backgroundTint="@color/color_01CAFF"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="2sp"
+                    android:text="알림 ON"/>
+                
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="1dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_round_area_6"
+                    android:backgroundTint="@color/color_F2F2F2"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:textSize="18dp"
+                    android:textColor="@color/color_999999"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="2sp"
+                    android:text="알림 설정"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

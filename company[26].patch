@@ -1,0 +1,3324 @@
+Index: app/src/main/java/com/example/daegurobus/BusDetailActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/BusDetailActivity.java b/app/src/main/java/com/example/daegurobus/BusDetailActivity.java
+--- a/app/src/main/java/com/example/daegurobus/BusDetailActivity.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/BusDetailActivity.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -12,8 +12,10 @@
+ import android.os.Parcelable;
+ import android.text.TextUtils;
+ import android.view.View;
++import android.widget.ScrollView;
+ 
+ import com.example.daegurobus.adapter.BusDetailAdapter;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.AuthBaseInterface;
+ import com.example.daegurobus.client.resultInterface.BusDetailInterface;
+@@ -21,13 +23,13 @@
+ import com.example.daegurobus.model.BusDetailInfo;
+ import com.example.daegurobus.model.BusDetailInfo1;
+ import com.example.daegurobus.model.BusDetailTop;
+-import com.example.daegurobus.widget.CenterLayoutManager;
++
+ 
+ 
+ import java.util.ArrayList;
+ 
+ public class BusDetailActivity extends BaseActivity implements
+-        NestedScrollView.OnScrollChangeListener {
++        View.OnScrollChangeListener {
+ 
+     private ActivityBusDetailBinding binding;
+     private BusDetailAdapter mAdapter;
+@@ -98,7 +100,9 @@
+     private void initRecyclerView(String keyword) {
+         showLoadingView();
+ 
+-        presenter.busDetail(keyword, new BusDetailInterface() {
++        String query = "1"+DEFINE.FD_DELIMETER + keyword;
++
++        presenter.busDetail(query, new BusDetailInterface() {
+             @SuppressLint("NonConstantResourceId")
+             @Override
+             public void success(BusDetailTop busDetailTop, ArrayList<BusDetailInfo> busDetailInfo, ArrayList<BusDetailInfo1> busDetailInfo1) {
+@@ -146,8 +150,11 @@
+                     @Override
+                     public void onClick(View v) {
+ 
++                        String query = "1" + DEFINE.FD_DELIMETER+ busDetailTop.getRouteId() +DEFINE.FD_DELIMETER+DEFINE.FD_DELIMETER+DEFINE.FD_DELIMETER;
++
++
+                         if (isButtonPressed) {
+-                            presenter.bookmarkInsert("1", busDetailTop.getRouteId(), "", "", "", new AuthBaseInterface<String>() {
++                            presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                                 @Override
+                                 public void success(String item) {
+                                     binding.imBookmark.setImageResource(R.drawable.ic_on_star_36_pt);
+@@ -162,7 +169,7 @@
+                                 }
+                             });
+                         } else {
+-                            presenter.bookmarkDelete("1", busDetailTop.getRouteId(), "", "", "", new AuthBaseInterface<String>() {
++                            presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                                 @Override
+                                 public void success(String item) {
+                                     binding.imBookmark.setImageResource(R.drawable.ic_off_line_star_20_pt);
+@@ -231,41 +238,7 @@
+         startActivity(intent);
+     }
+ 
+-    private void bookmark(boolean isButtonPressed, String gbn, String Id) {
+-
+-        if (isButtonPressed) {
+-            presenter.bookmarkInsert(gbn, Id, Id, "", "", new AuthBaseInterface<String>() {
+-                @Override
+-                public void success(String item) {
+-                    binding.imBookmark.setImageResource(R.drawable.ic_on_star_36_pt);
+-                }
+-
+-                @Override
+-                public void error(String message) {
+-                }
+-
+-                @Override
+-                public void errorAuth() {
+-                }
+-            });
+-        } else {
+-            presenter.bookmarkDelete(gbn, Id, Id, "", "", new AuthBaseInterface<String>() {
+-                @Override
+-                public void success(String item) {
+-                    binding.imBookmark.setImageResource(R.drawable.ic_off_line_star_20_pt);
+-                }
+ 
+-                @Override
+-                public void error(String message) {
+-                }
+-
+-                @Override
+-                public void errorAuth() {
+-                }
+-            });
+-        }
+-        isButtonPressed = !isButtonPressed;
+-    }
+ 
+     private void showLoadingView() {
+         //allViewGone();
+@@ -288,9 +261,7 @@
+ 
+     }
+ 
+-
+-    public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int
+-            oldScrollY) {
++    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+         if (scrollY > oldScrollY) {
+             // Scroll down -> hide FloatingActionButton
+             binding.ivFloating.setVisibility(View.VISIBLE);
+@@ -300,6 +271,8 @@
+         }
+     }
+ 
++
++
+     private void initAutoRefresh() {
+ 
+         //30초마다 실행
+Index: app/src/main/java/com/example/daegurobus/BusRouteMapActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/BusRouteMapActivity.java b/app/src/main/java/com/example/daegurobus/BusRouteMapActivity.java
+--- a/app/src/main/java/com/example/daegurobus/BusRouteMapActivity.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/BusRouteMapActivity.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -16,10 +16,13 @@
+ import android.location.Location;
+ import android.location.LocationListener;
+ import android.location.LocationManager;
++import android.os.Build;
+ import android.os.Bundle;
++import android.os.Handler;
+ import android.view.Gravity;
+ import android.view.View;
+ 
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.RecentBusLocationInterface;
+ import com.example.daegurobus.model.BusDetailInfo;
+@@ -47,7 +50,9 @@
+ 
+ import java.util.ArrayList;
+ import java.util.HashMap;
++import java.util.List;
+ import java.util.Map;
++import java.util.Timer;
+ 
+ public class BusRouteMapActivity extends AppCompatActivity {
+ 
+@@ -73,8 +78,8 @@
+ 
+     private Marker currentSelectedMarker = null;
+ 
+-    private Marker markerUp;
+-    private Marker markerDown;
++    private final Handler handler = new Handler();
++    private Timer timer = new Timer();
+ 
+     private final String GAN = "1";
+     private final String JI = "2";
+@@ -82,8 +87,11 @@
+     private final String FAST = "4";
+     private final String WORK = "5";
+ 
++    private List<Marker> markers = new ArrayList<>();
++
+     private ArrayList<BusDetailInfo> busDetailInfo;
+     private BusDetailTop busDetailTop;
++    private String gbn = "1";
+ 
+ 
+     @Override
+@@ -152,15 +160,16 @@
+     private void initLayout() {
+         geoPresenter = new GeoNetworkPresenter(this);
+         Presenter = new NetworkPresenter(this);
+-        binding.ivBusLeft1.setOnClickListener(view -> finish());
+-        binding.ivBusRight1.setOnClickListener(view -> startActivity(new Intent(BusRouteMapActivity.this, BusMainActivity.class)));
+-        binding.ivFloating.setOnClickListener(View -> {
+-        });
+         initNaverMap();
+         initTitleView();
++        initAutoRefresh();
+     }
+ 
+     private void initTitleView() {
++        binding.ivBusLeft1.setOnClickListener(view -> finish());
++        binding.ivBusRight1.setOnClickListener(view -> startActivity(new Intent(BusRouteMapActivity.this, BusMainActivity.class)));
++        binding.ivFloating.setOnClickListener(View -> {
++        });
+         binding.tvBusRouteNum.setText(busDetailTop.getRouteNum());
+ 
+         switch (busDetailTop.getRouteTp()) {
+@@ -192,6 +201,12 @@
+ 
+         binding.tvIntervalTime.setText("평일 " + time + "분 간격");
+         binding.tvNodeName.setText(busDetailTop.getStartnodeName() + "↔" + busDetailTop.getEndnodeName());
++        binding.loBusRight2.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                busLocation(gbn);
++            }
++        });
+     }
+ 
+ 
+@@ -252,50 +267,74 @@
+ 
+         for (int i = 0; i < infoSize; i++) {
+             Marker markerUp = new Marker();
++            Marker upBookMarker = new Marker();
+             Marker markerDown = new Marker();
++            Marker downBookMarker = new Marker();
+ 
+ 
+             if ("0".equals(busDetailInfo.get(i).getUpdownCd())) {
+-                markerUp.setPosition(new LatLng(stationLat[i], stationLon[i]));
+-                markerUp.setIcon(OverlayImage.fromResource(R.drawable.ic_d_down_stop_25_pt));
+-                markerUp.setMap(naverMap);
+-                markerUp.setTag("markerUp");
+-                markerUp.setOnClickListener(markerClickListener);
++                if ("Y".equals(busDetailInfo.get(i).getBookmarkYn())){
++                    upBookMarker.setPosition(new LatLng(stationLat[i], stationLon[i]));
++                    upBookMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_d_down_stop_25_pt));
++                    upBookMarker.setMap(naverMap);
++                    upBookMarker.setTag("upBookMarker");
++                    upBookMarker.setOnClickListener(markerClickListener);
++                }else {
++                    markerUp.setPosition(new LatLng(stationLat[i], stationLon[i]));
++                    markerUp.setIcon(OverlayImage.fromResource(R.drawable.ic_d_down_stop_25_pt));
++                    markerUp.setMap(naverMap);
++                    markerUp.setTag("markerUp");
++                    markerUp.setOnClickListener(markerClickListener);
+ 
+-                //첫번쨰 상행 저장
+-                if (firstMarkerUp == null) {
+-                    firstMarkerUp = markerUp;
+-                }
+-                if (markerUp != firstMarkerUp) {
+-                    markerUp.setMinZoom(14);
+-                    markerUp.setMinZoomInclusive(false);
++                    //첫번쨰 상행 저장
++                    if (firstMarkerUp == null) {
++                        firstMarkerUp = markerUp;
++                    }
++                    if (markerUp != firstMarkerUp) {
++                        markerUp.setMinZoom(14);
++                        markerUp.setMinZoomInclusive(false);
++                    }
+                 }
+             } else {
+-                markerDown.setPosition(new LatLng(stationLat[i], stationLon[i]));
+-                markerDown.setIcon(OverlayImage.fromResource(R.drawable.ic_d_up_stop_25pt));
+-                markerDown.setMap(naverMap);
+-                markerDown.setTag("markerDown");
+-                markerDown.setOnClickListener(markerClickListener);
++                if ("Y".equals(busDetailInfo.get(i).getBookmarkYn())){
++                    downBookMarker.setPosition(new LatLng(stationLat[i], stationLon[i]));
++                    downBookMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_d_up_stop_25_pt));
++                    downBookMarker.setMap(naverMap);
++                    downBookMarker.setTag("downBookMarker");
++                    downBookMarker.setOnClickListener(markerClickListener);
++
++                }else{
++                    markerDown.setPosition(new LatLng(stationLat[i], stationLon[i]));
++                    markerDown.setIcon(OverlayImage.fromResource(R.drawable.ic_d_up_stop_25pt));
++                    markerDown.setMap(naverMap);
++                    markerDown.setTag("markerDown");
++                    markerDown.setOnClickListener(markerClickListener);
+ 
+-                //첫번쨰 하행 저장
+-                if (firstMarkerDown == null) {
+-                    firstMarkerDown = markerDown;
+-                }
+-                if (markerDown != firstMarkerDown) {
+-                    markerDown.setMinZoom(14);
+-                    markerDown.setMinZoomInclusive(false);
++                    //첫번쨰 하행 저장
++                    if (firstMarkerDown == null) {
++                        firstMarkerDown = markerDown;
++                    }
++                    if (markerDown != firstMarkerDown) {
++                        markerDown.setMinZoom(14);
++                        markerDown.setMinZoomInclusive(false);
++                    }
+                 }
+             }
+ 
+         }
+-        busLocation();
++
++        busLocation(gbn);
+     }
+ 
+-    private void busLocation() {
+-        Presenter.recentBusLocation("1", routeId, new RecentBusLocationInterface() {
++    private void busLocation(String gbn) {
++
++        String query = gbn + DEFINE.FD_DELIMETER + routeId;
++        Presenter.recentBusLocation(query, new RecentBusLocationInterface() {
+             @Override
+             public void success(ArrayList<BusDetailInfo1> items) {
+ 
++                clearAllMarkers();
++
+                 HashMap<String, BusDetailInfo1> vehicleLocationMap = new HashMap<>();
+ 
+                 for (BusDetailInfo1 item: items) {
+@@ -309,82 +348,48 @@
+ 
+                     BusDetailInfo1 item = vehicleLocationMap.get(stationInfo.getStationId());
+ 
+-
+                     String lat = stationInfo.getStationLat();
+                     String lon = stationInfo.getStationLon();
+ 
+-//                    InfoWindow infoWindow = new InfoWindow();
+-//                    infoWindow.setAdapter(new InfoWindow.DefaultTextAdapter(getApplication())
+-//                    {
+-//                        @NonNull
+-//                        @Override
+-//                        public CharSequence getText(@NonNull InfoWindow infoWindow)
+-//                        {
+-//                            return item.getBusNum();
+-//                        }
+-//                    });
+-//
++                    InfoWindow infoWindow = new InfoWindow();
++                    infoWindow.setAdapter(new InfoWindow.DefaultTextAdapter(getApplication())
++                    {
++                        @NonNull
++                        @Override
++                        public CharSequence getText(@NonNull InfoWindow infoWindow)
++                        {
++                            return item.getBusNum();
++                        }
++                    });
++
+                     Marker busMarker = new Marker();
+                     busMarker.setPosition(new LatLng(Double.parseDouble(lat), Double.parseDouble(lon)));
+-//                    infoWindow.open(busMarker);
++                    infoWindow.open(busMarker);
+ 
+                     switch (busDetailTop.getRouteTp()) {
+                         case GAN:
+-                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_blue));
++                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_36_pt_blue));
+                             break;
+                         case JI:
+-                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_yellow));
++                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_36_pt_yellow));
+                             break;
+                         case SUN:
+-                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_green));
++                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_36_pt_green));
+                             break;
+                         case FAST:
+-                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_dark_red));
++                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_36_pt_red));
+                             break;
+                         case WORK:
+-                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_light_green));
++                            busMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_36_pt_light_green));
+                             break;
+                     }
+ 
+                     busMarker.setMinZoom(14);
+                     busMarker.setMinZoomInclusive(false);
+                     busMarker.setMap(naverMap);
++                    markers.add(busMarker);
+                 }
+ 
+-//
+-//
+-//                for (int i = 0; i < infoSize; i++) {
+-//                    Marker markerBus = new Marker();
+-//
+-//                    if (busDetailInfo.get(i).getStationId().equals(items.get(items.size()).getStationId1())){
+-//                        String lat = busDetailInfo.get(i).getStationLat();
+-//                        String lon = busDetailInfo.get(i).getStationLon();
+-//
+-//                        markerBus.setPosition(new LatLng(Double.parseDouble(lat), Double.parseDouble(lon)));
+-//                        switch (busDetailTop.getRouteTp()) {
+-//                            case GAN:
+-//                                markerBus.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_blue));
+-//                                break;
+-//                            case JI:
+-//                                markerBus.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_yellow));
+-//                                break;
+-//                            case SUN:
+-//                                markerBus.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_green));
+-//                                break;
+-//                            case FAST:
+-//                                markerBus.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_dark_red));
+-//                                break;
+-//                            case WORK:
+-//                                markerBus.setIcon(OverlayImage.fromResource(R.drawable.ic_bus_color_20_pt_light_green));
+-//                                break;
+-//                        }
+-//                        markerBus.setMinZoom(14);
+-//                        markerBus.setMinZoomInclusive(false);
+-//                        markerBus.setMap(naverMap);
+-//
+-//
+-//                    }
+-//                }
+             }
+         });
+     }
+@@ -392,6 +397,7 @@
+     private Overlay.OnClickListener markerClickListener = new Overlay.OnClickListener() {
+         @Override
+         public boolean onClick(@NonNull Overlay overlay) {
++
+             Marker clickedMarker = (Marker) overlay;
+             // 마커 원래대로 변경
+             if (currentSelectedMarker != null) {
+@@ -399,6 +405,10 @@
+                     currentSelectedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_d_down_stop_25_pt));
+                 } else if (currentSelectedMarker.getTag().equals("markerDown")) {
+                     currentSelectedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_d_up_stop_25pt));
++                } else if (currentSelectedMarker.getTag().equals("upBookMarker")) {
++                    currentSelectedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_d_up_stop_25_pt));
++                } else if (currentSelectedMarker.getTag().equals("downBookMarker")) {
++                    currentSelectedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_d_down_stop_25_pt));
+                 }
+             }
+ 
+@@ -416,6 +426,22 @@
+                 double clickedLatitude = markerPosition.latitude;
+                 double clickedLongitude = markerPosition.longitude;
+                 stationInfo(clickedLatitude, clickedLongitude);
++
++                naverMap.moveCamera(CameraUpdate.scrollTo(markerPosition));
++            }else if (clickedMarker.getTag().equals("upBookMarker")) {
++                clickedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_select_stop_40_pt));
++                LatLng markerPosition = clickedMarker.getPosition();
++                double clickedLatitude = markerPosition.latitude;
++                double clickedLongitude = markerPosition.longitude;
++                stationInfo(clickedLatitude, clickedLongitude);
++
++                naverMap.moveCamera(CameraUpdate.scrollTo(markerPosition));
++            }else if (clickedMarker.getTag().equals("downBookMarker")) {
++                clickedMarker.setIcon(OverlayImage.fromResource(R.drawable.ic_f_select_stop_40_pt));
++                LatLng markerPosition = clickedMarker.getPosition();
++                double clickedLatitude = markerPosition.latitude;
++                double clickedLongitude = markerPosition.longitude;
++                stationInfo(clickedLatitude, clickedLongitude);
+ 
+                 naverMap.moveCamera(CameraUpdate.scrollTo(markerPosition));
+             }
+@@ -483,8 +509,20 @@
+                     } else {
+                         binding.igBookmark.setImageResource(R.drawable.common_off_star_40);
+                     }
+-                }
++
++                    String stationId = busDetailInfo.get(i).getStationId();
+ 
++                    binding.loDetailBtn.setVisibility(View.VISIBLE);
++                    binding.loDetailBtn.setOnClickListener(new View.OnClickListener() {
++                        @Override
++                        public void onClick(View v) {
++                            Intent intent;
++                            intent = new Intent(v.getContext(), BusStationDetailActivity.class);
++                            intent.putExtra("stationId", stationId);
++                            v.getContext().startActivity(intent);
++                        }
++                    });
++                }
+ 
+             }
+         }
+@@ -495,6 +533,7 @@
+         geoPresenter.RouteLine(SavedKeyword, new StationLocationInterface() {
+             @Override
+             public void success(ArrayList<ArrayList<Double>> routeAll, ArrayList<ArrayList<Double>> routeTop, ArrayList<ArrayList<Double>> routeBottom) {
++
+                 ArrayList<LatLng> latLngAll = new ArrayList<>();
+                 ArrayList<LatLng> latLngTop = new ArrayList<>();
+                 ArrayList<LatLng> latLngBottom = new ArrayList<>();
+@@ -603,4 +642,33 @@
+     }
+ 
+ 
+-}
+\ No newline at end of file
++    private void initAutoRefresh() {
++
++        //30초 마다 반복
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
++            handler.postDelayed(new Runnable() {
++                @Override
++                public void run() {
++                    try {
++                        busLocation(gbn);
++                        handler.postDelayed(this, 30000);
++                    } catch (Exception e) {
++                        System.out.println(e);
++                    }
++
++                }
++            }, 0, 30000);
++        }
++
++    }
++
++    private void clearAllMarkers() {
++        // 마커를 지도에서 제거
++        for (Marker marker : markers) {
++            marker.setMap(null);
++        }
++        markers.clear();
++    }
++}
++
++
+Index: app/src/main/java/com/example/daegurobus/BusStationDetailActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/BusStationDetailActivity.java b/app/src/main/java/com/example/daegurobus/BusStationDetailActivity.java
+--- a/app/src/main/java/com/example/daegurobus/BusStationDetailActivity.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/BusStationDetailActivity.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -17,6 +17,7 @@
+ 
+ import com.example.daegurobus.adapter.BusStationDetailArriveAdapter;
+ import com.example.daegurobus.adapter.BusStationDetailInfoAdapter;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.model.BusDetailInfo;
+ import com.example.daegurobus.model.StationDetailInfoSub;
+@@ -220,7 +221,9 @@
+             gbn = SORT_BY_ROUTE;
+ 
+         }
+-        presenter.busStationDetail(gbn, savedKeyword, new BusStationDetailInterface() {
++
++        String query = gbn +DEFINE.FD_DELIMETER +savedKeyword;
++        presenter.busStationDetail(query, new BusStationDetailInterface() {
+             @Override
+             public void success(StationDetailTop stationDetailTop, ArrayList<StationDetailInfo> stationDetailInfo, ArrayList<StationDetailInfoSub> stationDetailInfoSub) {
+ 
+@@ -228,7 +231,27 @@
+                 List<String> tpList = new ArrayList<>();
+ 
+                 for (StationDetailInfo item : stationDetailInfo) {
+-                    tpList.add(item.getRouteTp().replace("버스", ""));
++                    switch (item.getRouteTp()) {
++                        case "1":
++                            tpList.add("간선");
++                            break;
++                        case "2":
++                            tpList.add("지선");
++                            break;
++                        case "3":
++                            tpList.add("순환");
++                            break;
++                        case "4":
++                            tpList.add("급행");
++                            break;
++                        case "5":
++                            tpList.add("출근");
++                            break;
++//                        case "6":
++//                            tpList.add("군위");
++//                            break;
++
++                    }
+                 }
+                 Set<String> set = new HashSet<>(tpList);
+                 List<String> tpListDeduplication = new ArrayList<>(set);
+@@ -271,10 +294,12 @@
+         binding.rlBookmark.setOnClickListener(new View.OnClickListener() {
+             boolean isButtonPressed = false;
+ 
++            String query = "2"+ DEFINE.FD_DELIMETER + ""+ DEFINE.FD_DELIMETER +  stationDetailTop.getStationId()+ DEFINE.FD_DELIMETER +  ""+ DEFINE.FD_DELIMETER +  "";
++
+             @Override
+             public void onClick(View v) {
+                 if (isButtonPressed) {
+-                    presenter.bookmarkInsert("2", "", stationDetailTop.getStationId(), "", "", new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             binding.imBookmark.setImageResource(R.drawable.ic_on_line_black_star_20_pt);
+@@ -291,7 +316,7 @@
+                         }
+                     });
+                 } else {
+-                    presenter.bookmarkDelete("2", "", stationDetailTop.getStationId(), "", "", new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             binding.imBookmark.setImageResource(R.drawable.ic_off_line_black_star_20_pt);
+Index: app/src/main/java/com/example/daegurobus/BusStationMapActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/BusStationMapActivity.java b/app/src/main/java/com/example/daegurobus/BusStationMapActivity.java
+--- a/app/src/main/java/com/example/daegurobus/BusStationMapActivity.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/BusStationMapActivity.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -12,6 +12,8 @@
+ import android.view.View;
+ 
+ import com.example.daegurobus.adapter.BusStationMapAdapter;
++import com.example.daegurobus.client.DEFINE;
++import com.example.daegurobus.client.resultInterface.BusStationAuto;
+ import com.example.daegurobus.client.resultInterface.StationSurroundInfo;
+ 
+ import com.example.daegurobus.client.NetworkPresenter;
+@@ -33,7 +35,7 @@
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-public class BusStationMapActivity extends AppCompatActivity {
++public class BusStationMapActivity extends BaseActivity {
+ 
+     private ActivityBusStationMapBinding binding;
+     private BusStationMapAdapter Adapter;
+@@ -185,15 +187,16 @@
+     }
+ 
+ 
+-    private void surroundInfo(String query) {
++    private void surroundInfo(String jobCode) {
+ 
+         String lon = Double.toString(stationLon);
+         String lat = Double.toString(stationLat);
+         if (gbn == null) {
+-            query = "0";
++            jobCode = "0";
+ 
+         }
+-        presenter.stationSurroundingInfo(query, lon, lat, new StationSurroundInfo() {
++        String query = jobCode + DEFINE.FD_DELIMETER + lon + DEFINE.FD_DELIMETER + lat;
++        presenter.stationSurroundingInfo(query, new StationSurroundInfo() {
+             @Override
+             public void success(ArrayList<StationNearByInfo> items) {
+                 clearAllMarkers();
+@@ -245,15 +248,15 @@
+     }
+ 
+     private void initStationInfo() {
+-        presenter.busStationSearchResult(stationId, new BusStationResultInterface() {
++        String query = "3"+ DEFINE.FD_DELIMETER + stationId;
++        presenter.getStationList(query, new BusStationAuto() {
+             @Override
+-            public void success(ArrayList<stationResult> busStationResult) {
++            public void success(ArrayList<stationResult> stationList) {
++                binding.tvStationName.setText(stationList.get(0).getStationName());
++                binding.tvStationNo.setText(stationList.get(0).getStationNo());
++                binding.tvStationNext.setText(stationList.get(0).getStationDirection());
+ 
+-                binding.tvStationName.setText(busStationResult.get(0).getStationName());
+-                binding.tvStationNo.setText(busStationResult.get(0).getStationNo());
+-                binding.tvStationNext.setText(busStationResult.get(0).getStationDirection());
+-
+-                switch (busStationResult.get(0).getSubwayNum()) {
++                switch (stationList.get(0).getSubwayNum()) {
+                     case "1":
+                         binding.tvSubwayNum1.setVisibility(View.VISIBLE);
+                         binding.tvSubwayNum2.setVisibility(View.GONE);
+@@ -293,7 +296,8 @@
+             }
+ 
+             @Override
+-            public void error(String message) {
++            public void error(String msg) {
++
+             }
+         });
+     }
+Index: app/src/main/java/com/example/daegurobus/adapter/BusDetailAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/BusDetailAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/BusDetailAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/BusDetailAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/BusDetailAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -13,6 +13,7 @@
+ 
+ import com.example.daegurobus.BusStationDetailActivity;
+ import com.example.daegurobus.R;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.AuthBaseInterface;
+ import com.example.daegurobus.databinding.BusDetailListBinding;
+@@ -148,12 +149,14 @@
+ 
+         holder.binding.igBookmark.setOnClickListener(new View.OnClickListener() {
+             boolean isButtonPressed = false;
++
++            String query = "2"+ DEFINE.FD_DELIMETER + ""+ DEFINE.FD_DELIMETER +item.getStationId()+ DEFINE.FD_DELIMETER +""+ DEFINE.FD_DELIMETER +"";
+             @Override
+             public void onClick(View v) {
+                 presenter = new NetworkPresenter(context);
+ 
+                 if (isButtonPressed) {
+-                    presenter.bookmarkInsert("2", "",item.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.common_on_star_40);
+@@ -168,7 +171,7 @@
+                         }
+                     });
+                 } else {
+-                    presenter.bookmarkDelete("2", "",item.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.common_off_star_40);
+Index: app/src/main/java/com/example/daegurobus/adapter/BusStationAtAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/BusStationAtAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/BusStationAtAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/BusStationAtAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/BusStationAtAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -11,18 +11,19 @@
+ import com.example.daegurobus.R;
+ import com.example.daegurobus.databinding.BusListDropDownBinding;
+ import com.example.daegurobus.model.BusStation;
++import com.example.daegurobus.model.stationResult;
+ import com.example.daegurobus.util.BasicUtil;
+ 
+ import java.util.ArrayList;
+ 
+ public class BusStationAtAdapter extends RecyclerView.Adapter<BusStationAtAdapter.MyViewHolder> {
+ 
+-    private ArrayList<BusStation> data;
++    private ArrayList<stationResult> data;
+     private Context context;
+ 
+     private String keyword;
+ 
+-    public BusStationAtAdapter (Context context, ArrayList<BusStation> data){
++    public BusStationAtAdapter (Context context, ArrayList<stationResult> data){
+         this.context = context;
+         this.data = data;
+     }
+@@ -35,19 +36,19 @@
+ 
+     @Override
+     public void onBindViewHolder(BusStationAtAdapter.MyViewHolder holder, int position){
+-        BusStation item = data.get(position);
++        stationResult item = data.get(position);
+ 
+         holder.binding.busListName.setText(item.getStationName());
+-        holder.binding.tvStart.setText(item.getStationNext());
++        holder.binding.tvStart.setText(item.getStationDirection());
+ 
+         holder.binding.busListName.setText(BasicUtil.convertHighlightText(item.getStationName(), keyword,context.getColor(R.color.color_01CAFF)));
+ 
+         holder.itemView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                String keyword = item.getStationName();
++                item.getStationName();
+ 
+-                mListener.onItemClick(v,keyword);
++                mListener.onItemClick(v, item.getStationName(), item.getStationId());
+ 
+             }
+         });
+@@ -62,7 +63,7 @@
+     }
+ 
+     public interface OnItemClickListener {
+-        void onItemClick(View v, String keyword) ;
++        void onItemClick(View v, String keyword, String stationId) ;
+     }
+     public int getItemCount() {
+         return data.size();
+Index: app/src/main/java/com/example/daegurobus/adapter/BusStationDetailArriveAdapter.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailArriveAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailArriveAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailArriveAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailArriveAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -13,6 +13,7 @@
+ 
+ import com.example.daegurobus.R;
+ 
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.model.StationDetailInfoSub;
+ import com.example.daegurobus.model.StationDetailTop;
+@@ -82,10 +83,12 @@
+         holder.binding.imBookmark.setOnClickListener(new View.OnClickListener() {
+             boolean isButtonPressed = false;
+ 
++            String query = "3"+ DEFINE.FD_DELIMETER + item.getRouteId()+ DEFINE.FD_DELIMETER + stationDetailTop.getStationId()+ DEFINE.FD_DELIMETER + item.getUpDownCd()+ DEFINE.FD_DELIMETER +item.getStationOrd();
++
+             @Override
+             public void onClick(View v) {
+                 if (isButtonPressed) {
+-                    presenter.bookmarkDelete("3", item.getRouteId(), stationDetailTop.getStationId(), item.getUpDownCd(), item.getStationOrd(), new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.imBookmark.setImageResource(R.drawable.common_off_star_40);
+@@ -100,7 +103,7 @@
+                         }
+                     });
+                 } else {
+-                    presenter.bookmarkInsert("3", item.getRouteId(), stationDetailTop.getStationId(), item.getUpDownCd(), item.getStationOrd(), new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.imBookmark.setImageResource(R.drawable.common_on_star_40);
+Index: app/src/main/java/com/example/daegurobus/adapter/BusStationDetailInfoAdapter.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailInfoAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailInfoAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailInfoAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/BusStationDetailInfoAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -11,6 +11,7 @@
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.example.daegurobus.R;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.model.StationDetailTop;
+ import com.example.daegurobus.client.resultInterface.AuthBaseInterface;
+@@ -106,11 +107,12 @@
+         presenter = new NetworkPresenter(context);
+         holder.binding.imBookmark.setOnClickListener(new View.OnClickListener() {
+             boolean isButtonPressed = false;
++            String query = "3"+ DEFINE.FD_DELIMETER + item.getRouteId()+DEFINE.FD_DELIMETER + stationDetailTop.getStationId()+DEFINE.FD_DELIMETER +""+ DEFINE.FD_DELIMETER +"";
+ 
+             @Override
+             public void onClick(View v) {
+                 if (isButtonPressed) {
+-                    presenter.bookmarkInsert("3", item.getRouteId(), stationDetailTop.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.imBookmark.setImageResource(R.drawable.common_on_star_40);
+@@ -125,7 +127,7 @@
+                         }
+                     });
+                 } else {
+-                    presenter.bookmarkDelete("3", item.getRouteId(), stationDetailTop.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.imBookmark.setImageResource(R.drawable.common_off_star_40);
+Index: app/src/main/java/com/example/daegurobus/adapter/BusStationRcAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/BusStationRcAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/BusStationRcAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/BusStationRcAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/BusStationRcAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -14,6 +14,7 @@
+ 
+ import com.example.daegurobus.R;
+ import com.example.daegurobus.BusStationDetailActivity;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.AuthBaseInterface;
+ import com.example.daegurobus.databinding.BusListStationBinding;
+@@ -123,10 +124,12 @@
+         holder.binding.igBookmark.setOnClickListener(new View.OnClickListener() {
+ 
+             boolean isButtonPressed = false;
++
++            String query = "2"+ DEFINE.FD_DELIMETER +""+ DEFINE.FD_DELIMETER +  item.getStationId()+ DEFINE.FD_DELIMETER +""+ DEFINE.FD_DELIMETER +"";
+             @Override
+             public void onClick(View v) {
+                 if (isButtonPressed) {
+-                    presenter.bookmarkInsert("2", "",  item.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.ic_on_star_40_pt);
+@@ -139,7 +142,7 @@
+                         }
+                     });
+                 }else {
+-                    presenter.bookmarkDelete("2", "", item.getStationId(),"","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.ic_off_star_40_pt);
+Index: app/src/main/java/com/example/daegurobus/adapter/RouteBookmarkAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/RouteBookmarkAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/RouteBookmarkAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/RouteBookmarkAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/RouteBookmarkAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -19,10 +19,8 @@
+ 
+ import java.util.ArrayList;
+ 
+-public class RouteBookmarkAdapter extends RecyclerView.Adapter<RouteBookmarkAdapter.ViewHolder> {
+-
+-    private ArrayList<RouteBookmark> data;
+-    private Context context;
++//public class RouteBookmarkAdapter extends RecyclerView.Adapter<RouteBookmarkAdapter.ViewHolder> {
++public class RouteBookmarkAdapter extends BaseRecyclerViewAdapter<RouteBookmark, RouteBookmarkAdapter.ViewHolder> {
+ 
+     private final String GAN = "1";
+     private final String JI = "2";
+@@ -31,14 +29,21 @@
+     private final String WORK = "5";
+     private final String GUNWI = "6";
+ 
++    /*
+     public RouteBookmarkAdapter(Context context,ArrayList<RouteBookmark> data){
+         this.context = context;
+         this.data = data;
+     }
++    */
++    public RouteBookmarkAdapter(Context context) {
++        super(context);
++    }
++
+ 
+     @Override
+-    public void onBindViewHolder(RouteBookmarkAdapter.ViewHolder holder, int position) {
+-        RouteBookmark item = data.get(position);
++    public void onBindView(ViewHolder holder, int position) {
++        RouteBookmark item = getItem(position);
++
+         if("".equals(item.getRouteNum2())){
+             holder.binding.tvRouteNum.setText(item.getRouteNum());
+         }else{
+@@ -95,12 +100,6 @@
+ 
+     }
+ 
+-
+-    @Override
+-    public int getItemCount() {
+-        return data.size();
+-    }
+-
+     public class ViewHolder extends RecyclerView.ViewHolder {
+         private BusListMainRouteBookmarkBinding binding;
+ 
+Index: app/src/main/java/com/example/daegurobus/adapter/busSearchRcAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/adapter/busSearchRcAdapter.java b/app/src/main/java/com/example/daegurobus/adapter/busSearchRcAdapter.java
+--- a/app/src/main/java/com/example/daegurobus/adapter/busSearchRcAdapter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/adapter/busSearchRcAdapter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -14,6 +14,7 @@
+ import com.example.daegurobus.BusDetailActivity;
+ import com.example.daegurobus.R;
+ 
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.AuthBaseInterface;
+ import com.example.daegurobus.databinding.BusListSearchBinding;
+@@ -120,10 +121,12 @@
+         holder.binding.igBookmark.setOnClickListener(new View.OnClickListener() {
+ 
+             boolean isButtonPressed = false;
++
++            String query = "1"+ DEFINE.FD_DELIMETER +item.getRouteId()+ DEFINE.FD_DELIMETER + ""+ DEFINE.FD_DELIMETER +""+ DEFINE.FD_DELIMETER +"";
+             @Override
+             public void onClick(View v) {
+                 if (isButtonPressed) {
+-                    presenter.bookmarkDelete("1", item.getRouteId(), "","","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkDelete(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.ic_off_star_40_pt);
+@@ -136,7 +139,7 @@
+                         }
+                     });
+                 }else {
+-                    presenter.bookmarkInsert("1", item.getRouteId(), "","","", new AuthBaseInterface<String>() {
++                    presenter.bookmarkInsert(query, new AuthBaseInterface<String>() {
+                         @Override
+                         public void success(String item) {
+                             holder.binding.igBookmark.setImageResource(R.drawable.ic_on_star_40_pt);
+Index: app/src/main/java/com/example/daegurobus/client/DEFINE.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/client/DEFINE.java b/app/src/main/java/com/example/daegurobus/client/DEFINE.java
+new file mode 100644
+--- /dev/null	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
++++ b/app/src/main/java/com/example/daegurobus/client/DEFINE.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -0,0 +1,33 @@
++package com.example.daegurobus.client;
++
++public class DEFINE {
++
++    public static String BASEURL = "https://bus-dev.daeguro.co.kr:9501/";
++
++    public static String DELIMETER = "\u0018";
++
++    public static String ROW_DELIMETER = "\u0019";
++
++    public static String TABLE_DELIMETER = "\u0014";
++    public static String SEMICOLON= ";";
++    public static String COMMA= ",";
++
++    public static String FD_DELIMETER = "\u0018";
++
++
++    public static String MCODE = "1";
++
++    public static String USER_TOKEN = "653500";
++    public static String GET_BUS_LIST = "20001";
++    public static String GET_BUS_DETAIL = "20004";
++    public static String GET_STATION_LIST = "20005";
++    public static String STATION_SEARCH_RESULT = "20006";
++    public static String STATION_DETAIL = "20007";
++    public static String INSERT_BOOKMARK = "20003";
++    public static String DELETE_BOOKMARK = "20008";
++    public static String GET_BUS_LOCATION_LIST = "20011";
++    public static String GET_NEARBY_PLACE_LIST = "20012";
++    public static String GET_MAIN_DATA = "20009";
++
++
++}
+Index: app/src/main/java/com/example/daegurobus/client/NetworkPresenter.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/client/NetworkPresenter.java b/app/src/main/java/com/example/daegurobus/client/NetworkPresenter.java
+--- a/app/src/main/java/com/example/daegurobus/client/NetworkPresenter.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/client/NetworkPresenter.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -1,5 +1,6 @@
+ package com.example.daegurobus.client;
+ 
++import android.app.DownloadManager;
+ import android.content.Context;
+ import android.os.Handler;
+ import android.os.Looper;
+@@ -50,30 +51,13 @@
+     private Context context;
+     private String gbn1;
+ 
+-    LocalDateTime currentTime = LocalDateTime.now();
+-
+-    ZoneId kr = ZoneId.of("Asia/Seoul");
+-    ZonedDateTime krZonedDateTime = currentTime.atZone(kr);
+-    ZoneId systemZoneId = TimeZone.getDefault().toZoneId();
+-    ZonedDateTime systemDateTime = krZonedDateTime.withZoneSameInstant(systemZoneId);
+-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+-    String formattedTime = systemDateTime.format(formatter);
+-
+-
+     public NetworkPresenter(Context context) {
+         this.context = context;
+     }
+ 
+     public void BusMainBookmark(String query, mainBookmarkInterface anInterface) {
+ 
+-
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(query);
+-        requestBus.setParamCount(1);
+-        requestBus.setProc("20009");
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_MAIN_DATA);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -82,192 +66,10 @@
+                     @Override
+                     public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+                         try {
+-                            StationApi result = response.body();
+-                            String str = result.getResultData();
+-                            String[] rows = str.split("\u0014");
+-
+-                            String row1 = rows[0];
+-
+-                            String[] top = row1.split("\u0019");
+-
+-                            ArrayList<RouteBookmark> routeBookmarkList = new ArrayList<>();
+-                            ArrayList<StationBookmark> stationBookmarkList = new ArrayList<>();
+-                            ArrayList<RouteStationBookmark> routeStationBookmarkList = new ArrayList<>();
+-                            ArrayList<StationDetailInfoSub> itemSub = new ArrayList<>();
+-
+-                            for (int a = 0; a < top.length; a++) {
+-                                String bus = top[a];
+-
+-                                String[] route = bus.split("\u0018");
+-                                String routeId = route[0];
+-                                String routeNum = route[1];
+-                                String routeNum2 = route[2];
+-                                String routeTp = route[3];
+-                                String startNodeName = route[4];
+-                                String endNodeName = route[5];
+-
+-                                RouteBookmark routeBookmark = new RouteBookmark();
+-                                routeBookmark.setRouteId(routeId);
+-                                routeBookmark.setRouteNum(routeNum);
+-                                routeBookmark.setRouteNum2(routeNum2);
+-                                routeBookmark.setRouteTp(routeTp);
+-                                routeBookmark.setStartnodeName(startNodeName);
+-                                routeBookmark.setEndtnodeName(endNodeName);
+-                                routeBookmarkList.add(routeBookmark);
+-                            }
+-
+-                            String row2 = rows[1];
+-                            String[] middle = row2.split("\u0019");
+-
+-                            for (int a = 1; a < middle.length; a++) {
+-                                String bus = middle[a];
+-
+-                                StationBookmark stationBookmark = new StationBookmark();
+-
+-                                String[] station = bus.split("\u0018");
+-                                String stationId = station[0];
+-                                String stationName = station[1];
+-                                String stationNo = station[2];
+-                                String stationDirection = station[3];
+-
+-                                if (station.length > 4) {
+-                                    String SUBWAY_NUM = station[4];
+-                                    stationBookmark.setSubwayNum(SUBWAY_NUM);
+-                                } else {
+-                                    stationBookmark.setSubwayNum(null);
+-                                }
+-
+-                                stationBookmark.setStationId(stationId);
+-                                stationBookmark.setStationName(stationName);
+-                                stationBookmark.setStationNo(stationNo);
+-                                stationBookmark.setStationDirection(stationDirection);
+-                                stationBookmarkList.add(stationBookmark);
+-                            }
+-
+-
+-                            String row3 = rows[2];
+-                            String[] bottom = row3.split("\u0019");
+-                            RouteStationBookmark routeStationBookmark = new RouteStationBookmark();
+-
+-                            for (int a = 1; a < bottom.length; a++) {
+-                                String bus = bottom[a];
+-
+-                                String[] routeStation = bus.split("\u0018");
+-                                String routeId = routeStation[0];
+-                                String routeNum = routeStation[1];
+-                                String routeNum2 = routeStation[2];
+-                                String routeTp = routeStation[3];
+-                                String routeDirection = routeStation[4];
+-                                String stationId = routeStation[5];
+-                                String stationName = routeStation[6];
+-                                String stationNo = routeStation[7];
+-                                String upDownCd = routeStation[8];
+-                                String stationOrd = routeStation[9];
+-                                String subStationLine = routeStation[10];
+-                                String minArriveTime = routeStation[11];
+-
+-                                if (routeStation.length > 12) {
+-                                    String ROUTE_INFO = routeStation[12];
+-                                    routeStationBookmark.setRouteInfo(ROUTE_INFO);
+-
+-                                } else {
+-                                    routeStationBookmark.setRouteInfo(null);
+-                                }
+-
+-                                routeStationBookmark.setRouteId(routeId);
+-                                routeStationBookmark.setRouteNum(routeNum);
+-                                routeStationBookmark.setRouteNum2(routeNum2);
+-                                routeStationBookmark.setRouteTp(routeTp);
+-                                routeStationBookmark.setRouteDirection(routeDirection);
+-                                routeStationBookmark.setStationId(stationId);
+-                                routeStationBookmark.setStationName(stationName);
+-                                routeStationBookmark.setStationNo(stationNo);
+-                                routeStationBookmark.setUpDownCd(upDownCd);
+-                                routeStationBookmark.setStationOrd(stationOrd);
+-                                routeStationBookmark.setSubStationLine(subStationLine);
+-                                routeStationBookmark.setMinArriveTime(minArriveTime);
+-                                routeStationBookmarkList.add(routeStationBookmark);
+-
+-                                StationDetailInfoSub infoSub = new StationDetailInfoSub();
+-
+-                                if (routeStationBookmark.getRouteInfo() == null) {
+-                                    infoSub.setRecentStationId(null);
+-                                    infoSub.setRecentStationName(null);
+-                                    infoSub.setRecentStationStopNum(null);
+-                                    infoSub.setStationTimeOfArrive(null);
+-                                    infoSub.setTimeTaken(null);
+-                                    infoSub.setRemainingStation(null);
+-                                    infoSub.setRouteLowFloorYn(null);
+-                                    infoSub.setRouteTrafficYn(null);
+-                                    infoSub.setRecentStationId1(null);
+-                                    infoSub.setRecentStationName1(null);
+-                                    infoSub.setRecentStationStopNum1(null);
+-                                    infoSub.setStationTimeOfArrive1(null);
+-                                    infoSub.setTimeTaken1(null);
+-                                    infoSub.setRemainingStation1(null);
+-                                    infoSub.setRouteLowFloorYn1(null);
+-                                    infoSub.setRouteTrafficYn1(null);
+-                                } else {
+-                                    String[] ROUTE_INFOs = routeStationBookmark.getRouteInfo().split(";");
+-                                    String row4 = ROUTE_INFOs[0];
+-
+-                                    String[] firstInfo = row4.split(",");
+-                                    String recentStationId = firstInfo[0];
+-                                    String recentStationName = firstInfo[1];
+-                                    String recentStationStopNum = firstInfo[2];
+-                                    String StationTimeOfArrive = firstInfo[3];
+-                                    String timeTaken = firstInfo[4];
+-                                    String REMAINING_STATION = firstInfo[5];
+-                                    String routeLowFloorYn = firstInfo[6];
+-                                    String routeTrafficYn = firstInfo[7];
+-
+-                                    infoSub.setRecentStationId(recentStationId);
+-                                    infoSub.setRecentStationName(recentStationName);
+-                                    infoSub.setRecentStationStopNum(recentStationStopNum);
+-                                    infoSub.setStationTimeOfArrive(StationTimeOfArrive);
+-                                    infoSub.setTimeTaken(timeTaken);
+-                                    infoSub.setRemainingStation(REMAINING_STATION);
+-                                    infoSub.setRouteLowFloorYn(routeLowFloorYn);
+-                                    infoSub.setRouteTrafficYn(routeTrafficYn);
+-
+-                                    if (ROUTE_INFOs.length > 1) {
+-                                        String row5 = ROUTE_INFOs[1];
+-                                        String[] endInfo = row5.split(",");
+-                                        String recentStationId1 = endInfo[0];
+-                                        String recentStationName1 = endInfo[1];
+-                                        String recentStationStopNum1 = endInfo[2];
+-                                        String StationTimeOfArrive1 = endInfo[3];
+-                                        String timeTaken1 = endInfo[4];
+-                                        String REMAINING_STATION1 = endInfo[5];
+-                                        String routeLowFloorYn1 = endInfo[6];
+-                                        String routeTrafficYn1 = endInfo[7];
+-
+-                                        infoSub.setRecentStationId1(recentStationId1);
+-                                        infoSub.setRecentStationName1(recentStationName1);
+-                                        infoSub.setRecentStationStopNum1(recentStationStopNum1);
+-                                        infoSub.setStationTimeOfArrive1(StationTimeOfArrive1);
+-                                        infoSub.setTimeTaken1(timeTaken1);
+-                                        infoSub.setRemainingStation1(REMAINING_STATION1);
+-                                        infoSub.setRouteLowFloorYn1(routeLowFloorYn1);
+-                                        infoSub.setRouteTrafficYn1(routeTrafficYn1);
+-                                    } else {
+-                                        infoSub.setRecentStationId1(null);
+-                                        infoSub.setRecentStationName1(null);
+-                                        infoSub.setRecentStationStopNum1(null);
+-                                        infoSub.setStationTimeOfArrive1(null);
+-                                        infoSub.setTimeTaken1(null);
+-                                        infoSub.setRemainingStation1(null);
+-                                        infoSub.setRouteLowFloorYn1(null);
+-                                        infoSub.setRouteTrafficYn1(null);
+-                                    }
+-                                }
+-                                itemSub.add(infoSub);
+-
+-
+-                            }
+-
+-
++                            /*
+                             anInterface.success(routeBookmarkList, stationBookmarkList, routeStationBookmarkList, itemSub);
++                            */
++                            anInterface.success(response);
+ 
+                         } catch (Exception e) {
+                             System.out.println(e);
+@@ -282,37 +84,31 @@
+     }
+ 
+ 
+-    public void BusAutoSearch(String gbn, String query, BusInterface anInterface) {
+-
++    public void GetBusList(String query, BusInterface anInterface) {
+ 
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + query);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20001");
+-
+-        gbn1 = gbn;
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_BUS_LIST);
+ 
+         Retrofit2Client
+                 .getClient(context)
+-                .busSearchAuto(requestBus)
++                .getBusList(requestBus)
+                 .enqueue(new Callback<StationApi>() {
+                     @Override
+                     public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+                         try {
+-                            if (gbn1 == "1") {
++                            String datalist = requestBus.getRequestData();
++                            String[] gbn = datalist.split(DEFINE.FD_DELIMETER);
++
++                            if ("1".equals(gbn[0])) {
+                                 StationApi result = response.body();
+                                 String str = result.getResultData();
+-                                String[] rows = str.split("\u0019");
++                                String[] rows = str.split(DEFINE.ROW_DELIMETER);
+ 
+                                 ArrayList<BusResultSearch> busSearchList = new ArrayList<>();
+ 
+                                 for (int i = 0; i < rows.length; i++) {
+                                     String row = rows[i];
+ 
+-                                    String[] route = row.split("\u0018"); // [211, DGG, 618, "", 인]
++                                    String[] route = row.split(DEFINE.DELIMETER); // [211, DGG, 618, "", 인]
+                                     String ROUTE_CODE = route[0];
+                                     String routeId = route[1];
+                                     String ROUTE_NUM = route[2];
+@@ -320,7 +116,6 @@
+                                     String STARTNODE_NAME = route[4];
+                                     String ENDNODE_NAME = route[5];
+ 
+-
+                                     BusResultSearch busResultSearch = new BusResultSearch();
+                                     busResultSearch.setRouteNum(ROUTE_NUM);
+                                     busResultSearch.setRouteId(routeId);
+@@ -336,14 +131,14 @@
+                                 try {
+                                     StationApi result = response.body();
+                                     String str = result.getResultData();
+-                                    String[] rows = str.split("\u0019");
++                                    String[] rows = str.split(DEFINE.ROW_DELIMETER);
+ 
+                                     ArrayList<BusResultSearch> busSearchList = new ArrayList<>();
+ 
+                                     for (int i = 0; i < rows.length; i++) {
+                                         String row = rows[i];
+ 
+-                                        String[] route = row.split("\u0018"); // [211, DGG, 618, "", 인]
++                                        String[] route = row.split(DEFINE.DELIMETER); // [211, DGG, 618, "", 인]
+                                         String ROUTE_CODE = route[0];
+                                         String ROUTE_ID = route[1];
+                                         String ROUTE_NUM = route[2];
+@@ -387,14 +182,8 @@
+                 });
+     }
+ 
+-    public void busStationAutoSearch(String query, BusStationAuto anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData("1\u0018" + query);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20005");
++    public void getStationList(String query, BusStationAuto anInterface) {
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_STATION_LIST);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -403,91 +192,70 @@
+                     @Override
+                     public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+                         try {
+-                            StationApi result = response.body();
+-                            String str = result.getResultData();
+-                            String[] rows = str.split("\u0019");
+-
+-                            ArrayList<BusStation> busStationAuto = new ArrayList<>();
+-
+-                            for (int i = 0; i < rows.length; i++) {
+-                                String row = rows[i];
++
++                            ArrayList<stationResult> stationList = new ArrayList<>();
++
++                            String datalist = requestBus.getRequestData();
++                            String[] gbn = datalist.split(DEFINE.FD_DELIMETER);
++
++                            if ("1".equals(gbn[0])) {
++                                StationApi result = response.body();
++                                String str = result.getResultData();
++                                String[] rows = str.split(DEFINE.ROW_DELIMETER);
++                                for (int i = 0; i < rows.length; i++) {
++                                    String row = rows[i];
+ 
+-                                String[] route = row.split("\u0018"); // [211, DGG, 618, "", 인]
+-                                String STATION_CODE = route[0];
+-                                String STATION_ID = route[1];
+-                                String STATION_NAME = route[2];
+-                                String STATION_NEXT = route[3];
++                                    String[] route = row.split(DEFINE.DELIMETER); // [211, DGG, 618, "", 인]
++                                    String stationcode = route[0];
++                                    String stationId = route[1];
++                                    String stationName = route[2];
++                                    String stationDirection = route[3];
+ 
+-                                BusStation bs = new BusStation();
+-                                bs.setStationName(STATION_NAME);
+-                                bs.setStationId(STATION_ID);
+-                                bs.setStationNext(STATION_NEXT);
+-                                busStationAuto.add(bs);
+-                            }
+-                            anInterface.success(busStationAuto);
+-
++                                    stationResult stationResult = new stationResult();
++                                    stationResult.setStationCode(stationcode);
++                                    stationResult.setStationId(stationId);
++                                    stationResult.setStationName(stationName);
++                                    stationResult.setStationDirection(stationDirection);
++                                    stationList.add(stationResult);
++                                }
++                                anInterface.success(stationList);
+ 
+-                        } catch (Exception e) {
+-
+-                        }
+-                    }
+-
+-                    @Override
+-                    public void onFailure(Call<StationApi> call, Throwable t) {
+-                    }
+-                });
+-    }
+-
+-    public void busStationSearchResult(String query, BusStationResultInterface anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData("1\u0018" + query);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20006");
+-
+-        Retrofit2Client
+-                .getClient(context)
+-                .busStationResult(requestBus)
+-                .enqueue(new Callback<StationApi>() {
+-                    @Override
+-                    public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+-                        try {
+-                            StationApi result = response.body();
+-                            String str = result.getResultData();
+-                            String[] rows = str.split("\u0019");
+-
+-                            ArrayList<stationResult> stationResult = new ArrayList<>();
++                            }else{
++                                try {
++                                    StationApi result = response.body();
++                                    String str = result.getResultData();
++                                    String[] rows = str.split(DEFINE.ROW_DELIMETER);
+ 
+-                            for (int i = 0; i < rows.length; i++) {
+-                                String row = rows[i];
++                                    for (int i = 0; i < rows.length; i++) {
++                                        String row = rows[i];
+ 
+-                                String[] route = row.split("\u0018"); // [211, DGG, 618, "", 인]
+-                                String STATION_CODE = route[0];
+-                                String STATION_ID = route[1];
+-                                String STATION_NAME = route[2];
+-                                String STATION_NO = route[3];
+-                                String STATION_DIRECTION = route[4];
+-                                String KEYWORD = route[5];
+-                                String SUBWAY_NUM = route[6];
+-                                String BOOK_MARK_YN = route[7];
++                                        String[] route = row.split(DEFINE.DELIMETER); // [211, DGG, 618, "", 인]
++                                        String STATION_CODE = route[0];
++                                        String STATION_ID = route[1];
++                                        String STATION_NAME = route[2];
++                                        String STATION_NO = route[3];
++                                        String STATION_DIRECTION = route[4];
++                                        String KEYWORD = route[5];
++                                        String SUBWAY_NUM = route[6];
++                                        String BOOK_MARK_YN = route[7];
+ 
+-                                stationResult busResultSearch = new stationResult();
+-                                busResultSearch.setStationCode(STATION_CODE);
+-                                busResultSearch.setStationId(STATION_ID);
+-                                busResultSearch.setStationName(STATION_NAME);
+-                                busResultSearch.setStationNo(STATION_NO);
+-                                busResultSearch.setStationDirection(STATION_DIRECTION);
+-                                busResultSearch.setKeyword(KEYWORD);
+-                                busResultSearch.setSubwayNum(SUBWAY_NUM);
+-                                busResultSearch.setBookMark(BOOK_MARK_YN);
+-                                stationResult.add(busResultSearch);
++                                        stationResult busResultSearch = new stationResult();
++                                        busResultSearch.setStationCode(STATION_CODE);
++                                        busResultSearch.setStationId(STATION_ID);
++                                        busResultSearch.setStationName(STATION_NAME);
++                                        busResultSearch.setStationNo(STATION_NO);
++                                        busResultSearch.setStationDirection(STATION_DIRECTION);
++                                        busResultSearch.setKeyword(KEYWORD);
++                                        busResultSearch.setSubwayNum(SUBWAY_NUM);
++                                        busResultSearch.setBookMark(BOOK_MARK_YN);
++                                        stationList.add(busResultSearch);
+ 
++                                    }
++                                    anInterface.success(stationList);
++                                }catch (Exception e){
++                                    anInterface.error("검색결과가 없습니다");
++                                }
+                             }
+-                            anInterface.success(stationResult);
+-
+-
+                         } catch (Exception e) {
+                             anInterface.error("검색결과가 없습니다");
+                         }
+@@ -495,19 +263,67 @@
+ 
+                     @Override
+                     public void onFailure(Call<StationApi> call, Throwable t) {
+-                        anInterface.error("검색결과가 없습니다");
+                     }
+                 });
+     }
+ 
++//    public void busStationSearchResult(String query, BusStationResultInterface anInterface) {
++//
++//        RequestBus requestBus = new RequestBus(query, DEFINE.STATION_SEARCH_RESULT);
++//
++//        Retrofit2Client
++//                .getClient(context)
++//                .busStationResult(requestBus)
++//                .enqueue(new Callback<StationApi>() {
++//                    @Override
++//                    public void onResponse(Call<StationApi> call, Response<StationApi> response) {
++//                        try {
++//                            StationApi result = response.body();
++//                            String str = result.getResultData();
++//                            String[] rows = str.split("\u0019");
++//
++//                            ArrayList<stationResult> stationResult = new ArrayList<>();
++//
++//                            for (int i = 0; i < rows.length; i++) {
++//                                String row = rows[i];
++//
++//                                String[] route = row.split("\u0018"); // [211, DGG, 618, "", 인]
++//                                String STATION_CODE = route[0];
++//                                String STATION_ID = route[1];
++//                                String STATION_NAME = route[2];
++//                                String STATION_NO = route[3];
++//                                String STATION_DIRECTION = route[4];
++//                                String KEYWORD = route[5];
++//                                String SUBWAY_NUM = route[6];
++//                                String BOOK_MARK_YN = route[7];
++//
++//                                stationResult busResultSearch = new stationResult();
++//                                busResultSearch.setStationCode(STATION_CODE);
++//                                busResultSearch.setStationId(STATION_ID);
++//                                busResultSearch.setStationName(STATION_NAME);
++//                                busResultSearch.setStationNo(STATION_NO);
++//                                busResultSearch.setStationDirection(STATION_DIRECTION);
++//                                busResultSearch.setKeyword(KEYWORD);
++//                                busResultSearch.setSubwayNum(SUBWAY_NUM);
++//                                busResultSearch.setBookMark(BOOK_MARK_YN);
++//                                stationResult.add(busResultSearch);
++//
++//                            }
++//                            anInterface.success(stationResult);
++//
++//
++//                        } catch (Exception e) {
++//                            anInterface.error("검색결과가 없습니다");
++//                        }
++//                    }
++//                    @Override
++//                    public void onFailure(Call<StationApi> call, Throwable t) {
++//                        anInterface.error("검색결과가 없습니다");
++//                    }
++//                });
++//    }
+     public void busDetail(String query, BusDetailInterface anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData("1\u0018" + query);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20004");
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_BUS_DETAIL);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -515,15 +331,10 @@
+                 .enqueue(new Callback<StationApi>() {
+                     @Override
+                     public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+-
+-
+                         try {
+-//                            Thread thread = new Thread(new Runnable() {
+-//                                @Override
+-//                                public void run() {
+                             StationApi result = response.body();
+                             String str = result.getResultData();
+-                            String[] rows = str.split("\u0014");
++                            String[] rows = str.split(DEFINE.TABLE_DELIMETER);
+ 
+                             BusDetailTop busDetailTop = new BusDetailTop();
+                             ArrayList<BusDetailInfo> item = new ArrayList<>();
+@@ -531,7 +342,7 @@
+ 
+                             String row1 = rows[0];
+ 
+-                            String[] top = row1.split("\u0018");// [211, DGG, 618, "", 인]
++                            String[] top = row1.split(DEFINE.DELIMETER);// [211, DGG, 618, "", 인]
+                             String ROUTE_CODE = top[0];
+                             String ROUTE_ID = top[1];
+                             String ROUTE_NUM = top[2];
+@@ -567,7 +378,7 @@
+                             busDetailTop.setBookmarkYn(BUS_BOOK_MARK_YN);
+ 
+                             String row2 = rows[1];
+-                            String[] info = row2.split("\u0019");
++                            String[] info = row2.split(DEFINE.ROW_DELIMETER);
+ 
+                             BusDetailInfo busDetailInfo[] = new BusDetailInfo[info.length];
+                             HashMap<String, Integer> map = new HashMap<String, Integer>();
+@@ -576,7 +387,7 @@
+                             for (int a = 1; a < info.length; a++) {
+                                 String bus = info[a];
+ 
+-                                String[] detail = bus.split("\u0018");
++                                String[] detail = bus.split(DEFINE.DELIMETER);
+                                 String ROUTE_ID1 = detail[0];
+                                 String STATION_ID = detail[1];
+                                 String STATION_NAME = detail[2];
+@@ -594,7 +405,6 @@
+                                 String STATION_BOOK_MARK_YN = detail[14];
+                                 String STATION_WIFI_YN = detail[15];
+ 
+-
+                                 busDetailInfo[a] = new BusDetailInfo();
+                                 busDetailInfo[a].setRouteId(ROUTE_ID1);
+                                 busDetailInfo[a].setStationId(STATION_ID);
+@@ -616,12 +426,12 @@
+                             }
+ 
+                             String row3 = rows[2];
+-                            String[] busInfo = row3.split("\u0019");
++                            String[] busInfo = row3.split(DEFINE.ROW_DELIMETER);
+                             for (int b = 1; b < busInfo.length; b++) {
+                                 String recentBus = busInfo[b];
+ 
+                                 BusDetailInfo1 busDetailInfo1 = new BusDetailInfo1();
+-                                String[] detailBus = recentBus.split("\u0018");
++                                String[] detailBus = recentBus.split(DEFINE.DELIMETER);
+                                 String ROUTE_ID1 = detailBus[0];
+                                 String ROUTE_NUM1 = detailBus[1];
+                                 String BUS_NUM1 = detailBus[2];
+@@ -642,8 +452,6 @@
+                                     busDetailInfo1.setModDate(null);
+                                 }
+ 
+-
+-
+                                 busDetailInfo1.setRouteId(ROUTE_ID1);
+                                 busDetailInfo1.setRouteNm(ROUTE_NUM1);
+                                 busDetailInfo1.setBusNum(BUS_NUM1);
+@@ -662,17 +470,8 @@
+                             }
+ 
+ 
+-//                                    Handler handler = new Handler(Looper.getMainLooper());
+-//                                    handler.post(new Runnable() {
+-//                                        @Override
+-//                                        public void run() {
++
+                             anInterface.success(busDetailTop, item, items);
+-//                                        }
+-//                                    });
+-//                                }
+-//                            });*/
+-//
+-//                            thread.start();
+ 
+                         } catch (Exception e) {
+                         }
+@@ -682,19 +481,10 @@
+                     public void onFailure(Call<StationApi> call, Throwable t) {
+                     }
+                 });
+-
+-
+     }
+ 
+-
+-    public void busStationDetail(String gbn, String query, BusStationDetailInterface anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + query);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20007");
++    public void busStationDetail(String query, BusStationDetailInterface anInterface) {
++        RequestBus requestBus = new RequestBus(query, DEFINE.STATION_DETAIL);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -704,14 +494,14 @@
+                     public void onResponse(Call<StationApi> call, Response<StationApi> response) {
+                         StationApi result = response.body();
+                         String str = result.getResultData();
+-                        String[] rows = str.split("\u0014");
++                        String[] rows = str.split(DEFINE.TABLE_DELIMETER);
+ 
+                         StationDetailTop stationDetailTop = new StationDetailTop();
+                         ArrayList<StationDetailInfo> items = new ArrayList<>();
+                         ArrayList<StationDetailInfoSub> itemSub = new ArrayList<>();
+ 
+                         String row1 = rows[0];
+-                        String[] top = row1.split("\u0018");
++                        String[] top = row1.split(DEFINE.DELIMETER);
+                         String STATION_CODE = top[0];
+                         String stationId = top[1];
+                         String stationName = top[2];
+@@ -743,12 +533,12 @@
+ 
+ 
+                         String row2 = rows[1];
+-                        String[] info = row2.split("\u0019");
++                        String[] info = row2.split(DEFINE.ROW_DELIMETER);
+ 
+                         for (int a = 1; a < info.length; a++) {
+                             String bus = info[a];
+ 
+-                            String[] busDetail = bus.split("\u0018");
++                            String[] busDetail = bus.split(DEFINE.DELIMETER);
+ 
+                             StationDetailInfo detailInfo = new StationDetailInfo();
+ 
+@@ -822,10 +612,10 @@
+                                 infoSub.setRouteLowFloorYn1(null);
+                                 infoSub.setRouteTrafficYn1(null);
+                             } else {
+-                                String[] ROUTE_INFOs = detailInfo.getRouteInfo().split(";");
++                                String[] ROUTE_INFOs = detailInfo.getRouteInfo().split(DEFINE.SEMICOLON);
+                                 String row3 = ROUTE_INFOs[0];
+ 
+-                                String[] firstInfo = row3.split(",");
++                                String[] firstInfo = row3.split(DEFINE.COMMA);
+                                 String recentStationId = firstInfo[0];
+                                 String recentStationName = firstInfo[1];
+                                 String recentStationStopNum = firstInfo[2];
+@@ -846,7 +636,7 @@
+ 
+                                 if (ROUTE_INFOs.length > 1) {
+                                     String row4 = ROUTE_INFOs[1];
+-                                    String[] endInfo = row4.split(",");
++                                    String[] endInfo = row4.split(DEFINE.COMMA);
+                                     String recentStationId1 = endInfo[0];
+                                     String recentStationName1 = endInfo[1];
+                                     String recentStationStopNum1 = endInfo[2];
+@@ -887,14 +677,8 @@
+                 });
+     }
+ 
+-    public void bookmarkInsert(String gbn, String routeId, String stationId, String upDownCd, String stationOrd, AuthBaseInterface<String> anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + routeId + "\u0018" + stationId + "\u0018" + upDownCd + "\u0018" + stationOrd);
+-        requestBus.setParamCount(5);
+-        requestBus.setProc("20003");
++    public void bookmarkInsert(String query, AuthBaseInterface<String> anInterface) {
++        RequestBus requestBus = new RequestBus(query, DEFINE.INSERT_BOOKMARK);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -918,14 +702,9 @@
+ 
+     }
+ 
+-    public void bookmarkDelete(String gbn, String routeId, String stationId, String upDownCd, String stationOrd, AuthBaseInterface<String> anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + routeId + "\u0018" + stationId + "\u0018" + upDownCd + "\u0018" + stationOrd);
+-        requestBus.setParamCount(5);
+-        requestBus.setProc("20008");
++    public void bookmarkDelete(String query, AuthBaseInterface<String> anInterface) {
++
++        RequestBus requestBus = new RequestBus(query, DEFINE.DELETE_BOOKMARK);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -945,14 +724,9 @@
+ 
+     }
+ 
+-    public void recentBusLocation(String gbn, String routeId, RecentBusLocationInterface anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + routeId);
+-        requestBus.setParamCount(2);
+-        requestBus.setProc("20011");
++    public void recentBusLocation(String query, RecentBusLocationInterface anInterface) {
++
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_BUS_LOCATION_LIST);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -963,56 +737,52 @@
+                         try {
+                             StationApi result = response.body();
+                             String str = result.getResultData();
+-                            String[] rows = str.split("\u0014");
++                            String[] rows = str.split(DEFINE.TABLE_DELIMETER);
+ 
+                             ArrayList<BusDetailInfo1> item = new ArrayList<>();
+ 
+-                            BusDetailInfo1 busDetailInfo1[] = new BusDetailInfo1[rows.length];
+-                            HashMap<String, Integer> map = new HashMap<String, Integer>();
+-                            map.clear();
+-
+                             String infoList = rows[0];
+-                            String[]  infoLists = infoList.split("\u0019");
++                            String[]  infoLists = infoList.split(DEFINE.ROW_DELIMETER);
++
+                             for (int i = 0; i < infoLists.length; i++) {
+                                 String row = infoLists[i];
+ 
+-                                busDetailInfo1[i] = new BusDetailInfo1();
+-                                String[] detailBus = row.split("\u0018");
+-                                String ROUTE_ID1 = detailBus[0];
+-                                String ROUTE_NUM = detailBus[1];
+-                                String BUS_NUM = detailBus[2];
+-                                String VEHICLE_TP = detailBus[3];
+-                                String STATION_ID = detailBus[4];
+-                                String STATION_SORT = detailBus[5];
+-                                if (detailBus.length > 6){
+-                                    String START_TIME = detailBus[6];
+-                                    busDetailInfo1[i].setStartTime(START_TIME);
+-                                }else {
+-                                    busDetailInfo1[i].setStartTime(null);
+-                                }
+-                                if(detailBus.length > 7){
+-                                    String MOD_DATE = detailBus[7];
+-                                    busDetailInfo1[i].setModDate(MOD_DATE);
++                                BusDetailInfo1 busDetailInfo1 = new BusDetailInfo1();
++                                String[] detailBus = row.split(DEFINE.DELIMETER);
++                                String routeId = detailBus[0];
++                                String routeNum = detailBus[1];
++                                String busNum = detailBus[2];
++                                String vehicleTp = detailBus[3];
++                                String routeWifiYn = detailBus[4];
++                                String stationId = detailBus[5];
++                                String stationSort = detailBus[6];
++                                if (detailBus.length > 7){
++                                    String startTime = detailBus[7];
++                                    busDetailInfo1.setStartTime(startTime);
+                                 }else {
+-                                    busDetailInfo1[i].setModDate(null);
++                                    busDetailInfo1.setStartTime(null);
+                                 }
+-
+-                                busDetailInfo1[i].setRouteId(ROUTE_ID1);
+-                                busDetailInfo1[i].setRouteNm(ROUTE_NUM);
+-                                busDetailInfo1[i].setBusNum(BUS_NUM);
+-                                busDetailInfo1[i].setVehicleTp(VEHICLE_TP);
+-                                busDetailInfo1[i].setStationId1(STATION_ID);
+-                                busDetailInfo1[i].setStationSort(STATION_SORT);
+-
+-                                map.put(STATION_ID, i);
+-                            }
+-                            for (int i = 0; i < rows.length; i++){
+-                                item.add(busDetailInfo1[i]);
++                                if(detailBus.length > 8){
++                                    String modDate = detailBus[8];
++                                    busDetailInfo1.setModDate(modDate);
++                                }else {
++                                    busDetailInfo1.setModDate(null);
++                                }
++
++                                busDetailInfo1.setRouteId(routeId);
++                                busDetailInfo1.setRouteNm(routeNum);
++                                busDetailInfo1.setBusNum(busNum);
++                                busDetailInfo1.setVehicleTp(vehicleTp);
++                                busDetailInfo1.setRouteWifiYn(routeWifiYn);
++                                busDetailInfo1.setStationId1(stationId);
++                                busDetailInfo1.setStationSort(stationSort);
++                                item.add(busDetailInfo1);
+                             }
++
+                             anInterface.success(item);
+ 
+                         }catch (Exception e){
+-
++                            System.out.println("dsada");
+                         }
+ 
+                     }
+@@ -1025,14 +795,8 @@
+     }
+ 
+ 
+-    public void stationSurroundingInfo(String gbn, String locationLon, String locationLat, StationSurroundInfo anInterface) {
+-        RequestBus requestBus = new RequestBus();
+-        requestBus.setToken("653500");
+-        requestBus.setMcode("1");
+-        requestBus.setSendTime(formattedTime);
+-        requestBus.setRequestData(gbn + "\u0018" + locationLon + "\u0018" + locationLat);
+-        requestBus.setParamCount(3);
+-        requestBus.setProc("20012");
++    public void stationSurroundingInfo(String query, StationSurroundInfo anInterface) {
++        RequestBus requestBus = new RequestBus(query, DEFINE.GET_NEARBY_PLACE_LIST);
+ 
+         Retrofit2Client
+                 .getClient(context)
+@@ -1047,14 +811,18 @@
+ 
+                             ArrayList<StationNearByInfo> items =  new ArrayList<>();
+ 
+-                            String[] strAr = str.split("\u0019");
++                            String dataList = requestBus.getRequestData();
++
++                            String[] gbn = dataList.split(DEFINE.FD_DELIMETER);
++
++                            String[] strAr = str.split(DEFINE.ROW_DELIMETER);
+                             for (int i = 0; i < strAr.length; i++) {
+                                 String strAr1 = strAr[i];
+-                                String[] stationSurroundingInfoList =strAr1.split("\u0018");
++                                String[] stationSurroundingInfoList =strAr1.split(DEFINE.DELIMETER);
+ 
+                                 StationNearByInfo stationNearByInfo = new StationNearByInfo();
+ 
+-                                if (gbn.equals("1")) {
++                                if (gbn[0].equals("1")) {
+                                     String stationId = stationSurroundingInfoList[0];
+                                     String stationName = stationSurroundingInfoList[1];
+                                     String stationNo = stationSurroundingInfoList[2];
+Index: app/src/main/java/com/example/daegurobus/client/Retrofit2Client.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/client/Retrofit2Client.java b/app/src/main/java/com/example/daegurobus/client/Retrofit2Client.java
+--- a/app/src/main/java/com/example/daegurobus/client/Retrofit2Client.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/client/Retrofit2Client.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -22,8 +22,6 @@
+ 
+     private static RetrofitInterface retrofitInterface;
+     private static String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiMTM1MzIyNSIsIklkIjoiODgyOTU3VlRvY2RRVk5zUCIsIklkR2JuIjoiWiIsIm1jb2RlIjoiMiIsInRlc3RHYm4iOiJSIiwibmFtZSI6Iuu5hO2ajOybkCIsInRlbG5vIjoiIiwianRpIjoiNmU5OTI2NTgtNWZkNC00YzE1LWE4NTktYmJjOGViZjgzZjYxIiwibmJmIjoxNjkwMTU4MTAyLCJleHAiOjE2OTI4MzcxMDIsImlhdCI6MTY5MDE1ODcwMn0.VlqHLH9yyDIRVhgvsOefM-f8kcSLD_sfh6-n7mDqQ28";
+-    private static String BASEURL = "https://bus-dev.daeguro.co.kr:9501/";
+-
+ 
+     public static RetrofitInterface getClient(Context context){
+ 
+@@ -45,7 +43,7 @@
+                 .cookieJar(new JavaNetCookieJar(manager))
+                 .build();
+         Retrofit retrofit = new Retrofit.Builder()
+-                .baseUrl(BASEURL)
++                .baseUrl(DEFINE.BASEURL)
+                 .addConverterFactory(GsonConverterFactory.create())
+                 .client(builder)
+                 .build();
+@@ -63,7 +61,7 @@
+         @POST("Main/Proc")
+         Call<StationApi> busMainBookmark(@Body RequestBus requestBus);
+         @POST("Main/Proc")
+-        Call<StationApi> busSearchAuto(@Body RequestBus requestBus);
++        Call<StationApi> getBusList(@Body RequestBus requestBus);
+ 
+         //사용안함
+ //        @POST("Main/Proc")
+Index: app/src/main/java/com/example/daegurobus/client/resultInterface/BusStationAuto.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/client/resultInterface/BusStationAuto.java b/app/src/main/java/com/example/daegurobus/client/resultInterface/BusStationAuto.java
+--- a/app/src/main/java/com/example/daegurobus/client/resultInterface/BusStationAuto.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/client/resultInterface/BusStationAuto.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -1,10 +1,13 @@
+ package com.example.daegurobus.client.resultInterface;
+ 
+ import com.example.daegurobus.model.BusStation;
++import com.example.daegurobus.model.stationResult;
+ 
+ import java.util.ArrayList;
+ 
+ public interface BusStationAuto {
+ 
+-    void success(ArrayList<BusStation> busStation);
++    void success(ArrayList<stationResult> stationList);
++
++    void error(String msg);
+ }
+Index: app/src/main/java/com/example/daegurobus/client/resultInterface/mainBookmarkInterface.java
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/client/resultInterface/mainBookmarkInterface.java b/app/src/main/java/com/example/daegurobus/client/resultInterface/mainBookmarkInterface.java
+--- a/app/src/main/java/com/example/daegurobus/client/resultInterface/mainBookmarkInterface.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/client/resultInterface/mainBookmarkInterface.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -2,12 +2,15 @@
+ 
+ import com.example.daegurobus.model.RouteBookmark;
+ import com.example.daegurobus.model.RouteStationBookmark;
++import com.example.daegurobus.model.StationApi;
+ import com.example.daegurobus.model.StationBookmark;
+ import com.example.daegurobus.model.StationDetailInfoSub;
+ 
+ import java.util.ArrayList;
+ 
++import retrofit2.Response;
++
+ public interface mainBookmarkInterface {
+ 
+-    void success(ArrayList<RouteBookmark> routeBookmarkList,ArrayList<StationBookmark> stationBookmarkList, ArrayList<RouteStationBookmark>routeStationBookmarkList , ArrayList<StationDetailInfoSub> itemSub);
++    void success(Response<StationApi> response);
+ }
+Index: app/src/main/java/com/example/daegurobus/fragment/BusHomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/fragment/BusHomeFragment.java b/app/src/main/java/com/example/daegurobus/fragment/BusHomeFragment.java
+--- a/app/src/main/java/com/example/daegurobus/fragment/BusHomeFragment.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/fragment/BusHomeFragment.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -15,13 +15,16 @@
+ import androidx.viewpager2.adapter.FragmentStateAdapter;
+ import androidx.viewpager2.widget.ViewPager2;
+ 
++import com.example.daegurobus.BusDetailActivity;
+ import com.example.daegurobus.R;
+ import com.example.daegurobus.adapter.BusHomeViewpagerAdapter;
+ import com.example.daegurobus.adapter.RouteBookmarkAdapter;
+ import com.example.daegurobus.adapter.StationBookmarkAdapter;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.model.RouteBookmark;
+ import com.example.daegurobus.model.RouteStationBookmark;
++import com.example.daegurobus.model.StationApi;
+ import com.example.daegurobus.model.StationBookmark;
+ import com.example.daegurobus.client.resultInterface.mainBookmarkInterface;
+ import com.example.daegurobus.databinding.BusFragmentMainHomeBinding;
+@@ -30,6 +33,8 @@
+ 
+ import java.util.ArrayList;
+ 
++import retrofit2.Response;
++
+ public class BusHomeFragment extends Fragment {
+ 
+     private BusFragmentMainHomeBinding binding;
+@@ -49,7 +54,6 @@
+     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
+                              @Nullable Bundle savedInstanceState) {
+         binding = DataBindingUtil.inflate(inflater, R.layout.bus_fragment_main_home, container, false);
+-
+         setInit();
+         initLayout();
+ 
+@@ -115,13 +119,206 @@
+     private void initRecyclerViewRouteBookmark() {
+         presenter.BusMainBookmark("1", new mainBookmarkInterface() {
+             @Override
+-            public void success(ArrayList<RouteBookmark> routeBookmarkList, ArrayList<StationBookmark> stationBookmarkList, ArrayList<RouteStationBookmark> routeStationBookmarkList , ArrayList<StationDetailInfoSub> itemSub) {
++            //public void success(ArrayList<RouteBookmark> routeBookmarkList, ArrayList<StationBookmark> stationBookmarkList, ArrayList<RouteStationBookmark> routeStationBookmarkList , ArrayList<StationDetailInfoSub> itemSub) {
++            public void success(Response<StationApi> response) {
++
++                StationApi result = response.body();
++                String str = result.getResultData();
++                String[] rows = str.split(DEFINE.TABLE_DELIMETER);
++
++                String row1 = rows[0];
++
++                String[] top = row1.split(DEFINE.ROW_DELIMETER);
++
++                ArrayList<RouteBookmark> routeBookmarkList = new ArrayList<>();
++                ArrayList<StationBookmark> stationBookmarkList = new ArrayList<>();
++                ArrayList<RouteStationBookmark> routeStationBookmarkList = new ArrayList<>();
++                ArrayList<StationDetailInfoSub> itemSub = new ArrayList<>();
++
++                for (int a = 0; a < top.length; a++) {
++                    String bus = top[a];
++
++                    String[] route = bus.split(DEFINE.DELIMETER);
++                    String routeId = route[0];
++                    String routeNum = route[1];
++                    String routeNum2 = route[2];
++                    String routeTp = route[3];
++                    String startNodeName = route[4];
++                    String endNodeName = route[5];
++
++                    RouteBookmark routeBookmark = new RouteBookmark();
++                    routeBookmark.setRouteId(routeId);
++                    routeBookmark.setRouteNum(routeNum);
++                    routeBookmark.setRouteNum2(routeNum2);
++                    routeBookmark.setRouteTp(routeTp);
++                    routeBookmark.setStartnodeName(startNodeName);
++                    routeBookmark.setEndtnodeName(endNodeName);
++                    routeBookmarkList.add(routeBookmark);
++                }
++
++                String row2 = rows[1];
++                String[] middle = row2.split(DEFINE.ROW_DELIMETER);
++
++                for (int a = 1; a < middle.length; a++) {
++                    String bus = middle[a];
++
++                    StationBookmark stationBookmark = new StationBookmark();
++
++                    String[] station = bus.split(DEFINE.DELIMETER);
++                    String stationId = station[0];
++                    String stationName = station[1];
++                    String stationNo = station[2];
++                    String stationDirection = station[3];
++
++                    if (station.length > 4) {
++                        String SUBWAY_NUM = station[4];
++                        stationBookmark.setSubwayNum(SUBWAY_NUM);
++                    } else {
++                        stationBookmark.setSubwayNum(null);
++                    }
++
++                    stationBookmark.setStationId(stationId);
++                    stationBookmark.setStationName(stationName);
++                    stationBookmark.setStationNo(stationNo);
++                    stationBookmark.setStationDirection(stationDirection);
++                    stationBookmarkList.add(stationBookmark);
++                }
++
++
++                String row3 = rows[2];
++                String[] bottom = row3.split(DEFINE.ROW_DELIMETER);
++                RouteStationBookmark routeStationBookmark = new RouteStationBookmark();
++
++                for (int a = 1; a < bottom.length; a++) {
++                    String bus = bottom[a];
++
++                    String[] routeStation = bus.split(DEFINE.DELIMETER);
++                    String routeId = routeStation[0];
++                    String routeNum = routeStation[1];
++                    String routeNum2 = routeStation[2];
++                    String routeTp = routeStation[3];
++                    String routeDirection = routeStation[4];
++                    String stationId = routeStation[5];
++                    String stationName = routeStation[6];
++                    String stationNo = routeStation[7];
++                    //String upDownCd = routeStation[8];
++                    //String stationOrd = routeStation[9];
++                    String subStationLine = routeStation[8];
++                    String minArriveTime = routeStation[9];
++
++                    if (routeStation.length > 10) {
++                        String ROUTE_INFO = routeStation[10];
++                        routeStationBookmark.setRouteInfo(ROUTE_INFO);
++
++                    } else {
++                        routeStationBookmark.setRouteInfo(null);
++                    }
++
++                    routeStationBookmark.setRouteId(routeId);
++                    routeStationBookmark.setRouteNum(routeNum);
++                    routeStationBookmark.setRouteNum2(routeNum2);
++                    routeStationBookmark.setRouteTp(routeTp);
++                    routeStationBookmark.setRouteDirection(routeDirection);
++                    routeStationBookmark.setStationId(stationId);
++                    routeStationBookmark.setStationName(stationName);
++                    routeStationBookmark.setStationNo(stationNo);
++                    //routeStationBookmark.setUpDownCd(upDownCd);
++                    //routeStationBookmark.setStationOrd(stationOrd);
++                    routeStationBookmark.setSubStationLine(subStationLine);
++                    routeStationBookmark.setMinArriveTime(minArriveTime);
++                    routeStationBookmarkList.add(routeStationBookmark);
++
++                    StationDetailInfoSub infoSub = new StationDetailInfoSub();
++
++                    if (routeStationBookmark.getRouteInfo() == null) {
++                        infoSub.setRecentStationId(null);
++                        infoSub.setRecentStationName(null);
++                        infoSub.setRecentStationStopNum(null);
++                        infoSub.setStationTimeOfArrive(null);
++                        infoSub.setTimeTaken(null);
++                        infoSub.setRemainingStation(null);
++                        infoSub.setRouteLowFloorYn(null);
++                        infoSub.setRouteTrafficYn(null);
++                        infoSub.setRecentStationId1(null);
++                        infoSub.setRecentStationName1(null);
++                        infoSub.setRecentStationStopNum1(null);
++                        infoSub.setStationTimeOfArrive1(null);
++                        infoSub.setTimeTaken1(null);
++                        infoSub.setRemainingStation1(null);
++                        infoSub.setRouteLowFloorYn1(null);
++                        infoSub.setRouteTrafficYn1(null);
++                    } else {
++                        String[] ROUTE_INFOs = routeStationBookmark.getRouteInfo().split(DEFINE.SEMICOLON);
++                        String row4 = ROUTE_INFOs[0];
++
++                        String[] firstInfo = row4.split(DEFINE.COMMA);
++                        String recentStationId = firstInfo[0];
++                        String recentStationName = firstInfo[1];
++                        String recentStationStopNum = firstInfo[2];
++                        String StationTimeOfArrive = firstInfo[3];
++                        String timeTaken = firstInfo[4];
++                        String REMAINING_STATION = firstInfo[5];
++                        String routeLowFloorYn = firstInfo[6];
++                        String routeTrafficYn = firstInfo[7];
++
++                        infoSub.setRecentStationId(recentStationId);
++                        infoSub.setRecentStationName(recentStationName);
++                        infoSub.setRecentStationStopNum(recentStationStopNum);
++                        infoSub.setStationTimeOfArrive(StationTimeOfArrive);
++                        infoSub.setTimeTaken(timeTaken);
++                        infoSub.setRemainingStation(REMAINING_STATION);
++                        infoSub.setRouteLowFloorYn(routeLowFloorYn);
++                        infoSub.setRouteTrafficYn(routeTrafficYn);
++
++                        if (ROUTE_INFOs.length > 1) {
++                            String row5 = ROUTE_INFOs[1];
++                            String[] endInfo = row5.split(DEFINE.COMMA);
++                            String recentStationId1 = endInfo[0];
++                            String recentStationName1 = endInfo[1];
++                            String recentStationStopNum1 = endInfo[2];
++                            String StationTimeOfArrive1 = endInfo[3];
++                            String timeTaken1 = endInfo[4];
++                            String REMAINING_STATION1 = endInfo[5];
++                            String routeLowFloorYn1 = endInfo[6];
++                            String routeTrafficYn1 = endInfo[7];
++
++                            infoSub.setRecentStationId1(recentStationId1);
++                            infoSub.setRecentStationName1(recentStationName1);
++                            infoSub.setRecentStationStopNum1(recentStationStopNum1);
++                            infoSub.setStationTimeOfArrive1(StationTimeOfArrive1);
++                            infoSub.setTimeTaken1(timeTaken1);
++                            infoSub.setRemainingStation1(REMAINING_STATION1);
++                            infoSub.setRouteLowFloorYn1(routeLowFloorYn1);
++                            infoSub.setRouteTrafficYn1(routeTrafficYn1);
++                        } else {
++                            infoSub.setRecentStationId1(null);
++                            infoSub.setRecentStationName1(null);
++                            infoSub.setRecentStationStopNum1(null);
++                            infoSub.setStationTimeOfArrive1(null);
++                            infoSub.setTimeTaken1(null);
++                            infoSub.setRemainingStation1(null);
++                            infoSub.setRouteLowFloorYn1(null);
++                            infoSub.setRouteTrafficYn1(null);
++                        }
++                    }
++                    itemSub.add(infoSub);
++
++                }
+ 
+                 binding.rvRouteBookmark.setLayoutManager(new LinearLayoutManager(getContext()));
+-                routeBookmarkAdapter = new RouteBookmarkAdapter(getContext(), routeBookmarkList);
++                routeBookmarkAdapter = new RouteBookmarkAdapter(getContext());
++                recyclerViewState = binding.rvRouteBookmark.getLayoutManager().onSaveInstanceState();
+                 binding.rvRouteBookmark.setAdapter(routeBookmarkAdapter);
+-                // recyclerViewState = binding.rvRouteBookmark.getLayoutManager().onSaveInstanceState();
++
++                /*
++                binding.rvRouteBookmark.setLayoutManager(new LinearLayoutManager(getContext()));
++                routeBookmarkAdapter = new RouteBookmarkAdapter(getContext());
++                binding.rvRouteBookmark.setAdapter(routeBookmarkAdapter);
++                 recyclerViewState = binding.rvRouteBookmark.getLayoutManager().onSaveInstanceState();
+                 routeBookmarkAdapter.notifyDataSetChanged();
++                */
++
++                routeBookmarkAdapter.initItems(routeBookmarkList);
+ 
+                 binding.rvStationBookmark.setLayoutManager(new LinearLayoutManager(getContext()));
+                 stationBookmarkAdapter = new StationBookmarkAdapter(getContext(), stationBookmarkList, routeStationBookmarkList, itemSub);
+@@ -136,8 +333,23 @@
+     }
+ 
+     private void initEamptyView() {
+-        //binding.loBookmarkEmpty.loView.setVisibility(routeBookmarkAdapter.getItemCount() == 0 && stationBookmarkAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+-       // binding.loBookmarkRv.setVisibility(routeBookmarkAdapter.getItemCount() == 0 && stationBookmarkAdapter.getItemCount() == 0 ? View.GONE : View.VISIBLE);
++
++        try
++        {
++            if(routeBookmarkAdapter.getItemCount() < 1 && stationBookmarkAdapter.getItemCount() < 1) {
++                binding.loBookmarkEmpty.setVisibility(View.VISIBLE);
++                binding.loBookmarkRv.setVisibility(View.GONE);
++            }
++            else {
++                binding.loBookmarkEmpty.setVisibility(View.GONE);
++                binding.loBookmarkRv.setVisibility(View.VISIBLE);
++            }
++        }catch (Exception ex) {
++            binding.loBookmarkEmpty.setVisibility(View.VISIBLE);
++            binding.loBookmarkRv.setVisibility(View.GONE);
++        }
++
++
+     }
+ 
+ 
+Index: app/src/main/java/com/example/daegurobus/fragment/BusSearchFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/fragment/BusSearchFragment.java b/app/src/main/java/com/example/daegurobus/fragment/BusSearchFragment.java
+--- a/app/src/main/java/com/example/daegurobus/fragment/BusSearchFragment.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/fragment/BusSearchFragment.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -29,6 +29,7 @@
+ import com.example.daegurobus.adapter.busSearchRcAdapter;
+ import com.example.daegurobus.app.MyPreferencesManager;
+ import com.example.daegurobus.client.BusInterface;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.databinding.ActivityBusSearchFragmentBinding;
+ import com.example.daegurobus.model.BusResultSearch;
+@@ -55,6 +56,10 @@
+     private String savedKeyword;
+     private String savedItem;
+ 
++    private String autoSearch = "1";
++    private String SearchResult = "2";
++    private String clickSearch = "3";
++
+     @Override
+     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
+                              @Nullable Bundle savedInstanceState) {
+@@ -163,8 +168,10 @@
+     }
+ 
+     private void initAutoRecyclerVIew() {
++
++        String query = autoSearch + DEFINE.FD_DELIMETER + Keyword;
+         //버스 자동 검색
+-        presenter.BusAutoSearch("1", Keyword , new BusInterface() {
++        presenter.GetBusList(query, new BusInterface() {
+             @Override
+             public void sucsess(ArrayList<BusResultSearch> atList) {
+                 autoSearchAdapter = new BusSearchAtAdapter(getContext(), atList);
+@@ -200,7 +207,9 @@
+ 
+         binding.etKeyword.clearFocus();
+ 
+-        presenter.BusAutoSearch("3", input , new BusInterface() {
++        String query = clickSearch + DEFINE.FD_DELIMETER + input;
++
++        presenter.GetBusList(query , new BusInterface() {
+             @Override
+             public void sucsess(ArrayList<BusResultSearch> atList) {
+                 searchResultAdapter = new busSearchRcAdapter(getContext(), atList);
+@@ -214,10 +223,8 @@
+                     public void onItemClick(View v, RecentKeyword recentKeyword) {
+                         data.add(recentKeyword);
+                         requestRecentPage(recentKeyword);
+-
+                     }
+                 });
+-
+             }
+             @Override
+             public void error(String message){
+@@ -227,8 +234,10 @@
+     }
+ 
+     private void initRecyclerView(String busNum) {
++
++        String query = SearchResult + DEFINE.FD_DELIMETER + busNum;
+         //버스 검색 결과
+-        presenter.BusAutoSearch("2", busNum , new BusInterface() {
++        presenter.GetBusList(query , new BusInterface() {
+             @Override
+             public void sucsess(ArrayList<BusResultSearch> atList) {
+                 searchResultAdapter = new busSearchRcAdapter(getContext(), atList);
+Index: app/src/main/java/com/example/daegurobus/fragment/BusStationFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/fragment/BusStationFragment.java b/app/src/main/java/com/example/daegurobus/fragment/BusStationFragment.java
+--- a/app/src/main/java/com/example/daegurobus/fragment/BusStationFragment.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/fragment/BusStationFragment.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -25,6 +25,7 @@
+ import com.example.daegurobus.adapter.BusStationRecentKeywordAdapter;
+ import com.example.daegurobus.adapter.BusStationRcAdapter;
+ import com.example.daegurobus.app.MyPreferencesManager;
++import com.example.daegurobus.client.DEFINE;
+ import com.example.daegurobus.client.NetworkPresenter;
+ import com.example.daegurobus.client.resultInterface.BusStationAuto;
+ import com.example.daegurobus.client.resultInterface.BusStationResultInterface;
+@@ -56,6 +57,10 @@
+ 
+     private NetworkPresenter presenter;
+ 
++    private String autoSearch = "1";
++    private String SearchResult = "2";
++    private String clickSearch = "3";
++
+     @Override
+     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
+                              @Nullable Bundle savedInstanceState) {
+@@ -121,24 +126,6 @@
+ 
+         });
+ 
+-    /*   binding.etKeyword.setOnEditorActionListener((textView, i, keyEvent) -> {
+-            if ((i == EditorInfo.IME_ACTION_SEARCH )) /*&& (keyEvent.getAction() == KeyEvent.ACTION_DOWN )) {
+-                String input = binding.etKeyword.getText().toString();
+-                binding.atRecyclerview.setVisibility(View.GONE);
+-                if (input.length() == 0) {
+-                    showFailView(R.drawable.common_no_result, "검색 결과가 없습니다");
+-                } else {
+-                    savedKeyword = input;
+-                    processSearchKeyword(savedKeyword);
+-                }
+-
+-                return true;
+-            }
+-
+-            return false;
+-        });*/
+-
+-
+         binding.etKeyword.setOnKeyListener(new View.OnKeyListener() {
+             @Override
+             public boolean onKey(View v, int keyCode, KeyEvent event) {
+@@ -185,19 +172,21 @@
+ 
+     private void initAutoRecyclerView() {
+ 
+-        presenter.busStationAutoSearch(keyword, new BusStationAuto() {
++        String query = autoSearch + DEFINE.FD_DELIMETER + keyword;
++
++        presenter.getStationList(query, new BusStationAuto() {
+             @Override
+-            public void success(ArrayList<BusStation> busStation) {
+-                busStationAtAdapter = new BusStationAtAdapter(getContext(), busStation);
++            public void success(ArrayList<stationResult> stationList) {
++                busStationAtAdapter = new BusStationAtAdapter(getContext(), stationList);
+                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                 binding.atRecyclerview.setLayoutManager(layoutManager);
+                 binding.atRecyclerview.setAdapter(busStationAtAdapter);
+                 busStationAtAdapter.setKeyword(keyword);
+                 busStationAtAdapter.setOnItemClickListener(new BusStationAtAdapter.OnItemClickListener() {
+                     @Override
+-                    public void onItemClick(View v, String keyword) {
++                    public void onItemClick(View v, String keyword, String stationId) {
+                         binding.etKeyword.setText(keyword);
+-                        processSearchKeyword(keyword);
++                        processSearchKeyword(stationId);
+                         binding.atRecyclerview.setVisibility(View.GONE);
+                         binding.keyboardTopBtn.setVisibility(View.GONE);
+                         binding.stationRecyclerView.setVisibility(View.VISIBLE);
+@@ -207,6 +196,9 @@
+                     }
+                 });
+             }
++            @Override
++            public void error(String message){
++            }
+         });
+     }
+ 
+@@ -216,15 +208,39 @@
+         binding.etKeyword.setText(input);
+         binding.etKeyword.clearFocus();
+ 
+-        initRecyclerView(input);
++        String query = clickSearch + DEFINE.FD_DELIMETER + input;
++
++        presenter.getStationList(query, new BusStationAuto() {
++            @Override
++            public void success(ArrayList<stationResult> stationList) {
++                busStationRcAdapter = new BusStationRcAdapter(getContext(), stationList);
++                busStationRcAdapter.setKeyword(input);
++                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
++                binding.stationRecyclerView.setLayoutManager(layoutManager);
++                binding.stationRecyclerView.setAdapter(busStationRcAdapter);
++                data = new ArrayList<>();
++                busStationRcAdapter.setOnItemClickListener(new BusStationRcAdapter.OnItemClickListener() {
++                    @Override
++                    public void onItemClick(View view, RecentStationKeyword recentStationKeyword) {
++                        data.add(recentStationKeyword);
++                        requestRecentPage(recentStationKeyword);
++                    }
++                });
++            }
++            @Override
++            public void error(String message){
++                showFailView(R.drawable.common_no_result, message);
++            }
++        });
+     }
+-
+ 
+     private void initRecyclerView(String stationName) {
+-        presenter.busStationSearchResult(stationName, new BusStationResultInterface() {
++
++        String query = SearchResult + DEFINE.FD_DELIMETER + stationName;
++        presenter.getStationList(query, new BusStationAuto() {
+             @Override
+-            public void success(ArrayList<stationResult> BusResultList) {
+-                busStationRcAdapter = new BusStationRcAdapter(getContext(), BusResultList);
++            public void success(ArrayList<stationResult> stationList) {
++                busStationRcAdapter = new BusStationRcAdapter(getContext(), stationList);
+                 busStationRcAdapter.setKeyword(stationName);
+                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                 binding.stationRecyclerView.setLayoutManager(layoutManager);
+@@ -238,13 +254,11 @@
+                     }
+                 });
+             }
+-
+             @Override
+-            public void error(String message) {
++            public void error(String message){
+                 showFailView(R.drawable.common_no_result, message);
+             }
+         });
+-
+     }
+ 
+     private void initRecentSearchView() {
+Index: app/src/main/java/com/example/daegurobus/model/RequestBus.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/daegurobus/model/RequestBus.java b/app/src/main/java/com/example/daegurobus/model/RequestBus.java
+--- a/app/src/main/java/com/example/daegurobus/model/RequestBus.java	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/java/com/example/daegurobus/model/RequestBus.java	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -1,7 +1,11 @@
+ package com.example.daegurobus.model;
+ 
++import com.example.daegurobus.client.DEFINE;
+ import com.google.gson.annotations.SerializedName;
+ 
++import java.text.SimpleDateFormat;
++import java.util.Date;
++
+ public class RequestBus {
+     @SerializedName("token")
+     private String Token;
+@@ -18,7 +22,15 @@
+ 
+ 
+ 
+-    public RequestBus() {}
++    public RequestBus(String SendData, String Proc)
++    {
++        this.Token = DEFINE.USER_TOKEN;
++        this.mcode = DEFINE.MCODE;
++        this.SendTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
++        this.RequestData = SendData;
++        this.ParamCount = this.RequestData.split(DEFINE.DELIMETER).length;
++        this.Proc = Proc;
++    }
+ 
+     public String getToken(){
+         return Token;
+@@ -36,22 +48,4 @@
+     public String getProc(){
+         return Proc;
+     }
+-
+-
+-    public void setToken(String token){
+-        this.Token = token;
+-    }
+-    public void setMcode(String mcode) {this.mcode = mcode;}
+-    public void setSendTime(String sendTime){
+-        this.SendTime = sendTime;
+-    }
+-    public void setRequestData(String requestData){
+-        this. RequestData = requestData;
+-    }
+-    public void setParamCount(int paramCount){
+-        this. ParamCount = paramCount;
+-    }
+-    public void setProc(String proc){
+-        this. Proc = proc;
+-    }
+ }
+Index: app/src/main/res/layout/activity_bus_detail.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_bus_detail.xml b/app/src/main/res/layout/activity_bus_detail.xml
+--- a/app/src/main/res/layout/activity_bus_detail.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/layout/activity_bus_detail.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -14,16 +14,16 @@
+             android:focusableInTouchMode="true"
+             android:orientation="vertical">
+ 
+-
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical">
++                android:orientation="horizontal">
+ 
+-                <RelativeLayout
++                <LinearLayout
+                     android:id="@+id/title_view"
+                     android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
++                    android:layout_height="match_parent"
++                    android:layout_weight="10"
+                     android:background="@color/color_2971F6"
+                     android:orientation="horizontal"
+                     android:paddingLeft="10dp"
+@@ -41,15 +41,14 @@
+                         android:src="@drawable/common_arrow_left_36" />
+ 
+ 
+-
+-                    <RelativeLayout
++                    <LinearLayout
+                         android:id="@+id/bus_title"
+                         android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_centerVertical="true"
++                        android:layout_height="match_parent"
++                        android:layout_gravity="center"
+                         android:layout_marginStart="8dp"
+-                        android:layout_toStartOf="@id/lo_bus_right2"
+-                        android:layout_toEndOf="@id/iv_bus_left1">
++                        android:layout_weight="70"
++                        android:gravity="center_vertical">
+ 
+                         <TextView
+                             android:id="@+id/tv_bus_name"
+@@ -57,20 +56,21 @@
+                             android:layout_height="wrap_content"
+                             android:fontFamily="@font/font_nexon_lv1_gothic_bold"
+                             android:letterSpacing="-0.05"
++                            android:marqueeRepeatLimit="marquee_forever"
+                             android:singleLine="true"
+-                            android:marqueeRepeatLimit="marquee_forever"
++                            android:text=""
+                             android:textAlignment="center"
+                             android:textColor="@color/white"
+-                            android:textSize="18dp"
+-                            android:text="" />
++                            android:textSize="18dp" />
+ 
+ 
+-                    </RelativeLayout>
++                    </LinearLayout>
+ 
+-                    <RelativeLayout
+-                        android:id="@+id/lo_bus_right2"
++                    <LinearLayout
++                        android:id="@+id/lo_bus_right1"
+                         android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
++                        android:layout_height="match_parent"
++
+                         android:layout_centerVertical="true"
+                         android:layout_toStartOf="@id/iv_bus_right1">
+ 
+@@ -81,31 +81,39 @@
+                             android:layout_gravity="center_vertical"
+                             android:layout_marginStart="2dp"
+                             android:padding="8dp"
+-                            android:src="@drawable/common_refresh_20"/>
++                            android:src="@drawable/common_refresh_20" />
+ 
++                    </LinearLayout>
+ 
+-                    </RelativeLayout>
++                    <LinearLayout
++                        android:id="@+id/lo_bus_right2"
++                        android:layout_width="wrap_content"
++                        android:layout_height="match_parent"
+ 
++                        android:layout_centerVertical="true"
++                        android:layout_toStartOf="@id/iv_bus_right1">
+ 
+-                    <ImageView
+-                        android:id="@+id/iv_bus_right1"
+-                        android:layout_width="36dp"
+-                        android:layout_height="36dp"
+-                        android:layout_alignParentEnd="true"
+-                        android:layout_centerVertical="true"
+-                        android:layout_gravity="center_vertical"
+-                        android:layout_marginStart="2dp"
+-                        android:padding="8dp"
+-                        android:src="@drawable/common_home_20"/>
+-                </RelativeLayout>
++                        <ImageView
++                            android:id="@+id/iv_bus_right1"
++                            android:layout_width="36dp"
++                            android:layout_height="36dp"
++                            android:layout_alignParentEnd="true"
++                            android:layout_centerVertical="true"
++                            android:layout_gravity="center_vertical"
++                            android:layout_marginStart="2dp"
++                            android:padding="8dp"
++                            android:src="@drawable/common_home_20" />
++
++                    </LinearLayout>
++                </LinearLayout>
+             </LinearLayout>
+ 
+             <LinearLayout
+                 android:id="@+id/lo_info_page"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical"
+                 android:background="@color/color_2971F6"
++                android:orientation="vertical"
+                 android:paddingStart="18dp"
+                 android:paddingTop="12dp"
+                 android:paddingEnd="19dp"
+@@ -123,9 +131,9 @@
+                         android:layout_height="wrap_content"
+                         android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                         android:letterSpacing="-0.05"
++                        android:text=""
+                         android:textColor="#ffffff"
+-                        android:textSize="12sp"
+-                        android:text="" />
++                        android:textSize="12sp" />
+ 
+                     <View
+                         android:layout_width="1dp"
+@@ -140,9 +148,9 @@
+                         android:layout_height="wrap_content"
+                         android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                         android:letterSpacing="-0.05"
++                        android:text=""
+                         android:textColor="#ffffff"
+-                        android:textSize="12sp"
+-                        android:text="" />
++                        android:textSize="12sp" />
+ 
+                 </LinearLayout>
+ 
+@@ -232,8 +240,8 @@
+                                 android:id="@+id/im_tab_map"
+                                 android:layout_width="20dp"
+                                 android:layout_height="20dp"
++                                android:layout_gravity="center_horizontal"
+                                 android:layout_marginTop="2dp"
+-                                android:layout_gravity="center_horizontal"
+                                 android:src="@drawable/ic_map_20_pt" />
+ 
+                             <TextView
+@@ -272,8 +280,8 @@
+                                 android:id="@+id/im_bookmark"
+                                 android:layout_width="20dp"
+                                 android:layout_height="20dp"
+-                                android:layout_marginTop="2dp"
+                                 android:layout_gravity="center_horizontal"
++                                android:layout_marginTop="2dp"
+                                 android:src="@drawable/ic_off_line_star_20_pt" />
+ 
+                             <TextView
+@@ -294,83 +302,78 @@
+ 
+             </LinearLayout>
+ 
+-            <FrameLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="match_parent">
+ 
+-                <RelativeLayout
+-                    android:id="@+id/lo_form"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="match_parent">
++            <RelativeLayout
++                android:id="@+id/lo_form"
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
+ 
+-                        <androidx.core.widget.NestedScrollView
+-                            android:id="@+id/nest"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="match_parent"
+-                            android:fillViewport="true"
+-                            app:layout_behavior="@string/appbar_scrolling_view_behavior">
++                <ScrollView
++                    android:id="@+id/nest"
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:fillViewport="true"
++                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+ 
+-
+-                            <RelativeLayout
+-                                android:layout_width="match_parent"
+-                                android:layout_height="wrap_content">
++                    <LinearLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:orientation="vertical">
+ 
+-                                <androidx.recyclerview.widget.RecyclerView
+-                                    android:id="@+id/recyclerview"
+-                                    android:paddingTop="20dp"
+-                                    android:layout_width="match_parent"
+-                                    android:layout_height="wrap_content" />
++                        <androidx.recyclerview.widget.RecyclerView
++                            android:id="@+id/recyclerview"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:paddingTop="20dp" />
+ 
+-                                <View
+-                                    android:id="@+id/v_station_under"
+-                                    android:layout_width="match_parent"
+-                                    android:layout_height="1dp"
+-                                    android:layout_below="@+id/recyclerview"
+-                                    android:background="#f2f2f2"/>
++                        <View
++                            android:id="@+id/v_station_under"
++                            android:layout_width="match_parent"
++                            android:layout_height="1dp"
++                            android:background="#f2f2f2" />
+ 
+-                                <RelativeLayout
+-                                    android:layout_width="match_parent"
+-                                    android:layout_height="wrap_content"
+-                                    android:layout_below="@+id/v_station_under"
+-                                    android:paddingStart="18dp"
+-                                    android:paddingTop="20dp"
+-                                    android:paddingBottom="38dp"
+-                                    android:paddingEnd="80dp">
++                        <LinearLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:paddingStart="18dp"
++                            android:paddingTop="20dp"
++                            android:paddingEnd="80dp"
++                            android:paddingBottom="38dp">
+ 
+-                                    <TextView
+-                                        android:layout_width="wrap_content"
+-                                        android:layout_height="wrap_content"
+-                                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+-                                        android:textSize="12sp"
+-                                        android:textColor="#999999"
+-                                        android:letterSpacing="-0.05"
+-                                        android:text="@string/bus_notification_etc"/>
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
++                                android:letterSpacing="-0.05"
++                                android:text="@string/bus_notification_etc"
++                                android:textColor="#999999"
++                                android:textSize="12sp" />
+ 
+-                                </RelativeLayout>
++                        </LinearLayout>
+ 
+-                                <include
+-                                    android:id="@+id/lo_loading"
+-                                    layout="@layout/common_loading" />
++                        <include
++                            android:id="@+id/lo_loading"
++                            layout="@layout/common_loading" />
+ 
+-                            </RelativeLayout>
+-                        </androidx.core.widget.NestedScrollView>
++                    </LinearLayout>
++                </ScrollView>
++
++            </RelativeLayout>
+ 
+-            </RelativeLayout>
+-            </FrameLayout>
+ 
+         </LinearLayout>
+ 
+-            <ImageView
+-                android:id="@+id/iv_floating"
+-                android:layout_width="54dp"
+-                android:layout_height="54dp"
+-                android:layout_marginEnd="18dp"
+-                android:layout_marginBottom="21dp"
+-                android:layout_gravity="bottom|right"
+-                android:background="@drawable/bg_floating"
+-                android:padding="12dp"
+-                android:src="@drawable/common_arrow_up_24"
+-                android:visibility="gone"/>
++        <ImageView
++            android:id="@+id/iv_floating"
++            android:layout_width="54dp"
++            android:layout_height="54dp"
++            android:layout_gravity="bottom|right"
++            android:layout_marginEnd="18dp"
++            android:layout_marginBottom="21dp"
++            android:background="@drawable/bg_floating"
++            android:padding="12dp"
++            android:src="@drawable/common_arrow_up_24"
++            android:visibility="gone" />
+ 
+     </FrameLayout>
+ </layout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_bus_route_map.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_bus_route_map.xml b/app/src/main/res/layout/activity_bus_route_map.xml
+--- a/app/src/main/res/layout/activity_bus_route_map.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/layout/activity_bus_route_map.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -292,67 +292,100 @@
+ 
+                     </RelativeLayout>
+ 
+-                    <LinearLayout
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginTop="4dp"
+-                        android:gravity="center_vertical"
+-                        android:orientation="horizontal">
++                    <RelativeLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        >
++
++                        <LinearLayout
++                            android:id="@+id/lo_bus_info"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_marginTop="4dp"
++                            android:gravity="center_vertical"
++                            android:orientation="horizontal">
+ 
+-                        <TextView
+-                            android:id="@+id/tv_vehicle_time"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:drawablePadding="2dp"
+-                            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+-                            android:letterSpacing="-0.05"
+-                            android:lineSpacingExtra="6sp"
+-                            android:lines="1"
+-                            android:text="06:32~09:42"
+-                            android:textColor="@color/color_999999"
+-                            android:textSize="14sp" />
++                            <TextView
++                                android:id="@+id/tv_vehicle_time"
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:drawablePadding="2dp"
++                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
++                                android:letterSpacing="-0.05"
++                                android:lineSpacingExtra="6sp"
++                                android:lines="1"
++                                android:text="06:32~09:42"
++                                android:textColor="@color/color_999999"
++                                android:textSize="14sp" />
+ 
+-                        <View
+-                            android:layout_width="1dp"
+-                            android:layout_height="10dp"
+-                            android:layout_marginStart="8dp"
+-                            android:layout_marginEnd="8dp"
+-                            android:background="@color/color_999999" />
++                            <View
++                                android:layout_width="1dp"
++                                android:layout_height="10dp"
++                                android:layout_marginStart="8dp"
++                                android:layout_marginEnd="8dp"
++                                android:background="@color/color_999999" />
+ 
+-                        <TextView
+-                            android:id="@+id/tv_interval_time"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:drawablePadding="2dp"
+-                            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+-                            android:letterSpacing="-0.05"
+-                            android:lineSpacingExtra="6sp"
+-                            android:lines="1"
+-                            android:text="평일 17분간격"
+-                            android:textColor="@color/color_999999"
+-                            android:textSize="14sp" />
++                            <TextView
++                                android:id="@+id/tv_interval_time"
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:drawablePadding="2dp"
++                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
++                                android:letterSpacing="-0.05"
++                                android:lineSpacingExtra="6sp"
++                                android:lines="1"
++                                android:text="평일 17분간격"
++                                android:textColor="@color/color_999999"
++                                android:textSize="14sp" />
+ 
+-                        <View
+-                            android:id="@+id/v_time_dot"
+-                            android:layout_width="2dp"
+-                            android:layout_height="2dp"
+-                            android:layout_marginStart="8dp"
+-                            android:layout_marginEnd="8dp"
+-                            android:background="@color/color_999999" />
++                            <View
++                                android:id="@+id/v_time_dot"
++                                android:layout_width="2dp"
++                                android:layout_height="2dp"
++                                android:layout_marginStart="8dp"
++                                android:layout_marginEnd="8dp"
++                                android:background="@color/color_999999" />
+ 
+-                        <TextView
+-                            android:id="@+id/tv_breaktime"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:drawablePadding="2dp"
+-                            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+-                            android:letterSpacing="-0.05"
+-                            android:lineSpacingExtra="6sp"
+-                            android:lines="1"
+-                            android:text="주말,공휴일 미운행"
+-                            android:textColor="@color/color_999999"
+-                            android:textSize="14sp" />
+-                    </LinearLayout>
++                            <TextView
++                                android:id="@+id/tv_breaktime"
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:drawablePadding="2dp"
++                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
++                                android:letterSpacing="-0.05"
++                                android:lineSpacingExtra="6sp"
++                                android:lines="1"
++                                android:text="주말,공휴일 미운행"
++                                android:textColor="@color/color_999999"
++                                android:textSize="14sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/lo_detail_btn"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_alignParentEnd="true"
++                            android:layout_alignBottom="@+id/lo_bus_info"
++                            android:orientation="horizontal"
++                            android:visibility="gone">
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
++                                android:letterSpacing="-0.02"
++                                android:lineSpacingExtra="6dp"
++                                android:text="@string/view_details"
++                                android:textColor="@color/color_999999"
++                                android:textSize="14dp" />
++
++                            <ImageView
++                                android:layout_width="20dp"
++                                android:layout_height="20dp"
++                                android:src="@drawable/common_cursor_right_2_16"/>
++                        </LinearLayout>
++
++                    </RelativeLayout>
+                 </LinearLayout>
+             </RelativeLayout>
+         </RelativeLayout>
+Index: app/src/main/res/layout/bus_fragment_main_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/bus_fragment_main_home.xml b/app/src/main/res/layout/bus_fragment_main_home.xml
+--- a/app/src/main/res/layout/bus_fragment_main_home.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/layout/bus_fragment_main_home.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -160,13 +160,22 @@
+             </LinearLayout>
+ 
+ 
+-
+             <LinearLayout
+-                android:id="@+id/lo_bookmark_rv"
++                android:id="@+id/lo_bookmark_empty"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:visibility="visible">
++                <include
++                    layout="@layout/bus_bookmark_eamty"/>
++            </LinearLayout>
++
++            <LinearLayout
++                android:id="@+id/lo_bookmark_rv"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:orientation="vertical"
++                android:visibility="gone">
+ 
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:id="@+id/rv_route_bookmark"
+@@ -182,10 +191,6 @@
+ 
+             </LinearLayout>
+ 
+-            <include
+-                android:id="@+id/lo_bookmark_empty"
+-                layout="@layout/bus_bookmark_eamty"
+-                android:visibility="gone" />
+ 
+             <View
+                 android:layout_width="match_parent"
+Index: app/src/main/res/layout/bus_station_detail_info_list.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/bus_station_detail_info_list.xml b/app/src/main/res/layout/bus_station_detail_info_list.xml
+--- a/app/src/main/res/layout/bus_station_detail_info_list.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/layout/bus_station_detail_info_list.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -53,7 +53,7 @@
+                                 android:gravity="center"
+                                 android:letterSpacing="-0.03"
+                                 android:lineSpacingExtra="8sp"
+-                                android:text="간선"
++                                android:text="없음"
+                                 android:textColor="#ffffff"
+                                 android:textSize="12sp"
+                                 android:textStyle="normal" />
+Index: app/src/main/res/layout/bus_station_detail_list.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/bus_station_detail_list.xml b/app/src/main/res/layout/bus_station_detail_list.xml
+--- a/app/src/main/res/layout/bus_station_detail_list.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/layout/bus_station_detail_list.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -49,12 +49,12 @@
+                                 android:layout_height="21dp"
+                                 android:layout_gravity="center_vertical"
+                                 android:background="@drawable/bg_round_area_6"
+-                                android:backgroundTint="@color/card_color4"
++                                android:backgroundTint="@color/black_90"
+                                 android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                 android:gravity="center"
+                                 android:letterSpacing="-0.03"
+                                 android:lineSpacingExtra="8sp"
+-                                android:text="간선"
++                                android:text="없음"
+                                 android:textColor="#ffffff"
+                                 android:textSize="12sp"
+                                 android:textStyle="normal" />
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 9d500f6e03b8d27a8a85da044dc9303c4a103169)
++++ b/app/src/main/res/values/strings.xml	(revision a962d4e7a180fbba57fc1784931ff411f91c55c0)
+@@ -1325,6 +1325,4 @@
+     <string name="bus_result_empty">검색결과가 없습니다.</string>
+ 
+ 
+-    
+-
+ </resources>
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_blue.png b/app/src/main/res/drawable/ic_bus_color_36_pt_blue.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..ce51402f24a9f856b82c6bffc72389c06ac082f3
+GIT binary patch
+literal 700
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2Hz0X`wF?gc*o2?5Q*Z$L6`%Fih~
+zex17Wcgl|6pT7V1Z2MtW^}T-8uT{tYXcT;V`tD!Oyr0*f{@Z)`&kXOTLqPL+N`m}?
+z89uBmxF#A|?{L6iLhwxySq26sZci7-5Rc<;r{A8`tiaQ@`q4^n5k~*FzxO{^T9Cxj
+z9X|Kw&HtxPe#sX2)c&L5&+Evkim9P>uFq5(y(cQ25aVP>cb2{|TldH1^V1kE`>a=~
+z=Ib=CWV>+5e^Ne!|2wV)%LSzrEZ<8vHoCoJeVMtr;k3mL#se!acZhFGnxJUGD9HW2
+z;;yBG&gyHvAL9HszR_SXIJ3z3GIxX-qw9f5?J)=c6ij_zApC6#^Yg1wS5Emnky|q-
+zn`aTv!MU!k2c<Mi0=I{3`@?r8+B3TLmYPO7&-YbR*0g+@#Js)e_BIx&knd5GW9MH=
+zSiIt#&|QZL_45V$?N_bJ7u2!ldm402b4SHy^|a`u;veiHLCI&F-rBtH-=O}HO+RDr
+z_Dzf2+>e%=z7S+5E+ZQn`}6eW1H7@{t1=A^uRO%GRrlJF%kysh^KDuEY~AZC*<I&O
+zxcPig?pafR{ydwcZU1)T%fDytXEgt2XIoMz!gDaGR8c%{dik6(#`Cj3vwzRJ-CH|z
+zX7z*2-o1Lp{fi@ZZz);FA;O(1=kD+M@J77$B>e;H5C2?nyHwk}HY+_MyKKGk`L|ZL
+z^4i+&Ms?;0Pt^KYC4Td^IP)f#n&#JL-Mq&e+t(akn9f#QcVx-dz*3pao%_xoDVg{0
+z+fnrc_wO!<netGOKjQkz*X=Q9Ui%xbQLi|1y8evY(&?N3Ek1SX(s#=V;;E4~|Lqsc
+Z?YBrM`Wuv=Ed)$144$rjF6*2UngFeOVmbf-
+
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_green.png b/app/src/main/res/drawable/ic_bus_color_36_pt_green.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..20f7ce55cbc9737b378f0c72228f1d771675f156
+GIT binary patch
+literal 719
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2JZ0X`wF?gc*ov4JnYzGDh9G&%uE
+z`vrv!2NoW9aH0Odg0wAt{2jjX6Cxjcc(LTt9{riA3=NLwU)%{;Sv%pxny+)%B7he0
+zmjw9*Go%_kI3Utg|Jz~7g@6h6o1NLs85o#^JY5_^JdVGe-nnkIf<W7AvCQ1p8IdkI
+z_x~H}&sJJ+W!~h;)y2jCmUJfBv(0S%Sn})YRzD5@iC0-2gIr_ZZroa9^Pw(0#;<qX
+z?Ki9s47YjOvNu%Cc3o1tTHHZwv*dvrasrGU-_|-g+;V;taICF8Ip=iJ<+Fi@Pkqsi
+zFlDgivS0Y|;qQl`uS<V_kd$kG_-%Q@wYMGn+HdCN`OGdTJuiFb?ei;K=iZy`&C|MW
+z*DPIGzPZ!l#L_wz=1nh`HqH8`(Z=4cDDP%Fm9yze*h|M>Jc)~hPOO-$xU;D`>&<Ba
+z{-DA(_RV&xdG5C9{Z;2v1rM0Cb?#2d?Pi{l#3KH5h0wK%=W~8V@B}|O$klquLR<U5
+z)CGBUzK%?Xxz}7cB)VAV%jR9uOoz3@MQ@f>lr<(EDY?q6l%u}w_yL1!oNJa>@^fGM
+z9$}Sl(i->n$>o?b_Mjk+zrx?%eNIx4QAzqYU&r}=gY}v#!p}sbbB<j4up`AFI{atl
+z1ht2CC;v}xRxjwB+jR4j{ksQCm+<7@n<*&lmooLy8MfOt-<IALd-R`Y(tZa2dzw;n
+z)-5jockF{!Q_Rl!TXjymE#QB?bV~Nol#c0sz1s0IT&6|0vY2xJaIWibc0Fpdy64{B
+zZQ*5&HF<*P>#TdeL|^7S_17=<*gx*aoQKSO<(|nT-!xjRb@BP_wk3VLDva+fsjmGx
+nb3(4q{Pa%;e||T9^@Y7DxM$fmr)vekgu~$J>gTe~DWM4fG*)Ut
+
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_indigo.png b/app/src/main/res/drawable/ic_bus_color_36_pt_indigo.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..3513e072852709023835fb2a824256208aa3e3da
+GIT binary patch
+literal 709
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2JZ0X`wF?gc*oi3Soz6M$sT%oBkr
+zYfhYd`tkG6(w4oZ-t*M#rY~7{`SG()&XG&S4JRZNZQj2Bj)dWa4weT%dl>jjg8YIR
+z1ZIBFZb+?nIPl;?zy|+jRdGEA1||+q7sn8f<8P<mp46<s(`Gw=x0|a#?(cv7J7q#d
+z1m2!2vD$q3PRPdjiWBTz&i}sU|7ybtS2srvKkcCZ9lke{txVd#IWQ!qrsp%<jj(>}
+z#~36n&G71Vur!0vWM773#bv9i8Ite*5zzbb^jpK75})-OP0eDbhs%E6z?^%H;fYpF
+zdl7&7^mN^4YY*Q|-BBmrbDLTDxq+MesuycE%y;F=>o?unxcE%`q*<A7O?RY}AJlQ_
+zdSEIcFgg58!n`X>9Myb8+rAlOaR_^ynC`_hX*b{Z7>7$y>s(mPU4Er&uJbHxTscR6
+zd!pRk+;1A!Yy>tNJcx@;dgjv{IVb7pADL|xtIf7X%L;F4w&dD*XU!6Z(573eXI5U9
+zSv^BCYDLnN7r)QEU-7JBbEs>Q|M{@uo&sB5w>H@)-&R=WwKN>fKKF2C`qR0smglC<
+zo6c8xHEzNamHK(F?|wd-WZ*mb>8HC>p9B|Zhi^N+JIQ*zP1)hcs}lCC{d8KP@X*;+
+z{~Zs?Y9#JX$Z5Vl$;m(I*k2hFL+7|-|F+!n-t}j@%1@R()~;JGm)@DXUv1Axh0u4s
+zmrKt%tW7;Tb7ff1(u#F!LY}^6WR?Gz<EyZ>-23RKFmL{CFPT!^Hm{nUD}SWH<;s%g
+zKO63^OF4a~@!qnHhyPqOVQ#u`aea94X1UkJyH0+*bo2G^P?_bOPxS+Zju(FW+w-Z8
+Yar*0C*CkW-dVtc4r>mdKI;Vst0I%U_)&Kwi
+
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_light_green.png b/app/src/main/res/drawable/ic_bus_color_36_pt_light_green.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..21bc164bae5e1cb03a94be6715be40b0f0b9ad25
+GIT binary patch
+literal 684
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2I;0X`wF?gc*oi2z;KT!7@!*Nc`v
+zD0=+u^6WeDKmUH&`MiJPP5+O-UR?XQr|X*Y`p5NW-mWz%Fir#6Q4-`A%+Me(^M!U~
+zy~BYE1se=f%a1WIF#h#)aSZV|{&xE9b<GL_uCM=IveM|d^zVQBJVzFhDUX~lKUp%_
+zB=FW#hIf)>`P<{Cger6iM5b7>D6hX{yzS8X<um6TJ0qaqf0O-y!|ntd^@dj+XB&F&
+z-mYMjd9siBf}WBaL;n3sGRO3^(lY)W36{AXXkRKlJ7U?nIg!jCB7Shbm0Pzseeapu
+zt?d~*ehcVi)C>Kw^|=`t%F|vDB`)^ve0CPIc<CzF-lIjlc^~znxeJpDc-h*XPF2ux
+zJ<Iv|;mM>Ne&a(M9g22_o>r*e^+AK%!?l0XodYea|7a907csS2`SawA>lc~lrk>WZ
+zsn|08N5P{5JI<vZzr?n!B0v6Bf>80cW>v1<sz}vuK9`%S_WEp2nR{bh<$VtC@3yCR
+zpY+^Q8Two9mDU-xw33%qeTU9%d8?xKTEI?ik&1iH`x(9K=EiN~E4}J|AnET6>%yIq
+z9Pb}Jp8F)bV0~HH9kK2U*8YbLOhtXR$Hwu0Qt<KlyI;qqLHEsyGeMWEe7t8iT^4KV
+zd%bAq{uJA?%<WtKT7Jw|`pLG(+I8;bt0!_T>uW0(E8Kp!_i}0Ig5*ePp6sIm8NI#N
+zwyl>evMfrO-n+W+&ZNp$jqJB~9EglQQkCBxI`Jdptm5T;x9SCr8nQ2cFqkiXdJg-a
+zs-3gG9+`XDxp%wc`uWp5Crx3u*L?TG_3v-#(%;N`Z&f#Ho_Lc0Od$-Ou6{1-oD!M<
+D?)P2r
+
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_red.png b/app/src/main/res/drawable/ic_bus_color_36_pt_red.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..c6e09f5223df181ff79540cd895e40e5a95f6ee6
+GIT binary patch
+literal 690
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2IO0X`wF?gc*oi2$z^6oBN{2@^hq
+zhyOZp;+>=8zfYgOR93#x)B6w+@ngk`zfYe0xpwVSTH4QDyIv_Myir%5ctZ0R$g+|k
+zzhH)hB^O?33)DFr2$*26+jn3(0|VnPPZ!4!kK=Er-`sRafv4?lUTD*%lETXW*KGnc
+zqN82XWzx^h(C)5NYy6{l_ibHShEmwk6I%L;S*gMK8+(6Lz4*B7?urBauXFec6g9H0
+zGcJfs*L3z@%YGs(Sxw`h#DS#yuY@GLHc4;sKJF~led1E-#8(l^YIzp1Jy`icluQ1e
+zy1VUB*+bJ)Bx<?Tp7TCFpXjtb#BklAuPZkdY+tL%zRoWy&VA+9>kpi4WJ?42m99)r
+zSP&JrX@%u7?}`l)UlY4_3V3L4&x(3-T_7#U;Z#S+qE^H3f3BVEL318D9#voK{^HFc
+zzqwC?MYv~VCKdG*Fm&4}PG`T`)Ls59K>wKGaygyAjH`*Mi_&L_EqQ2cq<OwC_uMAI
+zTWM2TpX<zTJFu}hWa;(eevCP?!F^ZasztYj-fm1@GyTYYl@(o`-}El2?7D34@;YGt
+zt`b}OdwFc%&$j!QP0Bww_g3Vy&eVIALhYS_28FwAZZvfsxbb5D_753iyG_pP<wTtl
+z;Q#G6!*7;;@Vx8yZoU0&uRBTqz~b_5w(Z&<-`!Vz6EY$9`{tP&N?6&Hv$fCkB`vxT
+zmED>fZ?5t5)G3CUGgmH~zm7TiS$ue!K|0r)=Yoar{VTjuYFf&wgTj?Rb3B}(ruSL;
+zm~E?((R%qW8|3<qmae<j{bEi0>FX^yPt~W^_}=&*x45i+t6Poi`z`Z1fyslx)78&q
+Iol`;+04PCN4*&oF
+
+diff --git a/app/src/main/res/drawable/ic_bus_color_36_pt_yellow.png b/app/src/main/res/drawable/ic_bus_color_36_pt_yellow.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..7023344ce41d51f03df5a81e6693d2f48524f3db
+GIT binary patch
+literal 676
+zc%17D@N?(olHy`uVBq!ia0vp^HXzKw3=&b&bO2J`0X`wF?gc*oi2&cXy8y{QcNYCR
+zS^V$a<sbV(|Ns8-`%3@6Z!i8l+w=2i+V}0wTjT{yK&F=j`2{lw%>1Ao*--DW|G|X<
+zzAK{r3=E9FJzX3_JdVGe&fVXvz|-)&*zR1{o+tnRUs}CrLBoln$Z0XxQaT&vFI}p8
+z_wmQ6uOufLxlOBN41787rs(e@sfx$FC-N*<aVUq|;H+~<2SY{M4H*gfyi^vB7ylS%
+zw6i>9n0J2@(~k)%LQ(M>J(Ag9t$r6Qs=ul@{W^n*sM>}357jEKA2wj#@nH%N|NAD*
+zodQ+-!DUlLg9Xmbx^(D?)pEXqn<>=+$?NvAeYZHZ-9>~auDLO>>MDo6qp$n3!-taI
+z@NAx#)Fjfq+Tr(&)}NCcqBz=~Fv_jG*01<($s<1Qz589Cm`QhRuDRRFUi{nRx>P}n
+z=&hYqI)^_MALz8ba#G`3d;Vsjz>Kenp|UrGT*{1lPwr02HeNJW*KKO`xzipNUHtA>
+zLmz%n=}SrzIb54_zVA_?uFdQ8cZo+g?s@$1Z1mE2v&Hj0oV>LD2B$5F(_=eTT~V+4
+zQ)Ex&wE3$n?%Mc2{*Ys2F+uzH6H%L4f8^Ib&J9%voH6VBlB+ohg~`TG_g&n5a?Zbl
+zx4l-@ORCIo@ZY|oc=x&GzpuCR3#OdjTfRF_@Wqxjx?Q<P4UR->@70YL+LfwyMQ`@H
+zV=t%e`n$SO?#%_(Q+r)=`nXLuT+Om_tiHQ4`Ass9|ATFr6*Et7P1RHSTea2n_14|X
+w!_I%d7-zrw)vk3+>!;Z7xKQ)o&9;tlcWSlqg0Sv=!1Tf3>FVdQ&MBb@0EjYKi~s-t
+
+diff --git a/app/src/main/res/drawable/ic_f_d_down_stop_25_pt.png b/app/src/main/res/drawable/ic_f_d_down_stop_25_pt.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..0c46f2d01291845402e25b80d53415c8c153967c
+GIT binary patch
+literal 315
+zc$@({0mS}^P)<h;3K|Lk000e1NJLTq000>P001Zm0{{R3JQ1N;0000vP)t-sM{rC4
+zNv{9@{{Ts^07$O@K(7EvuK-A|14^&}NUmUw%@$a;ug2z|yWx4C)#mN@Kz75(*zP}e
+z!kX8qTL1t63UpFVQvl%q|3DB>fb+dFDk0VY005^+L_t(I%f-`M8-pMS24E(Zg5{zA
+z|6@lxWh&im`|f&PD<A>@OCHbhWI^I^6eo9}Urd|TqXohqgpk1F08By;sO5_iH3=pt
+zvPv663DQUCBy1e_SuByaa1yTi=kwFJh2uTkKvh9`KpE7QUPJC=uQ}Cqe<YidF&C3N
+z;pfmI|KR(yGTI#@qHmSHiTd{H8-MYayyK3uP5v(v3D5+i%(uC^x&td-3*4)=(S85`
+N002ovPDHLkV1h?)hVB3W
+
+diff --git a/app/src/main/res/drawable/ic_f_d_up_stop_25_pt.png b/app/src/main/res/drawable/ic_f_d_up_stop_25_pt.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..5300fa78368c295c5272663861ab8023ac574e83
+GIT binary patch
+literal 309
+zc%17D@N?(olHy`uVBq!ia0vp^l0dA%!3-pA1Q$jEDYF2d5LfpCpa1{=Cmi|s?At$v
+z`L7w~zh_wZ5{Q_=<oZWH=HK~lzvEryxi13CUMZ}3ed6`+_#+?rvll7@P2egC@(X4F
+z>US3S-|%togP&VDfuc)1T^vI!P9ME|o2glWgDt_tS;uDY|I>YCr$WlMzuo_4Gm{cS
+zLE{H0E<P2x^p8dCm(qT{Y2jn)Q)pr2P)`t3anOyQvcl6Wa$@YQ8D7)uE-7?o+oWwg
+zdg`UpwwL$g=BHI#+)uX7(9$T^n0#y6^9k&p$DeL{w|#?VPYe%#ki2vEH}?C>r{8=h
+zAy~Wmi|>`~;rD;=*Pqn>XLI}M|4nR-8xHC8-7?Et=`ARK<JPhhK=(3uy85}Sb4q9e
+E09Ce%lK=n!
+
+diff --git a/app/src/main/res/drawable/ic_f_select_stop_40_pt.png b/app/src/main/res/drawable/ic_f_select_stop_40_pt.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..a9e75fe4d6735849592f53e363cc8c4dcd39f929
+GIT binary patch
+literal 404
+zc%17D@N?(olHy`uVBq!ia0vp^8bIvG!VDw>wSS)hQn~>?A+GKPKL00KK~X=LoCqYX
+z{{zA5jQ>AA{(pM@|IumxXL<g=vT5>nkp`ef_L3mKV1|qjO$G;63m7rlFfcIkd%8G=
+zSe!n4Wn*4bfC$?IXP;YB&x&U}<~Aw3e(>(n{tH`=UI`W|{K|Dp^pLQEzrz#8R|oud
+zms~ws{y`|<{m$<*EI#q`#Q$@!xWmlAb9}{<pR6f5OA2#3^Q9hL(K&U)z^Pn&3X7th
+zqr9@?rX!qtlH3dr_`gszeYlwU#1h>XZ9M0`^ZZ*UX;U-%g=$^q1D_6g*}V}RzMdOS
+zyx#b<wdrH!3~AQ8OC$?c+%pdAPG7Uy_v5E8EB;Lo*{>DzK=y2Gt2T4<nFD9|@2Xrd
+zn0k4}QjxvMrGNErmpW-=9gn`_R3><1YU1?lhWckxo48M}GmEf&rhed`-Yc814}2!N
+uN7|n)&3wXPSJKQE%<^KEtL574k1V!ntc7MdGS<M*V(@hJb6Mw<&;$UT#J6Ao
+

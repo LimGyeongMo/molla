@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/lo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_E6E6E6"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="100dp"
+        android:paddingEnd="30dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="172dp"
+            android:layout_height="172dp"
+            android:src="@drawable/img_dalsoo_none_2"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_fail_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+            android:gravity="center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="9px"
+            android:text="최근 검색기록이 없습니다."
+            android:textColor="@color/color_333333"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+</layout>

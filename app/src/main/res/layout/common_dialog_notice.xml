@@ -1,0 +1,102 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_area_6"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/common_image_default_5_2" />
+
+            <LinearLayout
+                android:id="@+id/lo_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_bold"
+                    android:letterSpacing="-0.02"
+                    android:textColor="@color/color_333333"
+                    android:textSize="18dp"
+                    tools:text="타이틀" />
+
+                <TextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="8px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16dp"
+                    tools:text="알림 메시지 입니다. 알림 메시지 입니다. 알림 메시지 입니다. 알림 메시지 입니다." />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/v_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_E6E6E6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_negative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:gravity="center"
+                    android:letterSpacing="-0.02"
+                    android:padding="15dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16dp" />
+
+                <View
+                    android:id="@+id/view_divider"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_E6E6E6" />
+
+                <TextView
+                    android:id="@+id/tv_positive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                    android:gravity="center"
+                    android:letterSpacing="-0.02"
+                    android:padding="15dp"
+                    android:text="@string/ok"
+                    android:textColor="@color/color_01CAFF"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

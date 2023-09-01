@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.CustomNoActionBar"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".BusAddressMapSelectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusStationMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusRouteMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusStationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.BusPathFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.BusStationFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.BusSearchFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.BusHomeFragment"
+            android:exported="false" />
+        <activity
+            android:name=".BusSearchInfoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".BusMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 네이버 지도 -->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="57f0wtpr1a" />
+    </application>
+
+</manifest>

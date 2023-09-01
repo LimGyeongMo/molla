@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.example.daegurobus.widget.CommonRowText
+                android:id="@+id/frequently_asked_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/frequently_asked_questions" />
+
+            <com.example.daegurobus.widget.CommonRowText
+                android:id="@+id/kakao_channel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/go_kakao_channel" />
+
+            <com.example.daegurobus.widget.CommonRowText
+                android:id="@+id/customer_counseling_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon_res="@drawable/common_call_20"
+                app:text="@string/customer_counseling_center"
+                app:text_sub="@string/customer_operation_time" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

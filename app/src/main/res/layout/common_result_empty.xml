@@ -1,0 +1,68 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/lo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_E6E6E6"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="100dp"
+        android:paddingEnd="30dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="172dp"
+            android:layout_height="172dp"
+            android:src="@drawable/img_no_result_172_dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_fail_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+            android:gravity="center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="9px"
+            android:textColor="@color/color_333333"
+            android:textSize="18dp"
+            tools:text="오류 메시지" />
+
+        <LinearLayout
+            android:id="@+id/lo_bottom_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_fail_sub_cursor1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back_20_left"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tv_fail_sub_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7px"
+                android:textColor="@color/color_999999"
+                android:textSize="14dp"
+                tools:text="오류 서브메시지" />
+
+            <ImageView
+                android:id="@+id/iv_fail_sub_cursor2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back_20_right"
+                android:visibility="visible"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

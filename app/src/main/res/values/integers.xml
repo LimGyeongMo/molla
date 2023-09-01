@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_length_address_search_input">20</integer>
+    <integer name="max_length_address_detail">25</integer>
+
+    <integer name="max_count_custom_name_address">20</integer>
+    <integer name="max_count_recent_address">20</integer>
+    <integer name="max_count_saved_search_keyword">20</integer>
+
+
+<!--    <integer name="max_shop_review_shown">100</integer>-->
+<!--    <integer name="max_shop_bookmark_shown">200</integer>-->
+
+    <integer name="max_length_request_shop">42</integer>
+    <integer name="max_length_request_shop_flower">50</integer>
+    <integer name="max_length_request_rider">50</integer>
+
+    <integer name="max_length_review_contents">500</integer>
+
+    <integer name="max_size_search_keyword">20</integer>
+
+    <integer name="max_length_cash_receipt">13</integer>
+
+    <integer name="max_length_voucher_message">200</integer>
+
+    <!-- 회원정보 -->
+    <integer name="max_length_email">30</integer>
+    <integer name="max_length_pw">15</integer>
+    <integer name="max_length_tel">11</integer>
+    <integer name="max_length_auth">6</integer>
+    <integer name="min_length_nickname">2</integer>
+    <integer name="max_length_nickname">10</integer>
+    <integer name="max_length_birthday">8</integer>
+
+    <!-- 이벤트 베너 -->
+    <integer name="event_banner_ratio_width">5</integer>
+    <integer name="event_banner_ratio_height">2</integer>
+
+    <integer name="length_coupon_code">50</integer>
+    <integer name="length_voucher_code">13</integer>
+
+    <!-- 예약 -->
+    <integer name="reserve_filter_peek_height">58</integer>
+
+    <!-- 택시 -->
+    <integer name="taxi_max_count_recent_address">30</integer>
+    <integer name="taxi_max_length_review_contents">300</integer>
+
+
+    <integer name="bus_max_count_saver_search_item">5</integer>
+    <integer name="bus_max_size_search_keyword">20</integer>
+
+</resources>

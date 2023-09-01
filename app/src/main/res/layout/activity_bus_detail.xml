@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:background="@color/color_2971F6"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="7dp">
+
+                    <ImageView
+                        android:id="@+id/iv_bus_left1"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/common_arrow_left_36" />
+
+
+                    <LinearLayout
+                        android:id="@+id/bus_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="70"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_bus_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/font_nexon_lv1_gothic_bold"
+                            android:letterSpacing="-0.05"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lo_bus_right1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/iv_bus_right1">
+
+                        <ImageView
+                            android:id="@+id/iv_bus_right2"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="2dp"
+                            android:padding="8dp"
+                            android:src="@drawable/common_refresh_20" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lo_bus_right2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/iv_bus_right1">
+
+                        <ImageView
+                            android:id="@+id/iv_bus_right1"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="2dp"
+                            android:padding="8dp"
+                            android:src="@drawable/common_home_20" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lo_info_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_2971F6"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="19dp"
+                android:paddingBottom="30dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_tp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                        android:letterSpacing="-0.05"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#ffffff" />
+
+                    <TextView
+                        android:id="@+id/tv_interval_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                        android:letterSpacing="-0.05"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_nodename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_cj_kkr_regular"
+                        android:letterSpacing="-0.02"
+                        android:lineSpacingExtra="6dp"
+                        android:text=""
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:background="@drawable/bg_round_line_1_4dffffff"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/rl_tab_nearbyStops"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:minHeight="45dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_tab_nearbyStops"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_busstop_white_20" />
+
+                            <TextView
+                                android:id="@+id/tv_tab_nearbyStops"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:text="주변정류장"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="18dp"
+                        android:background="@color/color_FFFFFF_30" />
+
+                    <LinearLayout
+                        android:id="@+id/rl_tab_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:minHeight="45dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_tab_map"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/ic_map_20_pt" />
+
+                            <TextView
+                                android:id="@+id/tv_tab_map"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:text="지도"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="18dp"
+                        android:background="@color/color_FFFFFF_30" />
+
+                    <LinearLayout
+                        android:id="@+id/rl_tab_bookmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:minHeight="45dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_bookmark"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/ic_off_line_star_20_pt" />
+
+                            <TextView
+                                android:id="@+id/tv_tab_bookmark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:fontFamily="@font/font_noto_sans_cj_kkr_medium"
+                                android:letterSpacing="-0.02"
+                                android:text="즐겨찾기"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+<!--            <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <com.google.android.material.appbar.AppBarLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:layout_scrollFlags="scroll|enterAlways">-->
+
+
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--                </com.google.android.material.appbar.AppBarLayout>-->
+
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/recyclerview"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/lo_bottom"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/recyclerview"-->
+<!--                    android:layout_gravity=""-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:background="@color/color_F2F2F2" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingStart="18dp"-->
+<!--                        android:paddingTop="20dp"-->
+<!--                        android:paddingEnd="80dp"-->
+<!--                        android:paddingBottom="38dp">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:fontFamily="@font/font_noto_sans_cj_kkr_regular"-->
+<!--                            android:letterSpacing="-0.05"-->
+<!--                            android:text="@string/bus_notification_etc"-->
+<!--                            android:textSize="12dp" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--             -->
+
+
+<!--            </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+
+            <!--            <ScrollView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content">-->
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:orientation="vertical">-->
+
+            <!--                    <View-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="10dp"-->
+            <!--                        android:background="@color/white" />-->
+            <!--                    &lt;!&ndash;            <androidx.core.widget.NestedScrollView&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                android:id="@+id/nest"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                android:fillViewport="true"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                app:layout_behavior="@string/appbar_scrolling_view_behavior">&ndash;&gt;-->
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content">-->
+
+            <!--                        <androidx.recyclerview.widget.RecyclerView-->
+            <!--                            android:id="@+id/recyclerview"-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:nestedScrollingEnabled="false" />-->
+            <!--                    </RelativeLayout>-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:orientation="vertical">-->
+
+            <!--                        <View-->
+            <!--                            android:id="@+id/v_station_under"-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="1dp"-->
+            <!--                            android:background="@color/color_F2F2F2" />-->
+
+            <!--                        <LinearLayout-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:paddingStart="18dp"-->
+            <!--                            android:paddingTop="20dp"-->
+            <!--                            android:paddingEnd="80dp"-->
+            <!--                            android:paddingBottom="38dp">-->
+
+            <!--                            <TextView-->
+            <!--                                android:layout_width="wrap_content"-->
+            <!--                                android:layout_height="wrap_content"-->
+            <!--                                android:fontFamily="@font/font_noto_sans_cj_kkr_regular"-->
+            <!--                                android:letterSpacing="-0.05"-->
+            <!--                                android:text="@string/bus_notification_etc"-->
+            <!--                                android:textColor="@color/color_999999"-->
+            <!--                                android:textSize="12dp" />-->
+            <!--                        </LinearLayout>-->
+            <!--                    </LinearLayout>-->
+            <!--                </LinearLayout>-->
+            <!--                &lt;!&ndash;            </androidx.core.widget.NestedScrollView>&ndash;&gt;-->
+            <!--            </ScrollView>-->
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_floating"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="21dp"
+            android:background="@drawable/bg_floating"
+            android:padding="12dp"
+            android:src="@drawable/common_arrow_up_24"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/lo_loading"
+            layout="@layout/common_loading" />
+
+    </FrameLayout>
+</layout>

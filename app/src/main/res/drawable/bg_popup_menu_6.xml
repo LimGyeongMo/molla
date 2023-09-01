@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="154dp">
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="#00CCCCCC" />
+        </shape>
+    </item>
+    <item android:width="152dp">
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="#10CCCCCC" />
+        </shape>
+    </item>
+    <item android:width="150dp">
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="#20CCCCCC" />
+        </shape>
+    </item>
+    <item android:width="148dp">
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="#30CCCCCC" />
+        </shape>
+    </item>
+    <item android:width="146dp">
+        <shape>
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="#50CCCCCC" />
+        </shape>
+    </item>
+
+    <item android:width="144dp">
+            <shape android:shape="rectangle">
+                <solid android:color="@color/white" />
+                <corners android:radius="6dp" />
+            </shape>
+    </item>
+</layer-list>
